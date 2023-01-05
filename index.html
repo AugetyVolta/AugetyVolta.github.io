@@ -1,0 +1,78 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta property="og:type" content="website">
+<meta property="og:title" content="AugetyVolte&#39;s Blog">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="AugetyVolte&#39;s Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="AugetyVolte">
+<meta name="twitter:card" content="summary"><title>AugetyVolte's Blog</title><link ref="canonical" href="http://example.com/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">Hello Stun</div><div class="header-banner-info__subtitle">An elegant theme for Hexo</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/">从D的触发机制到寄存器的同步清零</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-05</span></span></div></header><div class="post-body"><div class="post-excerpt">
+        <h1 id="从D触发器触发机制到寄存器的同步清零"   >
+          <a href="#从D触发器触发机制到寄存器的同步清零" class="heading-link"><i class="fas fa-link"></i></a><a href="#从D触发器触发机制到寄存器的同步清零" class="headerlink" title="从D触发器触发机制到寄存器的同步清零"></a>从D触发器触发机制到寄存器的同步清零</h1>
+      <blockquote>
+<p>之前助教向我们介绍了利用MUX进行同步清零的操作，但是对于寄存器的clk端没有进行使用。当我在看到D的触发器的触发冒险机制时，我在思考能否将这种机制应用到寄存器的同步复位上，最终结果证明是可行的。</p>
+</blockquote>
+
+        <h2 id="D触发器的触发"   >
+          <a href="#D触发器的触发" class="heading-link"><i class="fas fa-link"></i></a><a href="#D触发器的触发" class="headerlink" title="D触发器的触发"></a>D触发器的触发</h2>
+      
+        <h3 id="D触发器的实现"   >
+          <a href="#D触发器的实现" class="heading-link"><i class="fas fa-link"></i></a><a href="#D触发器的实现" class="headerlink" title="D触发器的实现"></a>D触发器的实现</h3>
+      <p>我在这里截取了PPT中D触发器的一种实现方式，通过对于<strong>时钟信号</strong>以及<strong>时钟信号的非</strong>的与操作，利用<strong>1冒险</strong>，实现了上升沿那一小瞬间的数据写入。</p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20221002162240313.png" alt="image-20221002162240313"></p>
+<p><strong>关键部分在这一部分</strong></p>
+<p><img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20221002162355563.png" alt="image-20221002162355563"></p>
+
+        <h3 id="D触发器触发原理——冒险（1冒险）"   >
+          <a href="#D触发器触发原理——冒险（1冒险）" class="heading-link"><i class="fas fa-link"></i></a><a href="#D触发器触发原理——冒险（1冒险）" class="headerlink" title="D触发器触发原理——冒险（1冒险）"></a>D触发器触发原理——冒险（1冒险）</h3>
+      <p><strong>以下是PPT组合逻辑最后部分的讲解</strong></p>
+<img src="D:\Desktop\计组\第二讲：组合逻辑-2022-秋\第二讲：组合逻辑-2022-秋_142.jpg" alt="第二讲：组合逻辑-2022-秋_142" style="zoom: 50%;" />
+
+<p>​		<em><em>D触发器利用的就是A</em><del>A的冒险机制，当A端为低电平时，</del>A端为高电平，当A端变成高电平的一瞬间(即时钟上升沿)，由于非门的延迟，导致非门后的输出还来不及改变，此时与门的两端输入都为高电平，输出为高电平，但由于延迟只是很短一瞬间，之后便立即恢复稳定，即非门后输出低电平，最终与门输出为低电平。</em>*</p>
+<p>​		<strong>正是这一瞬间的高电平输入，使得触发器可以存入内容，并且在之后保持不变。</strong></p>
+
+        <h2 id="寄存器同步复位的实现"   >
+          <a href="#寄存器同步复位的实现" class="heading-link"><i class="fas fa-link"></i></a><a href="#寄存器同步复位的实现" class="headerlink" title="寄存器同步复位的实现"></a>寄存器同步复位的实现</h2>
+      
+        <h3 id="同步复位实现及正确性证明"   >
+          <a href="#同步复位实现及正确性证明" class="heading-link"><i class="fas fa-link"></i></a><a href="#同步复位实现及正确性证明" class="headerlink" title="同步复位实现及正确性证明"></a>同步复位实现及正确性证明</h3>
+      <p><strong>上面的D触发器是自动的触发，可是我们想实现的是可控。要实现可受控的触发，可以对以上的模块稍作改变，在与门接上第三个输入，当第三个输入为高电平时，实现触发功能，为低电平时，关闭触发功能。我们可以这样改进：</strong></p>
+<p>​	<img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20221002163929706.png" alt="image-20221002163929706" style="zoom: 67%;" /></p>
+<p><strong>我们可以用逻辑表达式的形式说明这个改进的正确性：</strong></p>
+<p><strong>当clr&#x3D;1时，F&#x3D;clk*<del>clk*clr&#x3D;clk*</del>clk*1&#x3D;clk*~clk 与初始功能一致</strong></p>
+<p><strong>当clr&#x3D;0时，F&#x3D;clk*<del>clk*clr&#x3D;clk*</del>clk*0&#x3D;0 输出始终为0，无操作</strong></p>
+
+        <h3 id="在FSM-P0-Q4-中的效果"   >
+          <a href="#在FSM-P0-Q4-中的效果" class="heading-link"><i class="fas fa-link"></i></a><a href="#在FSM-P0-Q4-中的效果" class="headerlink" title="在FSM(P0.Q4)中的效果"></a>在FSM(P0.Q4)中的效果</h3>
+      <img src="C:\Users\Lenovo\AppData\Roaming\Typora\typora-user-images\image-20221002164455551.png" alt="image-20221002164455551" style="zoom:67%;" />
+
+
+
+<p><strong>最终可顺利通过评测。</strong></p>
+
+        <h2 id="写在最后"   >
+          <a href="#写在最后" class="heading-link"><i class="fas fa-link"></i></a><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2>
+      <p><strong>感谢大家阅读，如有疏漏，请多多指教。</strong></p>
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">Hello Stun</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">Archives</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>
