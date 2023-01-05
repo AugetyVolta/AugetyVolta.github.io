@@ -1,29 +1,29 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="VScode 配置verilog环境       在win11的系统里，ise软件不能运行，而在虚拟机中ise的配置也很费劲，今天在这里教大家在VScode中玩转Verilog。  实现代码补全、代码高亮、错误检查 实现生成Testbench 实现波形仿真                      所需配置文件        iverilog(自带gtkwa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vscode配置verilog环境">
-<meta property="og:url" content="http://example.com/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:url" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="AugetyVolte&#39;s Blog">
 <meta property="og:description" content="VScode 配置verilog环境       在win11的系统里，ise软件不能运行，而在虚拟机中ise的配置也很费劲，今天在这里教大家在VScode中玩转Verilog。  实现代码补全、代码高亮、错误检查 实现生成Testbench 实现波形仿真                      所需配置文件        iverilog(自带gtkwa">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825201612182.png">
-<meta property="og:image" content="http://example.com/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825202602181.png">
-<meta property="og:image" content="http://example.com/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825202951767.png">
-<meta property="og:image" content="http://example.com/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825203908520.png">
-<meta property="og:image" content="http://example.com/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204205253.png">
-<meta property="og:image" content="http://example.com/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204302590.png">
-<meta property="og:image" content="http://example.com/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825204404216.png">
-<meta property="og:image" content="http://example.com/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825204542326.png">
-<meta property="og:image" content="http://example.com/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825205651006.png">
-<meta property="og:image" content="http://example.com/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825210830058.png">
-<meta property="og:image" content="http://example.com/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211448129.png">
-<meta property="og:image" content="http://example.com/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211834905.png">
-<meta property="og:image" content="http://example.com/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211943828.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825201612182.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825202602181.png">
+<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825202951767.png">
+<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825203908520.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204205253.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204302590.png">
+<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825204404216.png">
+<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825204542326.png">
+<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825205651006.png">
+<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825210830058.png">
+<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211448129.png">
+<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211834905.png">
+<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211943828.png">
 <meta property="article:published_time" content="2023-01-05T08:11:38.000Z">
-<meta property="article:modified_time" content="2023-01-05T08:22:47.916Z">
+<meta property="article:modified_time" content="2023-01-05T08:50:30.350Z">
 <meta property="article:author" content="AugetyVolte">
 <meta property="article:tag" content="verilog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825201612182.png"><title>vscode配置verilog环境 | AugetyVolte's Blog</title><link ref="canonical" href="http://example.com/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825201612182.png"><title>vscode配置verilog环境 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -47,7 +47,7 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">vscode配置verilog环境</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-05</span></span></div></header><div class="post-body">
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">vscode配置verilog环境</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-05</span></span></div></header><div class="post-body">
         <h1 id="VScode-配置verilog环境"   >
           <a href="#VScode-配置verilog环境" class="heading-link"><i class="fas fa-link"></i></a><a href="#VScode-配置verilog环境" class="headerlink" title="VScode 配置verilog环境"></a>VScode 配置verilog环境</h1>
       <p><strong>在win11的系统里，ise软件不能运行，而在虚拟机中ise的配置也很费劲，今天在这里教大家在VScode中玩转Verilog。</strong></p>
@@ -147,7 +147,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <p><strong>之后便会打开gtkwave软件查看波形</strong></p>
 <p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211943828.png"></p>
 <p><strong>至于其他的功能，那就请读者多多探索了~</strong></p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="http://example.com">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="http://example.com/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/">http://example.com/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="http://example.com/tags/verilog/">verilog</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/"><span class="paginator-prev__text">从D的触发机制到寄存器的同步清零</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VScode-%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/">https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/verilog/">verilog</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/"><span class="paginator-prev__text">从D的触发机制到寄存器的同步清零</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VScode-%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">
           VScode 配置verilog环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%80%E9%9C%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">
           所需配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.</span> <span class="toc-text">
           环境变量配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85VScode%E6%8F%92%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">
@@ -158,4 +158,277 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
           编写Testbench生成vcd文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E4%BB%BF%E7%9C%9F%E6%B3%A2%E5%BD%A2"><span class="toc-number">1.4.4.</span> <span class="toc-text">
           观察仿真波形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E6%89%93%E5%BC%80vcd%E6%96%87%E4%BB%B6%EF%BC%8C%E6%B7%BB%E5%8A%A0%E5%8F%98%E9%87%8F%EF%BC%8C%E5%8D%B3%E5%8F%AF%E5%AE%9E%E7%8E%B0%E6%B3%A2%E5%BD%A2%E7%9A%84%E8%A7%82%E5%AF%9F%E3%80%82"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">
           方法一：打开vcd文件，添加变量，即可实现波形的观察。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%9C%A8%E7%BB%88%E7%AB%AF%E4%B8%AD%E8%BE%93%E5%85%A5gtkwave-XXX-vcd"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">
-          方法二：在终端中输入gtkwave XXX.vcd</span></a></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script></body></html>
+          方法二：在终端中输入gtkwave XXX.vcd</span></a></li></ol></li></ol></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="Search for Posts (Support multiple keywords)"></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.xml';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ Untitled ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', 'Please enter characters');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script></body></html>
