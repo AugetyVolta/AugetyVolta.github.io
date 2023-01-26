@@ -5,13 +5,13 @@
 <meta property="og:site_name" content="AugetyVolte&#39;s Blog">
 <meta property="og:description" content="五级流水线CPU设计文档                           (一)CPU设计要求                           32位五级流水线CPU                           支持指令       123456add, sub, and, or, slt, sltu, luiaddi, andi, oril">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="d:\Desktop\CO\P7\%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3\b148cd9f8da2a69443595608d1da474.jpg">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/26/P7%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/Desktop/CO/P7/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/b148cd9f8da2a69443595608d1da474.jpg">
 <meta property="article:published_time" content="2023-01-26T02:46:26.000Z">
 <meta property="article:modified_time" content="2023-01-26T02:47:40.565Z">
 <meta property="article:author" content="AugetyVolte">
 <meta property="article:tag" content="verilog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="d:\Desktop\CO\P7\%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3\b148cd9f8da2a69443595608d1da474.jpg"><title>P7学习总结 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/01/26/P7%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://augetyvolta.github.io/2023/01/26/P7%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/Desktop/CO/P7/%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/b148cd9f8da2a69443595608d1da474.jpg"><title>P7学习总结 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/01/26/P7%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -36,30 +36,30 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">P7学习总结</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-26</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-26</span></span></div></header><div class="post-body">
-        <h1 id="五级流水线CPU设计文档"   >
+        <h1 id="五级流水线CPU设计文档">
           <a href="#五级流水线CPU设计文档" class="heading-link"><i class="fas fa-link"></i></a><a href="#五级流水线CPU设计文档" class="headerlink" title="五级流水线CPU设计文档"></a>五级流水线CPU设计文档</h1>
       
-        <h2 id="一-CPU设计要求"   >
+        <h2 id="一-CPU设计要求">
           <a href="#一-CPU设计要求" class="heading-link"><i class="fas fa-link"></i></a><a href="#一-CPU设计要求" class="headerlink" title="(一)CPU设计要求"></a>(一)CPU设计要求</h2>
       
-        <h4 id="32位五级流水线CPU"   >
+        <h4 id="32位五级流水线CPU">
           <a href="#32位五级流水线CPU" class="heading-link"><i class="fas fa-link"></i></a><a href="#32位五级流水线CPU" class="headerlink" title="32位五级流水线CPU"></a>32位五级流水线CPU</h4>
       
-        <h4 id="支持指令"   >
+        <h4 id="支持指令">
           <a href="#支持指令" class="heading-link"><i class="fas fa-link"></i></a><a href="#支持指令" class="headerlink" title="支持指令"></a>支持指令</h4>
       <figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add, sub, <span class="keyword">and</span>, <span class="keyword">or</span>, slt, sltu, lui</span><br><span class="line">addi, andi, ori</span><br><span class="line">lb, lh, lw, sb, sh, sw</span><br><span class="line">mult, multu, div, divu, mfhi, mflo, mthi, mtlo</span><br><span class="line">beq, bne, jal, jr</span><br><span class="line">mtc0,mfc0,syscall,eret</span><br></pre></td></tr></table></div></figure>
 
 
-        <h2 id="二-关键模块设计"   >
+        <h2 id="二-关键模块设计">
           <a href="#二-关键模块设计" class="heading-link"><i class="fas fa-link"></i></a><a href="#二-关键模块设计" class="headerlink" title="(二)关键模块设计"></a>(二)关键模块设计</h2>
       
-        <h3 id="mips-cpu"   >
+        <h3 id="mips-cpu">
           <a href="#mips-cpu" class="heading-link"><i class="fas fa-link"></i></a><a href="#mips-cpu" class="headerlink" title="mips_cpu"></a>mips_cpu</h3>
       <figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> mips_cpu(</span><br><span class="line">    <span class="keyword">input</span>         clk,</span><br><span class="line">    <span class="keyword">input</span>         reset,</span><br><span class="line">    <span class="keyword">input</span>	[<span class="number">5</span>:<span class="number">0</span>] HWInt,		 <span class="comment">// 外部中断</span></span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">31</span>:<span class="number">0</span>] i_inst_rdata,	 <span class="comment">// F级的32bit指令</span></span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">31</span>:<span class="number">0</span>] m_data_rdata,	 <span class="comment">// 从DM读取的值</span></span><br><span class="line">	<span class="keyword">input</span>		  interrupt,	 <span class="comment">// 外部中断信号</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] i_inst_addr,	 <span class="comment">// PC_F</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] m_data_addr,	 <span class="comment">// DM 读写地址</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] m_data_wdata,  <span class="comment">// DM 待写入数据</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">3</span> :<span class="number">0</span>] m_data_byteen, <span class="comment">// DM 字节使能信号</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] m_inst_addr,   <span class="comment">// PC_M</span></span><br><span class="line">    <span class="keyword">output</span> 		  w_grf_we,		 <span class="comment">// GRF 写使能信号</span></span><br><span class="line">    <span class="keyword">output</span>  [<span class="number">4</span>:<span class="number">0</span>] w_grf_addr,	 <span class="comment">// GRF 待写入寄存器编号</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] w_grf_wdata,	 <span class="comment">// GRF 待写入数据</span></span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] w_inst_addr, 	 <span class="comment">// W 级 PC</span></span><br><span class="line">	<span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] macroscopic_pc,<span class="comment">// 宏观 PC</span></span><br><span class="line">	<span class="keyword">output</span>		  Intrespon      <span class="comment">// 中断相应</span></span><br><span class="line">);</span><br></pre></td></tr></table></div></figure>
 
 <hr>
 
-        <h3 id="IFU"   >
+        <h3 id="IFU">
           <a href="#IFU" class="heading-link"><i class="fas fa-link"></i></a><a href="#IFU" class="headerlink" title="IFU"></a>IFU</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -83,7 +83,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>NPCop[1:0]</td>
 <td>I</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>Req</td>
@@ -147,7 +147,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="NPC"   >
+        <h3 id="NPC">
           <a href="#NPC" class="heading-link"><i class="fas fa-link"></i></a><a href="#NPC" class="headerlink" title="NPC"></a>NPC</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -166,7 +166,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>NPCop[2:0]</td>
 <td>I</td>
-<td>两位控制信号，控制NPC的的值<br />000：PC←PC+4<br />001：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />010：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />011：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>000：PC←PC+4<br>001：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>010：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>011：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>instr_index[26:0]</td>
@@ -226,16 +226,16 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tbody><tr>
 <td align="center">1</td>
 <td>计算PC的下一个值</td>
-<td>Req优先级最高，Req&#x3D;&#x3D;1，进入异常处理程序<br />D_eret次高，异常处理指令结束之后<br />返回三位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：<br />结合equal,n_equal,less,big,big or equal,less or equal判断是否需要跳转<br />PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>Req优先级最高，Req&#x3D;&#x3D;1，进入异常处理程序<br>D_eret次高，异常处理指令结束之后<br>返回三位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：<br>结合equal,n_equal,less,big,big or equal,less or equal判断是否需要跳转<br>PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td align="center">2</td>
 <td>branch指令是否跳转判断</td>
-<td>Judge&#x3D;1，跳转<br />Judge&#x3D;0，不跳转</td>
+<td>Judge&#x3D;1，跳转<br>Judge&#x3D;0，不跳转</td>
 </tr>
 </tbody></table></div>
 
-        <h3 id="IF-ID"   >
+        <h3 id="IF-ID">
           <a href="#IF-ID" class="heading-link"><i class="fas fa-link"></i></a><a href="#IF-ID" class="headerlink" title="IF_ID"></a>IF_ID</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -308,7 +308,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="CTRL"   >
+        <h3 id="CTRL">
           <a href="#CTRL" class="heading-link"><i class="fas fa-link"></i></a><a href="#CTRL" class="headerlink" title="CTRL"></a>CTRL</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -332,52 +332,52 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>RegDst[1:0]</td>
 <td>O</td>
-<td>GRFA3输入端控制信号<br />00 : A3←Instr<sub>20…16</sub><br />01 : A3←Instr<sub>15…11</sub><br />11 : A3←0x1f</td>
+<td>GRFA3输入端控制信号<br>00 : A3←Instr<sub>20…16</sub><br>01 : A3←Instr<sub>15…11</sub><br>11 : A3←0x1f</td>
 </tr>
 <tr>
 <td>RegWrite</td>
 <td>O</td>
-<td>寄存器写入控制信号<br />0 : 不能向GRF写入<br />1 : 可以向GRF写入</td>
+<td>寄存器写入控制信号<br>0 : 不能向GRF写入<br>1 : 可以向GRF写入</td>
 </tr>
 <tr>
 <td>EXTop</td>
 <td>O</td>
-<td>功能选择信号<br />0：Imm无符号拓展到32位<br />1：Imm符号位拓展到32位</td>
+<td>功能选择信号<br>0：Imm无符号拓展到32位<br>1：Imm符号位拓展到32位</td>
 </tr>
 <tr>
 <td>ALUsrc[1:0]</td>
 <td>O</td>
-<td>ALUSrcB输入控制信号<br />00 : SrcB←RD2<br />01 : SrcB←EXTImm<br />10 : SrcB←sll指令的s<br />       SrcA←RD2</td>
+<td>ALUSrcB输入控制信号<br>00 : SrcB←RD2<br>01 : SrcB←EXTImm<br>10 : SrcB←sll指令的s<br>       SrcA←RD2</td>
 </tr>
 <tr>
 <td>ALUctrl[2:0]</td>
 <td>O</td>
-<td>3位输出信号，选择ALU的功能<br />000 : SrcA + SrcB<br />001 : SrcA - SrcB<br />010 : A |B<br />011 : A &amp; B <br />100 : A&gt;&gt;B<br />101 : $signed(A)&gt;&gt;&gt;B<br />110 : A&lt;B 置1<br />111 : A&lt;&lt;B</td>
+<td>3位输出信号，选择ALU的功能<br>000 : SrcA + SrcB<br>001 : SrcA - SrcB<br>010 : A |B<br>011 : A &amp; B <br>100 : A&gt;&gt;B<br>101 : $signed(A)&gt;&gt;&gt;B<br>110 : A&lt;B 置1<br>111 : A&lt;&lt;B</td>
 </tr>
 <tr>
 <td>Menwrite</td>
 <td>O</td>
-<td>内存写入控制信号<br />0 : 不能向DM写入<br />1 : 可以向DM写入</td>
+<td>内存写入控制信号<br>0 : 不能向DM写入<br>1 : 可以向DM写入</td>
 </tr>
 <tr>
 <td>MemtoReg[1:0]</td>
 <td>O</td>
-<td>控制向寄存器的写入数据<br />00 : WD←ALUResult<br />01 : WD←RD<br />10 : WD←NPC<sub>31…0</sub><br />11 : WD←[ALUResult<sub>15…0</sub>||0<sub>16</sub>]</td>
+<td>控制向寄存器的写入数据<br>00 : WD←ALUResult<br>01 : WD←RD<br>10 : WD←NPC<sub>31…0</sub><br>11 : WD←[ALUResult<sub>15…0</sub>||0<sub>16</sub>]</td>
 </tr>
 <tr>
 <td>NPCop[1:0]</td>
 <td>O</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>CMPop[2:0]</td>
 <td>O</td>
-<td>用于指示进行何种跳转判断<br />000 : 判断equal<br />001 : 判断n_equal <br />010 : 判断less<br />011 : 判断big <br />100 : 判断less or equal<br />101 : 判断big or equal</td>
+<td>用于指示进行何种跳转判断<br>000 : 判断equal<br>001 : 判断n_equal <br>010 : 判断less<br>011 : 判断big <br>100 : 判断less or equal<br>101 : 判断big or equal</td>
 </tr>
 <tr>
 <td>DMop[1:0]</td>
 <td>O</td>
-<td>用于lb,sb,lh,sh等操作的拓展<br />00 : 正常读取，以字为单位<br />01 : 用于lh或sh<br />Menwrite &#x3D; 1—&gt;sh<br />Menwrite &#x3D; 0—&gt;lh<br />11 : 用于lb或sb<br />Menwrite &#x3D; 1—&gt;sb<br />Menwrite &#x3D; 0—&gt;lb</td>
+<td>用于lb,sb,lh,sh等操作的拓展<br>00 : 正常读取，以字为单位<br>01 : 用于lh或sh<br>Menwrite &#x3D; 1—&gt;sh<br>Menwrite &#x3D; 0—&gt;lh<br>11 : 用于lb或sb<br>Menwrite &#x3D; 1—&gt;sb<br>Menwrite &#x3D; 0—&gt;lb</td>
 </tr>
 <tr>
 <td>eret_D</td>
@@ -421,7 +421,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="CMP"   >
+        <h3 id="CMP">
           <a href="#CMP" class="heading-link"><i class="fas fa-link"></i></a><a href="#CMP" class="headerlink" title="CMP"></a>CMP</h3>
       <div class="table-container"><table>
 <thead>
@@ -444,7 +444,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>CMPop[2:0]</td>
 <td>I</td>
-<td>用于指示进行何种跳转判断<br />000 : 判断equal<br />001 : 判断n_equal <br />010 : 判断less<br />011 : 判断big <br />100 : 判断less or equal<br />101 : 判断big or equal</td>
+<td>用于指示进行何种跳转判断<br>000 : 判断equal<br>001 : 判断n_equal <br>010 : 判断less<br>011 : 判断big <br>100 : 判断less or equal<br>101 : 判断big or equal</td>
 </tr>
 <tr>
 <td>Judge</td>
@@ -453,7 +453,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="GRF"   >
+        <h3 id="GRF">
           <a href="#GRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#GRF" class="headerlink" title="GRF"></a>GRF</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -472,12 +472,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>reset</td>
 <td>I</td>
-<td>复位信号，将32个寄存器中的值全部清零<br />1：复位<br />0：无效</td>
+<td>复位信号，将32个寄存器中的值全部清零<br>1：复位<br>0：无效</td>
 </tr>
 <tr>
 <td>WE</td>
 <td>I</td>
-<td>写使能信号<br />1：可向GRF中写入数据<br />0：不能向GRF中写入数据</td>
+<td>写使能信号<br>1：可向GRF中写入数据<br>0：不能向GRF中写入数据</td>
 </tr>
 <tr>
 <td>A1[4:0]</td>
@@ -536,7 +536,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="EXT"   >
+        <h3 id="EXT">
           <a href="#EXT" class="heading-link"><i class="fas fa-link"></i></a><a href="#EXT" class="headerlink" title="EXT"></a>EXT</h3>
       <div class="table-container"><table>
 <thead>
@@ -554,7 +554,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>EXTop</td>
 <td>I</td>
-<td>功能选择信号<br />0：Imm无符号拓展到32位<br />1：Imm符号位拓展到32位</td>
+<td>功能选择信号<br>0：Imm无符号拓展到32位<br>1：Imm符号位拓展到32位</td>
 </tr>
 <tr>
 <td>EXTImm[31:0]</td>
@@ -563,7 +563,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="ID-EX"   >
+        <h3 id="ID-EX">
           <a href="#ID-EX" class="heading-link"><i class="fas fa-link"></i></a><a href="#ID-EX" class="headerlink" title="ID_EX"></a>ID_EX</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -716,7 +716,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="ALU"   >
+        <h3 id="ALU">
           <a href="#ALU" class="heading-link"><i class="fas fa-link"></i></a><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -745,7 +745,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>ALUControl[2:0]</td>
 <td>I</td>
-<td>3位输入信号，选择ALU的功能<br />000 : SrcA + SrcB<br />001 : SrcA - SrcB<br />010 : A | B<br />011 : A &amp; B <br />100 : <br />101 : <br />110 :</td>
+<td>3位输入信号，选择ALU的功能<br>000 : SrcA + SrcB<br>001 : SrcA - SrcB<br>010 : A | B<br>011 : A &amp; B <br>100 : <br>101 : <br>110 :</td>
 </tr>
 <tr>
 <td>ALUResult[31:0]</td>
@@ -754,7 +754,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="MDU"   >
+        <h3 id="MDU">
           <a href="#MDU" class="heading-link"><i class="fas fa-link"></i></a><a href="#MDU" class="headerlink" title="MDU"></a>MDU</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -848,11 +848,11 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>3</td>
 <td>乘除法相关指令</td>
-<td>`define  mult 3’b000<br/>`define multu 3’b001<br/>`define   div 3’b010<br/>`define  divu 3’b011<br/>`define  mfhi 3’b100<br/>`define  mflo 3’b101<br/>`define  mthi 3’b110<br/>&#96;define  mtlo 3’b111</td>
+<td>`define  mult 3’b000<br>`define multu 3’b001<br>`define   div 3’b010<br>`define  divu 3’b011<br>`define  mfhi 3’b100<br>`define  mflo 3’b101<br>`define  mthi 3’b110<br>&#96;define  mtlo 3’b111</td>
 </tr>
 </tbody></table></div>
 
-        <h3 id="EX-DM"   >
+        <h3 id="EX-DM">
           <a href="#EX-DM" class="heading-link"><i class="fas fa-link"></i></a><a href="#EX-DM" class="headerlink" title="EX_DM"></a>EX_DM</h3>
       <div class="table-container"><table>
 <thead>
@@ -959,7 +959,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="BE"   >
+        <h3 id="BE">
           <a href="#BE" class="heading-link"><i class="fas fa-link"></i></a><a href="#BE" class="headerlink" title="BE"></a>BE</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -1033,12 +1033,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tbody><tr>
 <td>1</td>
 <td>控制写入数据种类</td>
-<td>m_data_wdata    &#x3D;    (BEop&#x3D;&#x3D;2’b00) ? WD:<br/>									(BEop&#x3D;&#x3D;2’b01&amp;&amp;A[1]&#x3D;&#x3D;1’b0) ? {RD24_31,RD16_23,WD8_15,WD0_7}:<br/>									(BEop&#x3D;&#x3D;2’b01&amp;&amp;A[1]&#x3D;&#x3D;1’b1) ? {WD8_15,WD0_7,RD8_15,RD0_7}:<br/>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b00)? {RD24_31,RD16_23,RD8_15,WD0_7}:<br/>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b01)? {RD24_31,RD16_23,WD0_7,RD0_7}:<br/>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b10)?  {RD24_31,WD0_7,RD8_15,RD0_7}:<br/>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b11)? {WD0_7,RD16_23,RD8_15,RD0_7} : 32’b0;</td>
+<td>m_data_wdata    &#x3D;    (BEop&#x3D;&#x3D;2’b00) ? WD:<br>									(BEop&#x3D;&#x3D;2’b01&amp;&amp;A[1]&#x3D;&#x3D;1’b0) ? {RD24_31,RD16_23,WD8_15,WD0_7}:<br>									(BEop&#x3D;&#x3D;2’b01&amp;&amp;A[1]&#x3D;&#x3D;1’b1) ? {WD8_15,WD0_7,RD8_15,RD0_7}:<br>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b00)? {RD24_31,RD16_23,RD8_15,WD0_7}:<br>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b01)? {RD24_31,RD16_23,WD0_7,RD0_7}:<br>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b10)?  {RD24_31,WD0_7,RD8_15,RD0_7}:<br>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b11)? {WD0_7,RD16_23,RD8_15,RD0_7} : 32’b0;</td>
 </tr>
 <tr>
 <td>2</td>
 <td>控制使能信号</td>
-<td>m_data_byteen   &#x3D;   (BEop&#x3D;&#x3D;2’b00) ? 4’b1111:<br/>									(BEop&#x3D;&#x3D;2’b01&amp;&amp;A[1]&#x3D;&#x3D;1’b0) ? 4’b0011:<br/>									(BEop&#x3D;&#x3D;2’b01&amp;&amp;A[1]&#x3D;&#x3D;1’b1) ? 4’b1100:<br/>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b00)? 4’b0001:<br/>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b01)? 4’b0010:<br/>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b10)? 4’b0100:<br/>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b11)? 4’b1000: 4’b0000;</td>
+<td>m_data_byteen   &#x3D;   (BEop&#x3D;&#x3D;2’b00) ? 4’b1111:<br>									(BEop&#x3D;&#x3D;2’b01&amp;&amp;A[1]&#x3D;&#x3D;1’b0) ? 4’b0011:<br>									(BEop&#x3D;&#x3D;2’b01&amp;&amp;A[1]&#x3D;&#x3D;1’b1) ? 4’b1100:<br>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b00)? 4’b0001:<br>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b01)? 4’b0010:<br>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b10)? 4’b0100:<br>									(BEop&#x3D;&#x3D;2’b10&amp;&amp;A[1:0]&#x3D;&#x3D;2’b11)? 4’b1000: 4’b0000;</td>
 </tr>
 <tr>
 <td>3</td>
@@ -1047,7 +1047,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="DE"   >
+        <h3 id="DE">
           <a href="#DE" class="heading-link"><i class="fas fa-link"></i></a><a href="#DE" class="headerlink" title="DE"></a>DE</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -1106,7 +1106,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tbody><tr>
 <td>1</td>
 <td>控制读取数据种类</td>
-<td>Dout      &#x3D;     (DEop &#x3D;&#x3D; 3’b000)? Din                    :<br/>					  (DEop &#x3D;&#x3D; 3’b001)? unsigned_byte:<br/>					  (DEop &#x3D;&#x3D; 3’b010)? signed_byte     :<br/>					  (DEop &#x3D;&#x3D; 3’b011)? unsigned_half :<br/>					  (DEop &#x3D;&#x3D; 3’b100)? signed_half      : 32’b0;</td>
+<td>Dout      &#x3D;     (DEop &#x3D;&#x3D; 3’b000)? Din                    :<br>					  (DEop &#x3D;&#x3D; 3’b001)? unsigned_byte:<br>					  (DEop &#x3D;&#x3D; 3’b010)? signed_byte     :<br>					  (DEop &#x3D;&#x3D; 3’b011)? unsigned_half :<br>					  (DEop &#x3D;&#x3D; 3’b100)? signed_half      : 32’b0;</td>
 </tr>
 <tr>
 <td>2</td>
@@ -1115,7 +1115,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="CP0"   >
+        <h3 id="CP0">
           <a href="#CP0" class="heading-link"><i class="fas fa-link"></i></a><a href="#CP0" class="headerlink" title="CP0"></a>CP0</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -1198,7 +1198,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="DM-WB"   >
+        <h3 id="DM-WB">
           <a href="#DM-WB" class="heading-link"><i class="fas fa-link"></i></a><a href="#DM-WB" class="headerlink" title="DM_WB"></a>DM_WB</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -1286,7 +1286,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="HAZARD"   >
+        <h3 id="HAZARD">
           <a href="#HAZARD" class="heading-link"><i class="fas fa-link"></i></a><a href="#HAZARD" class="headerlink" title="HAZARD"></a>HAZARD</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -1369,7 +1369,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="HAZARD-E"   >
+        <h3 id="HAZARD-E">
           <a href="#HAZARD-E" class="heading-link"><i class="fas fa-link"></i></a><a href="#HAZARD-E" class="headerlink" title="HAZARD_E"></a>HAZARD_E</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -1397,7 +1397,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="HAZARD-M"   >
+        <h3 id="HAZARD-M">
           <a href="#HAZARD-M" class="heading-link"><i class="fas fa-link"></i></a><a href="#HAZARD-M" class="headerlink" title="HAZARD_M"></a>HAZARD_M</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -1437,7 +1437,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <hr>
 <hr>
 
-        <h3 id="TC"   >
+        <h3 id="TC">
           <a href="#TC" class="heading-link"><i class="fas fa-link"></i></a><a href="#TC" class="headerlink" title="TC"></a>TC</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -1485,7 +1485,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="Bridge"   >
+        <h3 id="Bridge">
           <a href="#Bridge" class="heading-link"><i class="fas fa-link"></i></a><a href="#Bridge" class="headerlink" title="Bridge"></a>Bridge</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -1598,30 +1598,30 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h2 id="三-思考题"   >
+        <h2 id="三-思考题">
           <a href="#三-思考题" class="heading-link"><i class="fas fa-link"></i></a><a href="#三-思考题" class="headerlink" title="(三)思考题"></a>(三)思考题</h2>
       
-        <h4 id="1、请查阅相关资料，说明鼠标和键盘的输入信号是如何被-CPU-知晓的？"   >
+        <h4 id="1、请查阅相关资料，说明鼠标和键盘的输入信号是如何被-CPU-知晓的？">
           <a href="#1、请查阅相关资料，说明鼠标和键盘的输入信号是如何被-CPU-知晓的？" class="heading-link"><i class="fas fa-link"></i></a><a href="#1、请查阅相关资料，说明鼠标和键盘的输入信号是如何被-CPU-知晓的？" class="headerlink" title="1、请查阅相关资料，说明鼠标和键盘的输入信号是如何被 CPU 知晓的？"></a>1、请查阅相关资料，说明鼠标和键盘的输入信号是如何被 CPU 知晓的？</h4>
       <p>​		鼠标和键盘产生中断信号，进入中断处理区的对应位置，将输入信号从鼠标和键盘中读入寄存器。</p>
 
-        <h4 id="2、请思考为什么我们的-CPU-处理中断异常必须是已经指定好的地址？如果你的-CPU-支持用户自定义入口地址，即处理中断异常的程序由用户提供，其还能提供我们所希望的功能吗？如果可以，请说明这样可能会出现什么问题？否则举例说明。（假设用户提供的中断处理程序合法）"   >
+        <h4 id="2、请思考为什么我们的-CPU-处理中断异常必须是已经指定好的地址？如果你的-CPU-支持用户自定义入口地址，即处理中断异常的程序由用户提供，其还能提供我们所希望的功能吗？如果可以，请说明这样可能会出现什么问题？否则举例说明。（假设用户提供的中断处理程序合法）">
           <a href="#2、请思考为什么我们的-CPU-处理中断异常必须是已经指定好的地址？如果你的-CPU-支持用户自定义入口地址，即处理中断异常的程序由用户提供，其还能提供我们所希望的功能吗？如果可以，请说明这样可能会出现什么问题？否则举例说明。（假设用户提供的中断处理程序合法）" class="heading-link"><i class="fas fa-link"></i></a><a href="#2、请思考为什么我们的-CPU-处理中断异常必须是已经指定好的地址？如果你的-CPU-支持用户自定义入口地址，即处理中断异常的程序由用户提供，其还能提供我们所希望的功能吗？如果可以，请说明这样可能会出现什么问题？否则举例说明。（假设用户提供的中断处理程序合法）" class="headerlink" title="2、请思考为什么我们的 CPU 处理中断异常必须是已经指定好的地址？如果你的 CPU 支持用户自定义入口地址，即处理中断异常的程序由用户提供，其还能提供我们所希望的功能吗？如果可以，请说明这样可能会出现什么问题？否则举例说明。（假设用户提供的中断处理程序合法）"></a>2、请思考为什么我们的 CPU 处理中断异常必须是已经指定好的地址？如果你的 CPU 支持用户自定义入口地址，即处理中断异常的程序由用户提供，其还能提供我们所希望的功能吗？如果可以，请说明这样可能会出现什么问题？否则举例说明。（假设用户提供的中断处理程序合法）</h4>
       <p>​		因为中断异常处理程序是在程序所有程序运行前就已经写好了，设置固定的地址，就能保证异常或者中断来临的时候呢能够跳转到正确的地址进行处理。如果由用户提供中断异常处理程序的话，它跳转的地址也是计算出来的，但是如果在算跳转地址的时候出现了错误，那就无法正常进行异常处理行为。</p>
 
-        <h4 id="3、为何与外设通信需要-Bridge？"   >
+        <h4 id="3、为何与外设通信需要-Bridge？">
           <a href="#3、为何与外设通信需要-Bridge？" class="heading-link"><i class="fas fa-link"></i></a><a href="#3、为何与外设通信需要-Bridge？" class="headerlink" title="3、为何与外设通信需要 Bridge？"></a>3、为何与外设通信需要 Bridge？</h4>
       <p>​		外设的种类是无穷无尽的，而 CPU 的指令集却是有限的。我们并不能总是因为新加入了一个外设，就专门为这个外设增加新的 CPU 指令。所以需要一个系统桥去连接CPU和外设，对外只留出简洁的接口，不显示其他细节，让CPU访问外设只需通过地址就可以，这样也是体现了”高内聚，低耦合”的原则。</p>
 
-        <h4 id="4、请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态移图。"   >
+        <h4 id="4、请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态移图。">
           <a href="#4、请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态移图。" class="heading-link"><i class="fas fa-link"></i></a><a href="#4、请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态移图。" class="headerlink" title="4、请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态移图。"></a>4、请阅读官方提供的定时器源代码，阐述两种中断模式的异同，并分别针对每一种模式绘制状态移图。</h4>
-      <p>​		<img src="D:\Desktop\CO\P7\设计文档\b148cd9f8da2a69443595608d1da474.jpg" alt="b148cd9f8da2a69443595608d1da474"></p>
+      <p>​		<img src="/2023/01/26/P7%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/Desktop\CO\P7\设计文档\b148cd9f8da2a69443595608d1da474.jpg" alt="b148cd9f8da2a69443595608d1da474"></p>
 
-        <h4 id="5、倘若中断信号流入的时候，在检测宏观-PC-的一级如果是一条空泡（你的-CPU-该级所有信息均为空）指令，此时会发生什么问题？在此例基础上请思考：在-P7-中，清空流水线产生的空泡指令应该保留原指令的哪些信息？"   >
+        <h4 id="5、倘若中断信号流入的时候，在检测宏观-PC-的一级如果是一条空泡（你的-CPU-该级所有信息均为空）指令，此时会发生什么问题？在此例基础上请思考：在-P7-中，清空流水线产生的空泡指令应该保留原指令的哪些信息？">
           <a href="#5、倘若中断信号流入的时候，在检测宏观-PC-的一级如果是一条空泡（你的-CPU-该级所有信息均为空）指令，此时会发生什么问题？在此例基础上请思考：在-P7-中，清空流水线产生的空泡指令应该保留原指令的哪些信息？" class="heading-link"><i class="fas fa-link"></i></a><a href="#5、倘若中断信号流入的时候，在检测宏观-PC-的一级如果是一条空泡（你的-CPU-该级所有信息均为空）指令，此时会发生什么问题？在此例基础上请思考：在-P7-中，清空流水线产生的空泡指令应该保留原指令的哪些信息？" class="headerlink" title="5、倘若中断信号流入的时候，在检测宏观 PC 的一级如果是一条空泡（你的 CPU 该级所有信息均为空）指令，此时会发生什么问题？在此例基础上请思考：在 P7 中，清空流水线产生的空泡指令应该保留原指令的哪些信息？"></a>5、倘若中断信号流入的时候，在检测宏观 PC 的一级如果是一条空泡（你的 CPU 该级所有信息均为空）指令，此时会发生什么问题？在此例基础上请思考：在 P7 中，清空流水线产生的空泡指令应该保留原指令的哪些信息？</h4>
       <p>​		可能会出现宏观PC的错误，而且延迟槽标记信号也会出现问题。如果是中断或者异常指令造成的流水线清空，应该保持原有的PC值，以保证宏观PC的正确。如果是阻塞造成的DE级流水线清除，应该要保持原有的PC并且保持原有的BD标志信号。</p>
 
-        <h4 id="6、为什么-jalr-指令为什么不能写成-jalr-31-31？"   >
+        <h4 id="6、为什么-jalr-指令为什么不能写成-jalr-31-31？">
           <a href="#6、为什么-jalr-指令为什么不能写成-jalr-31-31？" class="heading-link"><i class="fas fa-link"></i></a><a href="#6、为什么-jalr-指令为什么不能写成-jalr-31-31？" class="headerlink" title="6、为什么 jalr 指令为什么不能写成 jalr $31, $31？"></a>6、为什么 <code>jalr</code> 指令为什么不能写成 <code>jalr $31, $31</code>？</h4>
       <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Register specifiers rs and rd must not be equal, because such an instruction does not have the same effect when reexecuted. The result of executing such an instruction is UNPREDICTABLE. This restriction permits an exception handler to resume execution by re-executing the branch when an exception occurs in the branch delay slot.</span><br></pre></td></tr></table></div></figure>
 

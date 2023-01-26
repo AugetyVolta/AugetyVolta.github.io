@@ -5,25 +5,25 @@
 <meta property="og:site_name" content="AugetyVolte&#39;s Blog">
 <meta property="og:description" content="VScode 配置verilog环境       在win11的系统里，ise软件不能运行，而在虚拟机中ise的配置也很费劲，今天在这里教大家在VScode中玩转Verilog。  实现代码补全、代码高亮、错误检查 实现生成Testbench 实现波形仿真                      所需配置文件        iverilog(自带gtkwa">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825201612182.png">
-<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825202602181.png">
-<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825202951767.png">
-<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825203908520.png">
-<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204205253.png">
-<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204302590.png">
-<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825204404216.png">
-<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825204542326.png">
-<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825205651006.png">
-<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825210830058.png">
-<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211448129.png">
-<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211834905.png">
-<meta property="og:image" content="https://augetyvolta.github.io/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211943828.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825201612182.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825202602181.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825202951767.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825203908520.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204205253.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204302590.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204404216.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204542326.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825205651006.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825210830058.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825211448129.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825211834905.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825211943828.png">
 <meta property="article:published_time" content="2023-01-05T08:11:38.000Z">
-<meta property="article:modified_time" content="2023-01-05T08:50:30.350Z">
+<meta property="article:modified_time" content="2023-01-26T04:16:20.194Z">
 <meta property="article:author" content="AugetyVolte">
 <meta property="article:tag" content="verilog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825201612182.png"><title>vscode配置verilog环境 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825201612182.png"><title>vscode配置verilog环境 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -47,8 +47,8 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">vscode配置verilog环境</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-05</span></span></div></header><div class="post-body">
-        <h1 id="VScode-配置verilog环境"   >
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">vscode配置verilog环境</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-26</span></span></div></header><div class="post-body">
+        <h1 id="VScode-配置verilog环境">
           <a href="#VScode-配置verilog环境" class="heading-link"><i class="fas fa-link"></i></a><a href="#VScode-配置verilog环境" class="headerlink" title="VScode 配置verilog环境"></a>VScode 配置verilog环境</h1>
       <p><strong>在win11的系统里，ise软件不能运行，而在虚拟机中ise的配置也很费劲，今天在这里教大家在VScode中玩转Verilog。</strong></p>
 <blockquote>
@@ -57,36 +57,34 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <p>实现波形仿真</p>
 </blockquote>
 
-        <h2 id="所需配置文件"   >
+        <h2 id="所需配置文件">
           <a href="#所需配置文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#所需配置文件" class="headerlink" title="所需配置文件"></a>所需配置文件</h2>
       <blockquote>
 <p>iverilog(自带gtkwave)、ctags.exe</p>
 </blockquote>
-<p><span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://bhpan.buaa.edu.cn/link/2DFE8D6D8E610A72921ABAD7C5B6DE0B" >所需配置文件</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p><span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://bhpan.buaa.edu.cn/link/2DFE8D6D8E610A72921ABAD7C5B6DE0B">所需配置文件</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 <p><strong>官方下载网址</strong>(速度较慢)</p>
-<p>iverilog:<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://bleyer.org/icarus/" >Icarus Verilog for Windows (bleyer.org)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> </p>
-<p>ctags:<span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="https://github.com/universal-ctags/ctags-win32/releases" >发布 ·通用-雄鹿&#x2F;雄鹿-win32 ·GitHub</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
+<p>iverilog:<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://bleyer.org/icarus/">Icarus Verilog for Windows (bleyer.org)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> </p>
+<p>ctags:<span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="https://github.com/universal-ctags/ctags-win32/releases">发布 ·通用-雄鹿&#x2F;雄鹿-win32 ·GitHub</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
 <p><strong>特别注意</strong>：</p>
 <p><strong>在安装iverilog时对于安装中的所有选项都勾选，避免出现其它问题。</strong></p>
 
-        <h2 id="环境变量配置"   >
+        <h2 id="环境变量配置">
           <a href="#环境变量配置" class="heading-link"><i class="fas fa-link"></i></a><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h2>
       <blockquote>
 <p>将<strong>iverilog文件夹中的bin文件夹</strong>以及<strong>iverilog文件夹中的gtkwave文件夹中的bin文件夹</strong>的路径添加到<strong>系统环境变量</strong>中</p>
 </blockquote>
 <p><strong>系统环境变量</strong>：系统属性-高级环境变量-系统变量-Path</p>
 <p>双击打开Path，点击新建，分别输入两个bin地址，点击确定。</p>
-<img src="vscode配置verilog环境\image-20220825201612182.png" alt="image-20220825201612182" style="zoom:67%;" />
-
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825201612182.png"></p>
 <p>确认成功之后在运行框中分别输入<code>iverilog -v</code>和<code>gtkwave -v</code>，如果有正常输出即为<strong>设置成功</strong>。</p>
 
-        <h2 id="安装VScode插件"   >
+        <h2 id="安装VScode插件">
           <a href="#安装VScode插件" class="heading-link"><i class="fas fa-link"></i></a><a href="#安装VScode插件" class="headerlink" title="安装VScode插件"></a>安装VScode插件</h2>
       <p><strong>在VScode的拓展里安装如下五个插件，以支持Verilog功能</strong></p>
-<img src="vscode配置verilog环境\image-20220825202602181.png" alt="image-20220825202602181" style="zoom:67%;" />
-
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825202602181.png"></p>
 <p><strong>同时我们需要对于Verilog-HDL插件进行配置</strong></p>
-<p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825202951767.png" alt="image-20220825202951767"></p>
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825202951767.png"></p>
 <p><strong>右键Verilog-HDL -选择拓展设置</strong></p>
 <p><strong>Verilog › Ctags: Path</strong>：填入ctags.exe文件的<strong>绝对路径</strong></p>
 <p><strong>Verilog › Linting: Linter</strong>：选择<strong>iverilog</strong></p>
@@ -99,31 +97,29 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <p><strong>pip install idna</strong></p>
 <p><strong>pip install urllib3</strong></p>
 
-        <h2 id="插件的使用"   >
+        <h2 id="插件的使用">
           <a href="#插件的使用" class="heading-link"><i class="fas fa-link"></i></a><a href="#插件的使用" class="headerlink" title="插件的使用"></a>插件的使用</h2>
       
-        <h3 id="编译"   >
+        <h3 id="编译">
           <a href="#编译" class="heading-link"><i class="fas fa-link"></i></a><a href="#编译" class="headerlink" title="编译"></a>编译</h3>
       <p>在文件夹中打开<code>.v</code>的verilog文件，点击右上角的编译按钮，若无错误提醒，即可编译成功，并在左侧的文件管理窗口看见<code>.v.out</code>的文件</p>
-<p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825203908520.png" alt="image-20220825203908520"></p>
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825203908520.png" alt="image-20220825203908520"></p>
 <p>如果发现输出框出现的是<strong>一堆乱码</strong>，打开设置中的<strong>时间和语言-其他日期、时间和区域设置</strong></p>
-<img src="vscode配置verilog环境\image-20220825204205253.png" alt="image-20220825204205253" style="zoom:67%;" />
-
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204205253.png"></p>
 <p><strong>点击区域</strong></p>
-<img src="vscode配置verilog环境\image-20220825204302590.png" alt="image-20220825204302590"  />
-
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204302590.png"></p>
 <p><strong>点击更改系统区域设置</strong></p>
-<p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825204404216.png"></p>
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204404216.png"></p>
 <p><strong>勾选方框，点击确认即可</strong></p>
-<p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825204542326.png" alt="image-20220825204542326"></p>
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825204542326.png" alt="image-20220825204542326"></p>
 <p><strong>之后Vscode便能正常使用啦！</strong></p>
 
-        <h3 id="生成Testbench模板"   >
+        <h3 id="生成Testbench模板">
           <a href="#生成Testbench模板" class="heading-link"><i class="fas fa-link"></i></a><a href="#生成Testbench模板" class="headerlink" title="生成Testbench模板"></a>生成Testbench模板</h3>
       <p>在VScode使用快捷键<code>Ctrl+Shift+P</code>打开功能键，输入或者选择Testbench，运行，即可在终端中显示生成的模板文件,复制内容生成tb文件即可，但要注意的是<strong>文件后缀仍然是<code>.v</code></strong></p>
-<p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825205651006.png" alt="image-20220825205651006"></p>
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825205651006.png" alt="image-20220825205651006"></p>
 
-        <h3 id="编写Testbench生成vcd文件"   >
+        <h3 id="编写Testbench生成vcd文件">
           <a href="#编写Testbench生成vcd文件" class="heading-link"><i class="fas fa-link"></i></a><a href="#编写Testbench生成vcd文件" class="headerlink" title="编写Testbench生成vcd文件"></a>编写Testbench生成vcd文件</h3>
       <p>将终端中的内容复制到tb文件中，<strong>删除带PERIOD的两个initial模块</strong>，<strong>并且在第二行添加</strong>&#96;&#96;include “主文件名.v”&#96;,在这里是</p>
 <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`include &quot;example.v&quot;</span><br></pre></td></tr></table></div></figure>
@@ -132,20 +128,20 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <p><code>$dumpfile(&quot;波形文件名.vcd&quot;);</code><br><code>$dumpvars;</code></p>
 <p>其中<code>$dumpfile</code>指定波形文件名，<code>$dumpvars</code>表示所有定义的<code>wire</code>和<code>reg</code>都参与仿真。</p>
 <p>再自行设置测试数据（<strong>在dumpvars和finish的中间添加状态代码</strong>）后点击运行，即可发现tb文件的<code>.v.out</code>文件，同时还有<code>vcd</code>文件。</p>
-<p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825210830058.png" alt="image-20220825210830058"></p>
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825210830058.png" alt="image-20220825210830058"></p>
 
-        <h3 id="观察仿真波形"   >
+        <h3 id="观察仿真波形">
           <a href="#观察仿真波形" class="heading-link"><i class="fas fa-link"></i></a><a href="#观察仿真波形" class="headerlink" title="观察仿真波形"></a>观察仿真波形</h3>
       
-        <h4 id="方法一：打开vcd文件，添加变量，即可实现波形的观察。"   >
+        <h4 id="方法一：打开vcd文件，添加变量，即可实现波形的观察。">
           <a href="#方法一：打开vcd文件，添加变量，即可实现波形的观察。" class="heading-link"><i class="fas fa-link"></i></a><a href="#方法一：打开vcd文件，添加变量，即可实现波形的观察。" class="headerlink" title="方法一：打开vcd文件，添加变量，即可实现波形的观察。"></a><strong>方法一</strong>：打开<code>vcd</code>文件，添加变量，即可实现波形的观察。</h4>
-      <p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211448129.png" alt="image-20220825211448129"></p>
+      <p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825211448129.png" alt="image-20220825211448129"></p>
 
-        <h4 id="方法二：在终端中输入gtkwave-XXX-vcd"   >
+        <h4 id="方法二：在终端中输入gtkwave-XXX-vcd">
           <a href="#方法二：在终端中输入gtkwave-XXX-vcd" class="heading-link"><i class="fas fa-link"></i></a><a href="#方法二：在终端中输入gtkwave-XXX-vcd" class="headerlink" title="方法二：在终端中输入gtkwave XXX.vcd"></a><strong>方法二</strong>：在终端中输入gtkwave XXX.vcd</h4>
-      <p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211834905.png" alt="image-20220825211834905"></p>
+      <p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825211834905.png" alt="image-20220825211834905"></p>
 <p><strong>之后便会打开gtkwave软件查看波形</strong></p>
-<p><img src="/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83%5Cimage-20220825211943828.png"></p>
+<p><img src="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/image-20220825211943828.png"></p>
 <p><strong>至于其他的功能，那就请读者多多探索了~</strong></p>
 </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/">https://augetyvolta.github.io/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/verilog/">verilog</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2023/01/05/P1%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">P1学习总结</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/"><span class="paginator-prev__text">从D的触发机制到寄存器的同步清零</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VScode-%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">
           VScode 配置verilog环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%80%E9%9C%80%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">

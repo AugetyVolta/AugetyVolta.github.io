@@ -36,22 +36,22 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">P4学习总结</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-26</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-26</span></span></div></header><div class="post-body">
-        <h1 id="Logisim单周期CPU设计文档"   >
+        <h1 id="Logisim单周期CPU设计文档">
           <a href="#Logisim单周期CPU设计文档" class="heading-link"><i class="fas fa-link"></i></a><a href="#Logisim单周期CPU设计文档" class="headerlink" title="Logisim单周期CPU设计文档"></a>Logisim单周期CPU设计文档</h1>
       
-        <h2 id="一-CPU设计要求"   >
+        <h2 id="一-CPU设计要求">
           <a href="#一-CPU设计要求" class="heading-link"><i class="fas fa-link"></i></a><a href="#一-CPU设计要求" class="headerlink" title="(一)CPU设计要求"></a>(一)CPU设计要求</h2>
       
-        <h4 id="32位单周期CPU"   >
+        <h4 id="32位单周期CPU">
           <a href="#32位单周期CPU" class="heading-link"><i class="fas fa-link"></i></a><a href="#32位单周期CPU" class="headerlink" title="32位单周期CPU"></a>32位单周期CPU</h4>
       
-        <h4 id="支持指令-add，sub，lw，sw，lui，beq，nop，jr，jal，j"   >
+        <h4 id="支持指令-add，sub，lw，sw，lui，beq，nop，jr，jal，j">
           <a href="#支持指令-add，sub，lw，sw，lui，beq，nop，jr，jal，j" class="heading-link"><i class="fas fa-link"></i></a><a href="#支持指令-add，sub，lw，sw，lui，beq，nop，jr，jal，j" class="headerlink" title="支持指令{add，sub，lw，sw，lui，beq，nop，jr，jal，j}"></a>支持指令{add，sub，lw，sw，lui，beq，nop，jr，jal，j}</h4>
       
-        <h2 id="二-关键模块设计"   >
+        <h2 id="二-关键模块设计">
           <a href="#二-关键模块设计" class="heading-link"><i class="fas fa-link"></i></a><a href="#二-关键模块设计" class="headerlink" title="(二)关键模块设计"></a>(二)关键模块设计</h2>
       
-        <h3 id="ALU"   >
+        <h3 id="ALU">
           <a href="#ALU" class="heading-link"><i class="fas fa-link"></i></a><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h3>
       <div class="table-container"><table>
 <thead>
@@ -74,17 +74,17 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>ALUControl[2:0]</td>
 <td>I</td>
-<td>3位输入信号，选择ALU的功能<br />000 : SrcA + SrcB<br />001 : SrcA - SrcB<br />010 : A | B<br />011 : A &amp; B <br />100 : A&gt;&gt;B<br />101 : $signed(A)&gt;&gt;&gt;B<br />110 : A&lt;B 置1</td>
+<td>3位输入信号，选择ALU的功能<br>000 : SrcA + SrcB<br>001 : SrcA - SrcB<br>010 : A | B<br>011 : A &amp; B <br>100 : A&gt;&gt;B<br>101 : $signed(A)&gt;&gt;&gt;B<br>110 : A&lt;B 置1</td>
 </tr>
 <tr>
 <td>Equal</td>
 <td>O</td>
-<td>1位输出信号，标志A,B是否相等<br />A&#x3D;B置Equal&#x3D;1</td>
+<td>1位输出信号，标志A,B是否相等<br>A&#x3D;B置Equal&#x3D;1</td>
 </tr>
 <tr>
 <td>Less</td>
 <td>O</td>
-<td>1位输出信号，标志A是否小于B<br />A&lt;B置Less&#x3D;1</td>
+<td>1位输出信号，标志A是否小于B<br>A&lt;B置Less&#x3D;1</td>
 </tr>
 <tr>
 <td>ALUResult[31:0]</td>
@@ -93,7 +93,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="GRF"   >
+        <h3 id="GRF">
           <a href="#GRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#GRF" class="headerlink" title="GRF"></a>GRF</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -112,12 +112,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>reset</td>
 <td>I</td>
-<td>复位信号，将32个寄存器中的值全部清零<br />1：复位<br />0：无效</td>
+<td>复位信号，将32个寄存器中的值全部清零<br>1：复位<br>0：无效</td>
 </tr>
 <tr>
 <td>WE</td>
 <td>I</td>
-<td>写使能信号<br />1：可向GRF中写入数据<br />0：不能向GRF中写入数据</td>
+<td>写使能信号<br>1：可向GRF中写入数据<br>0：不能向GRF中写入数据</td>
 </tr>
 <tr>
 <td>A1[4:0]</td>
@@ -176,7 +176,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="DM"   >
+        <h3 id="DM">
           <a href="#DM" class="heading-link"><i class="fas fa-link"></i></a><a href="#DM" class="headerlink" title="DM"></a>DM</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -195,12 +195,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>Reset</td>
 <td>I</td>
-<td>复位信号，将RAM中的值全部清零<br />1：复位<br />0：无效</td>
+<td>复位信号，将RAM中的值全部清零<br>1：复位<br>0：无效</td>
 </tr>
 <tr>
 <td>WE</td>
 <td>I</td>
-<td>写使能信号<br />1：可向GRF中写入数据<br />0：不能向GRF中写入数据</td>
+<td>写使能信号<br>1：可向GRF中写入数据<br>0：不能向GRF中写入数据</td>
 </tr>
 <tr>
 <td>WD[31:0]</td>
@@ -215,7 +215,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>DMop[1:0]</td>
 <td>I</td>
-<td>2位输入信号，用于lb，lh等特殊指令<br />00 ：正常读写，lw，sw<br />01 ：用于lh和sh，根据WE选择进行哪一条指令<br />10 ：用于lb和sb，根据WE选择进行哪一条指令</td>
+<td>2位输入信号，用于lb，lh等特殊指令<br>00 ：正常读写，lw，sw<br>01 ：用于lh和sh，根据WE选择进行哪一条指令<br>10 ：用于lb和sb，根据WE选择进行哪一条指令</td>
 </tr>
 <tr>
 <td>RD[31:0]</td>
@@ -249,7 +249,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="EXT"   >
+        <h3 id="EXT">
           <a href="#EXT" class="heading-link"><i class="fas fa-link"></i></a><a href="#EXT" class="headerlink" title="EXT"></a>EXT</h3>
       <div class="table-container"><table>
 <thead>
@@ -267,7 +267,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>EXTop</td>
 <td>I</td>
-<td>功能选择信号<br />0：Imm无符号拓展到32位<br />1：Imm符号位拓展到32位</td>
+<td>功能选择信号<br>0：Imm无符号拓展到32位<br>1：Imm符号位拓展到32位</td>
 </tr>
 <tr>
 <td>EXTImm[31:0]</td>
@@ -276,7 +276,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="NPC"   >
+        <h3 id="NPC">
           <a href="#NPC" class="heading-link"><i class="fas fa-link"></i></a><a href="#NPC" class="headerlink" title="NPC"></a>NPC</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -295,7 +295,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>NPCop[1:0]</td>
 <td>I</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>instr_index[26:0]</td>
@@ -335,16 +335,16 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tbody><tr>
 <td align="center">1</td>
 <td>计算PC的下一个值</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：<br />结合equal,n_equal,less,big,big or equal,less or equal判断是否需要跳转<br />PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：<br>结合equal,n_equal,less,big,big or equal,less or equal判断是否需要跳转<br>PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td align="center">2</td>
 <td>是否跳转判断</td>
-<td>Judge&#x3D;1，跳转<br />Judge&#x3D;0，不跳转</td>
+<td>Judge&#x3D;1，跳转<br>Judge&#x3D;0，不跳转</td>
 </tr>
 </tbody></table></div>
 
-        <h3 id="IFU"   >
+        <h3 id="IFU">
           <a href="#IFU" class="heading-link"><i class="fas fa-link"></i></a><a href="#IFU" class="headerlink" title="IFU"></a>IFU</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -368,7 +368,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>NPCop[1:0]</td>
 <td>I</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>instr_index[26:0]</td>
@@ -411,7 +411,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="CTRL"   >
+        <h3 id="CTRL">
           <a href="#CTRL" class="heading-link"><i class="fas fa-link"></i></a><a href="#CTRL" class="headerlink" title="CTRL"></a>CTRL</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -435,37 +435,37 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>RegDst[1:0]</td>
 <td>O</td>
-<td>GRFA3输入端控制信号<br />00 : A3←Instr<sub>20…16</sub><br />01 : A3←Instr<sub>15…11</sub><br />11 : A3←0x1f</td>
+<td>GRFA3输入端控制信号<br>00 : A3←Instr<sub>20…16</sub><br>01 : A3←Instr<sub>15…11</sub><br>11 : A3←0x1f</td>
 </tr>
 <tr>
 <td>RegWrite</td>
 <td>O</td>
-<td>寄存器写入控制信号<br />0 : 不能向GRF写入<br />1 : 可以向GRF写入</td>
+<td>寄存器写入控制信号<br>0 : 不能向GRF写入<br>1 : 可以向GRF写入</td>
 </tr>
 <tr>
 <td>EXTop</td>
 <td>O</td>
-<td>功能选择信号<br />0：Imm无符号拓展到32位<br />1：Imm符号位拓展到32位</td>
+<td>功能选择信号<br>0：Imm无符号拓展到32位<br>1：Imm符号位拓展到32位</td>
 </tr>
 <tr>
 <td>ALUsrc[1:0]</td>
 <td>O</td>
-<td>ALUSrcB输入控制信号<br />00 : SrcB←RD2<br />01 : SrcB←EXTImm<br />10 : SrcB←sll指令的s<br />       SrcA←RD2</td>
+<td>ALUSrcB输入控制信号<br>00 : SrcB←RD2<br>01 : SrcB←EXTImm<br>10 : SrcB←sll指令的s<br>       SrcA←RD2</td>
 </tr>
 <tr>
 <td>ALUctrl[2:0]</td>
 <td>O</td>
-<td>3位输出信号，选择ALU的功能<br />000 : SrcA + SrcB<br />001 : SrcA - SrcB<br />010 : A |B<br />011 : A &amp; B <br />100 : A&gt;&gt;B<br />101 : $signed(A)&gt;&gt;&gt;B<br />110 : A&lt;B 置1<br />111 : A&lt;&lt;B</td>
+<td>3位输出信号，选择ALU的功能<br>000 : SrcA + SrcB<br>001 : SrcA - SrcB<br>010 : A |B<br>011 : A &amp; B <br>100 : A&gt;&gt;B<br>101 : $signed(A)&gt;&gt;&gt;B<br>110 : A&lt;B 置1<br>111 : A&lt;&lt;B</td>
 </tr>
 <tr>
 <td>Menwrite</td>
 <td>O</td>
-<td>内存写入控制信号<br />0 : 不能向DM写入<br />1 : 可以向DM写入</td>
+<td>内存写入控制信号<br>0 : 不能向DM写入<br>1 : 可以向DM写入</td>
 </tr>
 <tr>
 <td>MemtoReg[1:0]</td>
 <td>O</td>
-<td>控制向寄存器的写入数据<br />00 : WD←ALUResult<br />01 : WD←RD<br />10 : WD←NPC<sub>31…0</sub><br />11 : WD←[ALUResult<sub>15…0</sub>||0<sub>16</sub>]</td>
+<td>控制向寄存器的写入数据<br>00 : WD←ALUResult<br>01 : WD←RD<br>10 : WD←NPC<sub>31…0</sub><br>11 : WD←[ALUResult<sub>15…0</sub>||0<sub>16</sub>]</td>
 </tr>
 </tbody></table></div>
 <div class="table-container"><table>
@@ -479,21 +479,21 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tbody><tr>
 <td>NPCop[1:0]</td>
 <td>O</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>CMPop[2:0]</td>
 <td>O</td>
-<td>用于指示进行何种跳转判断<br />000 : 判断equal<br />001 : 判断n_equal <br />010 : 判断less<br />011 : 判断big <br />100 : 判断less or equal<br />101 : 判断big or equal</td>
+<td>用于指示进行何种跳转判断<br>000 : 判断equal<br>001 : 判断n_equal <br>010 : 判断less<br>011 : 判断big <br>100 : 判断less or equal<br>101 : 判断big or equal</td>
 </tr>
 <tr>
 <td>DMop[1:0]</td>
 <td>O</td>
-<td>用于lb,sb,lh,sh等操作的拓展<br />00 : 正常读取，以字为单位<br />01 : 用于lh或sh<br />Menwrite &#x3D; 1—&gt;sh<br />Menwrite &#x3D; 0—&gt;lh<br />11 : 用于lb或sb<br />Menwrite &#x3D; 1—&gt;sb<br />Menwrite &#x3D; 0—&gt;lb</td>
+<td>用于lb,sb,lh,sh等操作的拓展<br>00 : 正常读取，以字为单位<br>01 : 用于lh或sh<br>Menwrite &#x3D; 1—&gt;sh<br>Menwrite &#x3D; 0—&gt;lh<br>11 : 用于lb或sb<br>Menwrite &#x3D; 1—&gt;sb<br>Menwrite &#x3D; 0—&gt;lb</td>
 </tr>
 </tbody></table></div>
 
-        <h3 id="CMP"   >
+        <h3 id="CMP">
           <a href="#CMP" class="heading-link"><i class="fas fa-link"></i></a><a href="#CMP" class="headerlink" title="CMP"></a>CMP</h3>
       <div class="table-container"><table>
 <thead>
@@ -516,7 +516,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>CMPop[2:0]</td>
 <td>I</td>
-<td>用于指示进行何种跳转判断<br />000 : 判断equal<br />001 : 判断n_equal <br />010 : 判断less<br />011 : 判断big <br />100 : 判断less or equal<br />101 : 判断big or equal</td>
+<td>用于指示进行何种跳转判断<br>000 : 判断equal<br>001 : 判断n_equal <br>010 : 判断less<br>011 : 判断big <br>100 : 判断less or equal<br>101 : 判断big or equal</td>
 </tr>
 <tr>
 <td>Judge</td>
@@ -525,16 +525,16 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="相关数据通路信号说明"   >
+        <h3 id="相关数据通路信号说明">
           <a href="#相关数据通路信号说明" class="heading-link"><i class="fas fa-link"></i></a><a href="#相关数据通路信号说明" class="headerlink" title="相关数据通路信号说明"></a>相关数据通路信号说明</h3>
       
-        <h4 id="RegDst"   >
+        <h4 id="RegDst">
           <a href="#RegDst" class="heading-link"><i class="fas fa-link"></i></a><a href="#RegDst" class="headerlink" title="RegDst"></a>RegDst</h4>
       <p><strong>控制对于A3的输入信号，RegDst&#x3D;00，A3←Instr<sub>16…20</sub></strong></p>
 <p>​										<strong>,  RegDst&#x3D;01，A3←Instr<sub>11…15</sub></strong></p>
 <p>​										<strong>,  RegDst&#x3D;10，A3←0x1f，用于jal指令</strong></p>
 
-        <h4 id="ALUsrc"   >
+        <h4 id="ALUsrc">
           <a href="#ALUsrc" class="heading-link"><i class="fas fa-link"></i></a><a href="#ALUsrc" class="headerlink" title="ALUsrc"></a>ALUsrc</h4>
       <p><strong>控制对于SrcA的输入信号，ALUsrc&#x3D;10，SrcA←RD2</strong>，<strong>用于sll指令</strong></p>
 <p>​										  <strong>，ALUsrc&#x3D;other，SrcA←RD1</strong></p>
@@ -542,14 +542,14 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <p>​										  <strong>，ALUsrc&#x3D;01，SrcB←EXTImm</strong></p>
 <p>​										  <strong>，ALUsrc&#x3D;10，SrcB←Instr<sub>6…10</sub>(shamt)</strong></p>
 
-        <h4 id="MemtoReg"   >
+        <h4 id="MemtoReg">
           <a href="#MemtoReg" class="heading-link"><i class="fas fa-link"></i></a><a href="#MemtoReg" class="headerlink" title="MemtoReg"></a>MemtoReg</h4>
       <p><strong>控制对于寄存器的写入信号，MemtoReg&#x3D;00，WD←ALUResult</strong></p>
 <p>​											  <strong>，MemtoReg&#x3D;01，WD←RD</strong></p>
 <p>​											  <strong>，MemtoReg&#x3D;10，WD←PC+4</strong></p>
 <p>​											  <strong>，MemtoReg&#x3D;11，WD←ALUResult<sub>15…0</sub>||0<sub>16</sub>，用于lui指令</strong></p>
 
-        <h3 id="指令控制信号"   >
+        <h3 id="指令控制信号">
           <a href="#指令控制信号" class="heading-link"><i class="fas fa-link"></i></a><a href="#指令控制信号" class="headerlink" title="指令控制信号"></a>指令控制信号</h3>
       <div class="table-container"><table>
 <thead>
@@ -710,15 +710,15 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h2 id="三-思考题"   >
+        <h2 id="三-思考题">
           <a href="#三-思考题" class="heading-link"><i class="fas fa-link"></i></a><a href="#三-思考题" class="headerlink" title="(三)思考题"></a>(三)思考题</h2>
       
-        <h4 id="1-阅读下面给出的-DM-的输入示例中（示例-DM-容量为-4KB，即-32bit-×-1024字），根据你的理解回答，这个-addr-信号又是从哪里来的？地址信号-addr-位数为什么是-11-2-而不是-9-0-？"   >
+        <h4 id="1-阅读下面给出的-DM-的输入示例中（示例-DM-容量为-4KB，即-32bit-×-1024字），根据你的理解回答，这个-addr-信号又是从哪里来的？地址信号-addr-位数为什么是-11-2-而不是-9-0-？">
           <a href="#1-阅读下面给出的-DM-的输入示例中（示例-DM-容量为-4KB，即-32bit-×-1024字），根据你的理解回答，这个-addr-信号又是从哪里来的？地址信号-addr-位数为什么是-11-2-而不是-9-0-？" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-阅读下面给出的-DM-的输入示例中（示例-DM-容量为-4KB，即-32bit-×-1024字），根据你的理解回答，这个-addr-信号又是从哪里来的？地址信号-addr-位数为什么是-11-2-而不是-9-0-？" class="headerlink" title="1.阅读下面给出的 DM 的输入示例中（示例 DM 容量为 4KB，即 32bit × 1024字），根据你的理解回答，这个 addr 信号又是从哪里来的？地址信号 addr 位数为什么是 [11:2] 而不是 [9:0] ？"></a>1.阅读下面给出的 DM 的输入示例中（示例 DM 容量为 4KB，即 32bit × 1024字），根据你的理解回答，这个 addr 信号又是从哪里来的？地址信号 addr 位数为什么是 [11:2] 而不是 [9:0] ？</h4>
       <p><img src="http://cscore.buaa.edu.cn/assets/cscore-image/refkxh/86953c72-c519-48b2-8cb8-7b2c90850e53/66.png" alt="66.png"></p>
 <p>​				这个addr信号是ALU的结果，作为DM的地址，由于DM是以字编址，每四个字节编一个地址，而ALUresult计算出来的地址是以字节编址，所以换算成字地址需要每四位取一位地址，即从ALUresult的第三位开始取地址，因为DM的容量是4KB，所以按照字节编址是12位地址，取ALUresult[11:0] , 以字做单位就是10位地址，便是取10位，即[11:2]，同时以[11:2]作为地址可以提醒使用者，给DM的addr引脚接入的是ALUresult的[11:2]位。</p>
 
-        <h4 id="2-思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。"   >
+        <h4 id="2-思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。">
           <a href="#2-思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。" class="headerlink" title="2.思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。"></a>2.思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。</h4>
       <p><strong>指令对应的控制信号如何取值</strong></p>
 <figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">`<span class="keyword">define</span> R 6&#x27;b000000</span></span><br><span class="line">·define lw <span class="number">6&#x27;b100011</span></span><br><span class="line"><span class="keyword">case</span>(Instr[<span class="number">31</span>:<span class="number">26</span>])</span><br><span class="line">    `R:</span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">case</span>(Instr[<span class="number">5</span>:<span class="number">0</span>])</span><br><span class="line">                <span class="number">6&#x27;b100000</span>:<span class="comment">//add</span></span><br><span class="line">                    RegDst=<span class="number">2&#x27;b01</span>;</span><br><span class="line">                	Regwrite=<span class="number">1&#x27;b1</span>;</span><br><span class="line">                	ALUsrc=<span class="number">2&#x27;b00</span>;</span><br><span class="line">                	ALUctrl=<span class="number">3</span>‘b000;</span><br><span class="line">                	Memwrite=<span class="number">0</span>;</span><br><span class="line">                	MemtoReg=<span class="number">2&#x27;b00</span>;</span><br><span class="line">                <span class="number">6&#x27;b100010</span>:<span class="comment">//sub</span></span><br><span class="line">                	RegDst=<span class="number">2&#x27;b01</span>;</span><br><span class="line">                	Regwrite=<span class="number">1&#x27;b1</span>;</span><br><span class="line">                	ALUsrc=<span class="number">2&#x27;b00</span>;</span><br><span class="line">                	ALUctrl=<span class="number">3</span>‘b001;</span><br><span class="line">                	Memwrite=<span class="number">0</span>;</span><br><span class="line">                	MemtoReg=<span class="number">2&#x27;b00</span>;</span><br><span class="line">                ……</span><br><span class="line">            <span class="keyword">endcase</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">      `lw:</span><br><span class="line">          ……</span><br><span class="line"><span class="keyword">endcase</span></span><br></pre></td></tr></table></div></figure>
@@ -729,7 +729,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 
 <p>这一种译码方式，是对控制信号用了或指令的方式，如果满足这条指令，就会使的控制信号有效，这种方式的优点在于可以很容易的添加指令，对于指令只需要在相应控制信号之后或上一个即可，但是缺点是不够直观，可能会造成漏加信号的错误。</p>
 
-        <h4 id="3-在相应的部件中，复位信号的设计都是同步复位，这与-P3-中的设计要求不同。请对比同步复位与异步复位这两种方式的-reset-信号与-clk-信号优先级的关系。"   >
+        <h4 id="3-在相应的部件中，复位信号的设计都是同步复位，这与-P3-中的设计要求不同。请对比同步复位与异步复位这两种方式的-reset-信号与-clk-信号优先级的关系。">
           <a href="#3-在相应的部件中，复位信号的设计都是同步复位，这与-P3-中的设计要求不同。请对比同步复位与异步复位这两种方式的-reset-信号与-clk-信号优先级的关系。" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-在相应的部件中，复位信号的设计都是同步复位，这与-P3-中的设计要求不同。请对比同步复位与异步复位这两种方式的-reset-信号与-clk-信号优先级的关系。" class="headerlink" title="3.在相应的部件中，复位信号的设计都是同步复位，这与 P3 中的设计要求不同。请对比同步复位与异步复位这两种方式的 reset 信号与 clk 信号优先级的关系。"></a>3.在相应的部件中，复位信号的设计都是<strong>同步复位</strong>，这与 P3 中的设计要求不同。请对比<strong>同步复位</strong>与<strong>异步复位</strong>这两种方式的 reset 信号与 clk 信号优先级的关系。</h4>
       <p>​		在同步复位中，clk的优先级是高于reset的，只有在时钟上升沿到来时reset信号有效才进行复位，单有reset信号而时钟上升沿信号没有到来不能进行复位。以verilog代码来说，reset信号是在clk的触发中的，只有外层有效内层才能有效。</p>
 <figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk)<span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(reset==<span class="number">1</span>)<span class="keyword">begin</span></span><br><span class="line"> 	……   </span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></div></figure>
@@ -738,27 +738,27 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span>@(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">posedge</span> reset)<span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span>(reset==<span class="number">1</span>)<span class="keyword">begin</span></span><br><span class="line"> 	……   </span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></div></figure>
 
 
-        <h4 id="4-C-语言是一种弱类型程序设计语言。C-语言中不对计算结果溢出进行处理，这意味着-C-语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持-C-语言，MIPS-指令的所有计算指令均可以忽略溢出。-请说明为什么在忽略溢出的前提下，addi-与-addiu-是等价的，add-与-addu-是等价的。提示：阅读《MIPS32®-Architecture-For-Programmers-Volume-II-The-MIPS32®-Instruction-Set》中相关指令的-Operation-部分。"   >
+        <h4 id="4-C-语言是一种弱类型程序设计语言。C-语言中不对计算结果溢出进行处理，这意味着-C-语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持-C-语言，MIPS-指令的所有计算指令均可以忽略溢出。-请说明为什么在忽略溢出的前提下，addi-与-addiu-是等价的，add-与-addu-是等价的。提示：阅读《MIPS32®-Architecture-For-Programmers-Volume-II-The-MIPS32®-Instruction-Set》中相关指令的-Operation-部分。">
           <a href="#4-C-语言是一种弱类型程序设计语言。C-语言中不对计算结果溢出进行处理，这意味着-C-语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持-C-语言，MIPS-指令的所有计算指令均可以忽略溢出。-请说明为什么在忽略溢出的前提下，addi-与-addiu-是等价的，add-与-addu-是等价的。提示：阅读《MIPS32®-Architecture-For-Programmers-Volume-II-The-MIPS32®-Instruction-Set》中相关指令的-Operation-部分。" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-C-语言是一种弱类型程序设计语言。C-语言中不对计算结果溢出进行处理，这意味着-C-语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持-C-语言，MIPS-指令的所有计算指令均可以忽略溢出。-请说明为什么在忽略溢出的前提下，addi-与-addiu-是等价的，add-与-addu-是等价的。提示：阅读《MIPS32®-Architecture-For-Programmers-Volume-II-The-MIPS32®-Instruction-Set》中相关指令的-Operation-部分。" class="headerlink" title="4.C 语言是一种弱类型程序设计语言。C 语言中不对计算结果溢出进行处理，这意味着 C 语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持 C 语言，MIPS 指令的所有计算指令均可以忽略溢出。 请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的。提示：阅读《MIPS32® Architecture For Programmers Volume II: The MIPS32® Instruction Set》中相关指令的 Operation 部分。"></a>4.C 语言是一种弱类型程序设计语言。C 语言中不对计算结果溢出进行处理，这意味着 C 语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持 C 语言，MIPS 指令的所有计算指令均可以忽略溢出。 请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的。提示：阅读《MIPS32® Architecture For Programmers Volume II: The MIPS32® Instruction Set》中相关指令的 Operation 部分。</h4>
       <p>addi与addiu的区别在于，当出现溢出时，addiu将忽略溢出，将溢出的最高位舍弃；addi会报告SignalException(IntegerOverflow)。</p>
 <p>如果忽略溢出，addi不会报错，二者等价。add和addu同理。</p>
 
-        <h2 id="P4课上回忆"   >
+        <h2 id="P4课上回忆">
           <a href="#P4课上回忆" class="heading-link"><i class="fas fa-link"></i></a><a href="#P4课上回忆" class="headerlink" title="P4课上回忆"></a>P4课上回忆</h2>
       
-        <h3 id="组合逻辑别用非阻塞赋值，会死的。。"   >
+        <h3 id="组合逻辑别用非阻塞赋值，会死的。。">
           <a href="#组合逻辑别用非阻塞赋值，会死的。。" class="heading-link"><i class="fas fa-link"></i></a><a href="#组合逻辑别用非阻塞赋值，会死的。。" class="headerlink" title="组合逻辑别用非阻塞赋值，会死的。。"></a><strong>组合逻辑别用非阻塞赋值，会死的。。</strong></h3>
       <figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">always</span> @(*)<span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span>(reset)</span><br><span class="line">		cnt = <span class="number">32&#x27;b0</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">		cnt = <span class="number">32&#x27;b0</span>; <span class="comment">// 这个很重要 </span></span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="number">32</span>;i=i+<span class="number">1</span>)<span class="keyword">begin</span></span><br><span class="line">			cnt = cnt + RD2[i];</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></div></figure>
 
 <p><strong>在组合逻辑中使用寄存器记得每次使用前要清零 不然会导致错误。</strong></p>
 
-        <h3 id="逻辑右移"   >
+        <h3 id="逻辑右移">
           <a href="#逻辑右移" class="heading-link"><i class="fas fa-link"></i></a><a href="#逻辑右移" class="headerlink" title="逻辑右移"></a>逻辑右移</h3>
       <figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$signed</span>(<span class="built_in">$signed</span>(A)&gt;&gt;&gt;B);</span><br></pre></td></tr></table></div></figure>
 
 <p>没来得及看的第一道题</p>
 
-        <h4 id="ras"   >
+        <h4 id="ras">
           <a href="#ras" class="heading-link"><i class="fas fa-link"></i></a><a href="#ras" class="headerlink" title="ras"></a>ras</h4>
       <p>if（imm &#x3D;&#x3D; 0）GPR[rt] &lt;&#x3D; GPR[rs]<br>else if (imm &lt; 32)<br>temp &#x3D; ～GPR[rs][31:32-imm] || GPR[rs][31-imm:0]<br>num &#x3D; how many 1 in imm<br>GPR[rt] &#x3D; temp &gt;&gt;&gt; num<br>else<br>temp &#x3D; ~GPR[rs]<br>GPR[rt] &#x3D; temp &gt;&gt;&gt; num</p>
 <figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(Imm&lt;= <span class="number">16&#x27;d32</span>) <span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">for</span>(i=<span class="number">31</span>;i&gt;=<span class="number">0</span>&amp;&amp;i&gt;=(<span class="number">32</span>-Imm);i=i-<span class="number">1</span>)<span class="keyword">begin</span></span><br><span class="line">			   A[i] = ~SrcB[i];</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">for</span>(i=(<span class="number">32</span>-Imm-<span class="number">1</span>);i&gt;=<span class="number">0</span>;i=i-<span class="number">1</span>)<span class="keyword">begin</span></span><br><span class="line">			   A[i] = SrcB[i];</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">				A = ~SrcB;</span><br><span class="line">		<span class="keyword">end</span></span><br></pre></td></tr></table></div></figure>

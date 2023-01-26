@@ -31,22 +31,22 @@ var CONFIG = {
 };
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/26/P3/">P3学习总结</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-26</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-26</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h1 id="Logisim单周期CPU设计文档"   >
+        <h1 id="Logisim单周期CPU设计文档">
           <a href="#Logisim单周期CPU设计文档" class="heading-link"><i class="fas fa-link"></i></a><a href="#Logisim单周期CPU设计文档" class="headerlink" title="Logisim单周期CPU设计文档"></a>Logisim单周期CPU设计文档</h1>
       
-        <h2 id="一-CPU设计要求"   >
+        <h2 id="一-CPU设计要求">
           <a href="#一-CPU设计要求" class="heading-link"><i class="fas fa-link"></i></a><a href="#一-CPU设计要求" class="headerlink" title="(一)CPU设计要求"></a>(一)CPU设计要求</h2>
       
-        <h4 id="32位单周期CPU"   >
+        <h4 id="32位单周期CPU">
           <a href="#32位单周期CPU" class="heading-link"><i class="fas fa-link"></i></a><a href="#32位单周期CPU" class="headerlink" title="32位单周期CPU"></a>32位单周期CPU</h4>
       
-        <h4 id="支持指令-add，sub，lw，sw，lui，beq，nop"   >
+        <h4 id="支持指令-add，sub，lw，sw，lui，beq，nop">
           <a href="#支持指令-add，sub，lw，sw，lui，beq，nop" class="heading-link"><i class="fas fa-link"></i></a><a href="#支持指令-add，sub，lw，sw，lui，beq，nop" class="headerlink" title="支持指令{add，sub，lw，sw，lui，beq，nop}"></a>支持指令{add，sub，lw，sw，lui，beq，nop}</h4>
       
-        <h2 id="二-关键模块设计"   >
+        <h2 id="二-关键模块设计">
           <a href="#二-关键模块设计" class="heading-link"><i class="fas fa-link"></i></a><a href="#二-关键模块设计" class="headerlink" title="(二)关键模块设计"></a>(二)关键模块设计</h2>
       
-        <h3 id="ALU"   >
+        <h3 id="ALU">
           <a href="#ALU" class="heading-link"><i class="fas fa-link"></i></a><a href="#ALU" class="headerlink" title="ALU"></a>ALU</h3>
       <div class="table-container"><table>
 <thead>
@@ -69,17 +69,17 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>ALUControl[2:0]</td>
 <td>I</td>
-<td>3位输入信号，选择ALU的功能<br />000 : SrcA + SrcB<br />001 : SrcA - SrcB<br />010 : A | B<br />011 : A &amp; B <br />100 : A&gt;&gt;B<br />101 : $signed(A)&gt;&gt;&gt;B<br />110 : A&lt;B 置1</td>
+<td>3位输入信号，选择ALU的功能<br>000 : SrcA + SrcB<br>001 : SrcA - SrcB<br>010 : A | B<br>011 : A &amp; B <br>100 : A&gt;&gt;B<br>101 : $signed(A)&gt;&gt;&gt;B<br>110 : A&lt;B 置1</td>
 </tr>
 <tr>
 <td>Equal</td>
 <td>O</td>
-<td>1位输出信号，标志A,B是否相等<br />A&#x3D;B置Equal&#x3D;1</td>
+<td>1位输出信号，标志A,B是否相等<br>A&#x3D;B置Equal&#x3D;1</td>
 </tr>
 <tr>
 <td>Less</td>
 <td>O</td>
-<td>1位输出信号，标志A是否小于B<br />A&lt;B置Less&#x3D;1</td>
+<td>1位输出信号，标志A是否小于B<br>A&lt;B置Less&#x3D;1</td>
 </tr>
 <tr>
 <td>ALUResult[31:0]</td>
@@ -88,7 +88,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="GRF"   >
+        <h3 id="GRF">
           <a href="#GRF" class="heading-link"><i class="fas fa-link"></i></a><a href="#GRF" class="headerlink" title="GRF"></a>GRF</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -107,12 +107,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>reset</td>
 <td>I</td>
-<td>复位信号，将32个寄存器中的值全部清零<br />1：复位<br />0：无效</td>
+<td>复位信号，将32个寄存器中的值全部清零<br>1：复位<br>0：无效</td>
 </tr>
 <tr>
 <td>WE</td>
 <td>I</td>
-<td>写使能信号<br />1：可向GRF中写入数据<br />0：不能向GRF中写入数据</td>
+<td>写使能信号<br>1：可向GRF中写入数据<br>0：不能向GRF中写入数据</td>
 </tr>
 <tr>
 <td>A1[4:0]</td>
@@ -171,7 +171,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="DM"   >
+        <h3 id="DM">
           <a href="#DM" class="heading-link"><i class="fas fa-link"></i></a><a href="#DM" class="headerlink" title="DM"></a>DM</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -190,12 +190,12 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>Reset</td>
 <td>I</td>
-<td>复位信号，将RAM中的值全部清零<br />1：复位<br />0：无效</td>
+<td>复位信号，将RAM中的值全部清零<br>1：复位<br>0：无效</td>
 </tr>
 <tr>
 <td>WE</td>
 <td>I</td>
-<td>写使能信号<br />1：可向GRF中写入数据<br />0：不能向GRF中写入数据</td>
+<td>写使能信号<br>1：可向GRF中写入数据<br>0：不能向GRF中写入数据</td>
 </tr>
 <tr>
 <td>WD[31:0]</td>
@@ -210,7 +210,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>DMop[1:0]</td>
 <td>I</td>
-<td>2位输入信号，用于lb，lh等特殊指令<br />00 ：正常读写，lw，sw<br />01 ：用于lh和sh，根据WE选择进行哪一条指令<br />10 ：用于lb和sb，根据WE选择进行哪一条指令</td>
+<td>2位输入信号，用于lb，lh等特殊指令<br>00 ：正常读写，lw，sw<br>01 ：用于lh和sh，根据WE选择进行哪一条指令<br>10 ：用于lb和sb，根据WE选择进行哪一条指令</td>
 </tr>
 <tr>
 <td>RD[31:0]</td>
@@ -244,7 +244,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="EXT"   >
+        <h3 id="EXT">
           <a href="#EXT" class="heading-link"><i class="fas fa-link"></i></a><a href="#EXT" class="headerlink" title="EXT"></a>EXT</h3>
       <div class="table-container"><table>
 <thead>
@@ -262,7 +262,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>EXTop</td>
 <td>I</td>
-<td>功能选择信号<br />0：Imm无符号拓展到32位<br />1：Imm符号位拓展到32位</td>
+<td>功能选择信号<br>0：Imm无符号拓展到32位<br>1：Imm符号位拓展到32位</td>
 </tr>
 <tr>
 <td>EXTImm[31:0]</td>
@@ -271,7 +271,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="NPC"   >
+        <h3 id="NPC">
           <a href="#NPC" class="heading-link"><i class="fas fa-link"></i></a><a href="#NPC" class="headerlink" title="NPC"></a>NPC</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -290,7 +290,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>NPCop[1:0]</td>
 <td>I</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>instr_index[26:0]</td>
@@ -310,7 +310,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>Branchop[2:0]</td>
 <td>I</td>
-<td>用于指示进行何种跳转判断<br />000 : 判断equal<br />001 : 判断n_equal <br />010 : 判断less<br />011 : 判断big <br />100 : 判断less or equal<br />101 : 判断big or equal</td>
+<td>用于指示进行何种跳转判断<br>000 : 判断equal<br>001 : 判断n_equal <br>010 : 判断less<br>011 : 判断big <br>100 : 判断less or equal<br>101 : 判断big or equal</td>
 </tr>
 <tr>
 <td>equal</td>
@@ -369,11 +369,11 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tbody><tr>
 <td>1</td>
 <td>计算PC的下一个值</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：<br />结合equal,n_equal,less,big,big or equal,less or equal判断是否需要跳转<br />PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：<br>结合equal,n_equal,less,big,big or equal,less or equal判断是否需要跳转<br>PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 </tbody></table></div>
 
-        <h3 id="IFU"   >
+        <h3 id="IFU">
           <a href="#IFU" class="heading-link"><i class="fas fa-link"></i></a><a href="#IFU" class="headerlink" title="IFU"></a>IFU</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -397,7 +397,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>NPCop[1:0]</td>
 <td>I</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>instr_index[26:0]</td>
@@ -417,7 +417,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>Branchop[2:0]</td>
 <td>I</td>
-<td>用于指示进行何种跳转判断<br />000 : 判断equal<br />001 : 判断n_equal <br />010 : 判断less<br />011 : 判断big <br />100 : 判断less or equal<br />101 : 判断big or equal</td>
+<td>用于指示进行何种跳转判断<br>000 : 判断equal<br>001 : 判断n_equal <br>010 : 判断less<br>011 : 判断big <br>100 : 判断less or equal<br>101 : 判断big or equal</td>
 </tr>
 <tr>
 <td>equal</td>
@@ -450,7 +450,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h3 id="CTRL"   >
+        <h3 id="CTRL">
           <a href="#CTRL" class="heading-link"><i class="fas fa-link"></i></a><a href="#CTRL" class="headerlink" title="CTRL"></a>CTRL</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -474,37 +474,37 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>RegDst[1:0]</td>
 <td>O</td>
-<td>GRFA3输入端控制信号<br />00 : A3←Instr<sub>20…16</sub><br />01 : A3←Instr<sub>15…11</sub><br />11 : A3←0x1f</td>
+<td>GRFA3输入端控制信号<br>00 : A3←Instr<sub>20…16</sub><br>01 : A3←Instr<sub>15…11</sub><br>11 : A3←0x1f</td>
 </tr>
 <tr>
 <td>RegWrite</td>
 <td>O</td>
-<td>寄存器写入控制信号<br />0 : 不能向GRF写入<br />1 : 可以向GRF写入</td>
+<td>寄存器写入控制信号<br>0 : 不能向GRF写入<br>1 : 可以向GRF写入</td>
 </tr>
 <tr>
 <td>EXTop</td>
 <td>O</td>
-<td>功能选择信号<br />0：Imm无符号拓展到32位<br />1：Imm符号位拓展到32位</td>
+<td>功能选择信号<br>0：Imm无符号拓展到32位<br>1：Imm符号位拓展到32位</td>
 </tr>
 <tr>
 <td>ALUsrc[1:0]</td>
 <td>O</td>
-<td>ALUSrcB输入控制信号<br />00 : SrcB←RD2<br />01 : SrcB←EXTImm<br />10 : SrcB←sll指令的s<br />       SrcA←RD2</td>
+<td>ALUSrcB输入控制信号<br>00 : SrcB←RD2<br>01 : SrcB←EXTImm<br>10 : SrcB←sll指令的s<br>       SrcA←RD2</td>
 </tr>
 <tr>
 <td>ALUctrl[2:0]</td>
 <td>O</td>
-<td>3位输出信号，选择ALU的功能<br />000 : SrcA + SrcB<br />001 : SrcA - SrcB<br />010 : A |B<br />011 : A &amp; B <br />100 : A&gt;&gt;B<br />101 : $signed(A)&gt;&gt;&gt;B<br />110 : A&lt;B 置1<br />111 : A&lt;&lt;B</td>
+<td>3位输出信号，选择ALU的功能<br>000 : SrcA + SrcB<br>001 : SrcA - SrcB<br>010 : A |B<br>011 : A &amp; B <br>100 : A&gt;&gt;B<br>101 : $signed(A)&gt;&gt;&gt;B<br>110 : A&lt;B 置1<br>111 : A&lt;&lt;B</td>
 </tr>
 <tr>
 <td>Menwrite</td>
 <td>O</td>
-<td>内存写入控制信号<br />0 : 不能向DM写入<br />1 : 可以向DM写入</td>
+<td>内存写入控制信号<br>0 : 不能向DM写入<br>1 : 可以向DM写入</td>
 </tr>
 <tr>
 <td>MemtoReg[1:0]</td>
 <td>O</td>
-<td>控制向寄存器的写入数据<br />00 : WD←ALUResult<br />01 : WD←RD<br />10 : WD←NPC<sub>31…0</sub><br />11 : WD←[ALUResult<sub>15…0</sub>||0<sub>16</sub>]</td>
+<td>控制向寄存器的写入数据<br>00 : WD←ALUResult<br>01 : WD←RD<br>10 : WD←NPC<sub>31…0</sub><br>11 : WD←[ALUResult<sub>15…0</sub>||0<sub>16</sub>]</td>
 </tr>
 </tbody></table></div>
 <div class="table-container"><table>
@@ -518,30 +518,30 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tbody><tr>
 <td>NPCop[1:0]</td>
 <td>O</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>Branchop[2:0]</td>
 <td>O</td>
-<td>用于指示进行何种跳转判断<br />000 : 判断equal<br />001 : 判断n_equal <br />010 : 判断less<br />011 : 判断big <br />100 : 判断less or equal<br />101 : 判断big or equal</td>
+<td>用于指示进行何种跳转判断<br>000 : 判断equal<br>001 : 判断n_equal <br>010 : 判断less<br>011 : 判断big <br>100 : 判断less or equal<br>101 : 判断big or equal</td>
 </tr>
 <tr>
 <td>DMop[1:0]</td>
 <td>O</td>
-<td>用于lb,sb,lh,sh等操作的拓展<br />00 : 正常读取，以字为单位<br />01 : 用于lh或sh<br />Menwrite &#x3D; 1—&gt;sh<br />Menwrite &#x3D; 0—&gt;lh<br />11 : 用于lb或sb<br />Menwrite &#x3D; 1—&gt;sb<br />Menwrite &#x3D; 0—&gt;lb</td>
+<td>用于lb,sb,lh,sh等操作的拓展<br>00 : 正常读取，以字为单位<br>01 : 用于lh或sh<br>Menwrite &#x3D; 1—&gt;sh<br>Menwrite &#x3D; 0—&gt;lh<br>11 : 用于lb或sb<br>Menwrite &#x3D; 1—&gt;sb<br>Menwrite &#x3D; 0—&gt;lb</td>
 </tr>
 </tbody></table></div>
 
-        <h3 id="相关数据通路信号说明"   >
+        <h3 id="相关数据通路信号说明">
           <a href="#相关数据通路信号说明" class="heading-link"><i class="fas fa-link"></i></a><a href="#相关数据通路信号说明" class="headerlink" title="相关数据通路信号说明"></a>相关数据通路信号说明</h3>
       
-        <h4 id="RegDst"   >
+        <h4 id="RegDst">
           <a href="#RegDst" class="heading-link"><i class="fas fa-link"></i></a><a href="#RegDst" class="headerlink" title="RegDst"></a>RegDst</h4>
       <p><strong>控制对于A3的输入信号，RegDst&#x3D;00，A3←Instr<sub>16…20</sub></strong></p>
 <p>​										<strong>,  RegDst&#x3D;01，A3←Instr<sub>11…15</sub></strong></p>
 <p>​										<strong>,  RegDst&#x3D;10，A3←0x1f，用于jal指令</strong></p>
 
-        <h4 id="ALUsrc"   >
+        <h4 id="ALUsrc">
           <a href="#ALUsrc" class="heading-link"><i class="fas fa-link"></i></a><a href="#ALUsrc" class="headerlink" title="ALUsrc"></a>ALUsrc</h4>
       <p><strong>控制对于SrcA的输入信号，ALUsrc&#x3D;10，SrcA←RD2</strong>，<strong>用于sll指令</strong></p>
 <p>​										  <strong>，ALUsrc&#x3D;other，SrcA←RD1</strong></p>
@@ -549,14 +549,14 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <p>​										  <strong>，ALUsrc&#x3D;01，SrcB←EXTImm</strong></p>
 <p>​										  <strong>，ALUsrc&#x3D;10，SrcB←Instr<sub>6…10</sub>(shamt)</strong></p>
 
-        <h4 id="MemtoReg"   >
+        <h4 id="MemtoReg">
           <a href="#MemtoReg" class="heading-link"><i class="fas fa-link"></i></a><a href="#MemtoReg" class="headerlink" title="MemtoReg"></a>MemtoReg</h4>
       <p><strong>控制对于寄存器的写入信号，MemtoReg&#x3D;00，WD←ALUResult</strong></p>
 <p>​											  <strong>，MemtoReg&#x3D;01，WD←RD</strong></p>
 <p>​											  <strong>，MemtoReg&#x3D;10，WD←PC+4</strong></p>
 <p>​											  <strong>，MemtoReg&#x3D;11，WD←ALUResult<sub>15…0</sub>||0<sub>16</sub>，用于lui指令</strong></p>
 
-        <h3 id="指令控制信号"   >
+        <h3 id="指令控制信号">
           <a href="#指令控制信号" class="heading-link"><i class="fas fa-link"></i></a><a href="#指令控制信号" class="headerlink" title="指令控制信号"></a>指令控制信号</h3>
       <div class="table-container"><table>
 <thead>
@@ -667,22 +667,22 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 </tr>
 </tbody></table></div>
 
-        <h2 id="三-思考题"   >
+        <h2 id="三-思考题">
           <a href="#三-思考题" class="heading-link"><i class="fas fa-link"></i></a><a href="#三-思考题" class="headerlink" title="(三)思考题"></a>(三)思考题</h2>
       
-        <h3 id="1-上面我们介绍了通过-FSM-理解单周期-CPU-的基本方法。请大家指出单周期-CPU-所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。"   >
+        <h3 id="1-上面我们介绍了通过-FSM-理解单周期-CPU-的基本方法。请大家指出单周期-CPU-所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。">
           <a href="#1-上面我们介绍了通过-FSM-理解单周期-CPU-的基本方法。请大家指出单周期-CPU-所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-上面我们介绍了通过-FSM-理解单周期-CPU-的基本方法。请大家指出单周期-CPU-所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。" class="headerlink" title="1.上面我们介绍了通过 FSM 理解单周期 CPU 的基本方法。请大家指出单周期 CPU 所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。"></a>1.上面我们介绍了通过 FSM 理解单周期 CPU 的基本方法。请大家指出单周期 CPU 所用到的模块中，哪些发挥状态存储功能，哪些发挥状态转移功能。</h3>
       <p><strong>解答</strong> 单周期CPU中，IFU，GRF，DM模块起着状态存储的功能，它们存储了每一个状态的指令以及一些数据CTRL，ALU是组合逻辑电路，起着状态转移的功能。</p>
 
-        <h3 id="2-现在我们的模块中-IM-使用-ROM，-DM-使用-RAM，-GRF-使用-Register，这种做法合理吗？-请给出分析，若有改进意见也请一并给出。"   >
+        <h3 id="2-现在我们的模块中-IM-使用-ROM，-DM-使用-RAM，-GRF-使用-Register，这种做法合理吗？-请给出分析，若有改进意见也请一并给出。">
           <a href="#2-现在我们的模块中-IM-使用-ROM，-DM-使用-RAM，-GRF-使用-Register，这种做法合理吗？-请给出分析，若有改进意见也请一并给出。" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-现在我们的模块中-IM-使用-ROM，-DM-使用-RAM，-GRF-使用-Register，这种做法合理吗？-请给出分析，若有改进意见也请一并给出。" class="headerlink" title="2.现在我们的模块中 IM 使用 ROM， DM 使用 RAM， GRF 使用 Register，这种做法合理吗？ 请给出分析，若有改进意见也请一并给出。"></a>2.现在我们的模块中 IM 使用 ROM， DM 使用 RAM， GRF 使用 Register，这种做法合理吗？ 请给出分析，若有改进意见也请一并给出。</h3>
       <p><strong>解答</strong> 我认为是合理的，对于IM所存储的指令，由于在程序运行中不需要对指令进行修改，使用只读的ROM可以保证指令的读但不会被修改。DM是可读也可写的所以要使用可以读写的RAM，而且由于内存的空间比较大，使用寄存器会导致成本急剧增大，使用满足功能需求同时控制成本的RAM是合理的。GRF由于需要高速的读取或者存储，并且由于寄存器的数目较少，使用寄存器阵列也是合理的。</p>
 
-        <h3 id="3-在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。"   >
+        <h3 id="3-在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。">
           <a href="#3-在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。" class="headerlink" title="3.在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。"></a>3.在上述提示的模块之外，你是否在实际实现时设计了其他的模块？如果是的话，请给出介绍和设计的思路。</h3>
       <p><strong>解答</strong> 我设计了NPC模块，用于计算在各种指令中对于下一个状态PC的计算。我使用了NPCop控制PC在j，jr，beq，bne，ble，blt，bgt等指令中对于PC的控制，我添加了判断ALU两端数据大小的信号以此控制bne等需判断指令的跳转条件判断</p>
 
-        <h3 id="NPC-1"   >
+        <h3 id="NPC-1">
           <a href="#NPC-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#NPC-1" class="headerlink" title="NPC"></a>NPC</h3>
       <p><strong>模块定义</strong></p>
 <div class="table-container"><table>
@@ -701,7 +701,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>NPCop[1:0]</td>
 <td>I</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：PC←PC + 4 + sign_extend(offset||0<sub>2</sub>)<br>11：PC←GPR[rs]</td>
 </tr>
 <tr>
 <td>instr_index[26:0]</td>
@@ -721,7 +721,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tr>
 <td>Branchop[2:0]</td>
 <td>I</td>
-<td>用于指示进行何种跳转判断<br />000 : 判断equal<br />001 : 判断n_equal <br />010 : 判断less<br />011 : 判断big <br />100 : 判断less or equal<br />101 : 判断big or equal</td>
+<td>用于指示进行何种跳转判断<br>000 : 判断equal<br>001 : 判断n_equal <br>010 : 判断less<br>011 : 判断big <br>100 : 判断less or equal<br>101 : 判断big or equal</td>
 </tr>
 <tr>
 <td>equal</td>
@@ -780,20 +780,20 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
 <tbody><tr>
 <td>1</td>
 <td>计算PC的下一个值</td>
-<td>两位控制信号，控制NPC的的值<br />00：PC←PC+4<br />01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br />10：<br />结合equal,n_equal,less,big,big or equal,less or equal判断是否需要跳转<br />11：PC←GPR[rs]</td>
+<td>两位控制信号，控制NPC的的值<br>00：PC←PC+4<br>01：PC←PC<sub>31</sub>…<sub>28</sub>||instr_index||0<sub>2</sub><br>10：<br>结合equal,n_equal,less,big,big or equal,less or equal判断是否需要跳转<br>11：PC←GPR[rs]</td>
 </tr>
 </tbody></table></div>
 
-        <h3 id="4-事实上，实现-nop-空指令，我们并不需要将它加入控制信号真值表，为什么？"   >
+        <h3 id="4-事实上，实现-nop-空指令，我们并不需要将它加入控制信号真值表，为什么？">
           <a href="#4-事实上，实现-nop-空指令，我们并不需要将它加入控制信号真值表，为什么？" class="heading-link"><i class="fas fa-link"></i></a><a href="#4-事实上，实现-nop-空指令，我们并不需要将它加入控制信号真值表，为什么？" class="headerlink" title="4.事实上，实现 nop 空指令，我们并不需要将它加入控制信号真值表，为什么？"></a>4.事实上，实现 <code>nop</code> 空指令，我们并不需要将它加入控制信号真值表，为什么？</h3>
       <p><strong>解答</strong> 对于<code>nop</code>指令，只是执行了一个PC&#x3D;PC+4的行为，其他地方没有改变，将指令加进去和不加进去没有什么改变。同时<code>sll $0,$0,0</code>的机器码就是<code>0x00000000</code>可以作为一个空循环的指令使用。</p>
 
-        <h3 id="5-上文提到，MARS-不能导出-PC-与-DM-起始地址均为-0-的机器码。实际上，可以避免手工修改的麻烦。请查阅相关资料进行了解，并阐释为了解决这个问题，你最终采用的方法。"   >
+        <h3 id="5-上文提到，MARS-不能导出-PC-与-DM-起始地址均为-0-的机器码。实际上，可以避免手工修改的麻烦。请查阅相关资料进行了解，并阐释为了解决这个问题，你最终采用的方法。">
           <a href="#5-上文提到，MARS-不能导出-PC-与-DM-起始地址均为-0-的机器码。实际上，可以避免手工修改的麻烦。请查阅相关资料进行了解，并阐释为了解决这个问题，你最终采用的方法。" class="heading-link"><i class="fas fa-link"></i></a><a href="#5-上文提到，MARS-不能导出-PC-与-DM-起始地址均为-0-的机器码。实际上，可以避免手工修改的麻烦。请查阅相关资料进行了解，并阐释为了解决这个问题，你最终采用的方法。" class="headerlink" title="5.上文提到，MARS 不能导出 PC 与 DM 起始地址均为 0 的机器码。实际上，可以避免手工修改的麻烦。请查阅相关资料进行了解，并阐释为了解决这个问题，你最终采用的方法。"></a>5.上文提到，MARS 不能导出 PC 与 DM 起始地址均为 0 的机器码。实际上，可以避免手工修改的麻烦。请查阅相关资料进行了解，并阐释为了解决这个问题，你最终采用的方法。</h3>
       <p><strong>解答</strong> 如果寄存器中存储的DM的地址被映射在<code>0x3000_0000</code>到<code>0x3fff_ffff</code>间，而我们的DM起始地址是0，那么，我们可以将输入地址用一个减法器直接减去0x3000_0000，再作为DM的地址输入。</p>
 
-        <h3 id="6-阅读-Pre-的-“MIPS-指令集及汇编语言”-一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。"   >
-          <a href="#6-阅读-Pre-的-“MIPS-指令集及汇编语言”-一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-阅读-Pre-的-“MIPS-指令集及汇编语言”-一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。" class="headerlink" title="6.阅读 Pre 的 “MIPS 指令集及汇编语言” 一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。"></a>6.阅读 Pre 的 <span class="exturl"><a class="exturl__link"   target="_blank" rel="noopener" href="http://cscore.buaa.edu.cn/tutorial/mips/mips-6/mips6-1/" >“MIPS 指令集及汇编语言”</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。</h3>
+        <h3 id="6-阅读-Pre-的-“MIPS-指令集及汇编语言”-一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。">
+          <a href="#6-阅读-Pre-的-“MIPS-指令集及汇编语言”-一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。" class="heading-link"><i class="fas fa-link"></i></a><a href="#6-阅读-Pre-的-“MIPS-指令集及汇编语言”-一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。" class="headerlink" title="6.阅读 Pre 的 “MIPS 指令集及汇编语言” 一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。"></a>6.阅读 Pre 的 <span class="exturl"><a class="exturl__link" target="_blank" rel="noopener" href="http://cscore.buaa.edu.cn/tutorial/mips/mips-6/mips6-1/">“MIPS 指令集及汇编语言”</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> 一节中给出的测试样例，评价其强度（可从各个指令的覆盖情况，单一指令各种行为的覆盖情况等方面分析），并指出具体的不足之处。</h3>
       <p>对于ori指令，还可以增加一些对于$0的赋值，检查是否会对$0造成修改。</p>
 <p>对于add指令，还可以增加一些正+零，负+零的指令。</p>
 <p>对于sw，最好对每一个内存空间都进行赋值，以保证正确性。</p>
