@@ -14,7 +14,7 @@
 <meta property="article:author" content="AugetyVolte">
 <meta property="article:tag" content="Logisim">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://augetyvolta.github.io/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/image-20230105155855400.png"><title>从D的触发机制到寄存器的同步清零 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://augetyvolta.github.io/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/image-20230105155855400.png"><title>从D的触发机制到寄存器的同步清零 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -82,7 +82,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
         <h2 id="写在最后">
           <a href="#写在最后" class="heading-link"><i class="fas fa-link"></i></a><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2>
       <p><strong>感谢大家阅读，如有疏漏，请多多指教。</strong></p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/">https://augetyvolta.github.io/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/Logisim/">Logisim</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">vscode配置verilog环境</span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8ED%E8%A7%A6%E5%8F%91%E5%99%A8%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6"><span class="toc-number">1.</span> <span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/">https://augetyvolta.github.io/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/Logisim/">Logisim</a></span></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">vscode配置verilog环境</span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8ED%E8%A7%A6%E5%8F%91%E5%99%A8%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6"><span class="toc-number">1.</span> <span class="toc-text">
           从D触发器触发机制到寄存器的同步清零</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#D%E8%A7%A6%E5%8F%91%E5%99%A8%E7%9A%84%E8%A7%A6%E5%8F%91"><span class="toc-number">1.1.</span> <span class="toc-text">
           D触发器的触发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#D%E8%A7%A6%E5%8F%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.1.</span> <span class="toc-text">
           D触发器的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#D%E8%A7%A6%E5%8F%91%E5%99%A8%E8%A7%A6%E5%8F%91%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94%E5%86%92%E9%99%A9%EF%BC%881%E5%86%92%E9%99%A9%EF%BC%89"><span class="toc-number">1.1.2.</span> <span class="toc-text">
@@ -363,26 +363,4 @@ if (Array.isArray(assistSearchList)) {
       extSearch(name);
     }, false);
   });
-}</script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
-  if (!document.getElementById('gitalk-container')) {
-    return;
-  }
-
-  var gitalk = new Gitalk({
-    id: md5(window.location.pathname.slice(1)),
-    clientID: '',
-    clientSecret: '',
-    repo: 'git@github.com:AugetyVolta/AugetyVolta.github.io',
-    owner: 'AugetyVolta',
-    admin: [''],
-    distractionFreeMode: 'true',
-    language: 'en'
-  });
-  gitalk.render('gitalk-container');
-}
-
-if (false) {
-  loadGitalk();
-} else {
-  window.addEventListener('DOMContentLoaded', loadGitalk, false);
 }</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script></body></html>

@@ -11,7 +11,7 @@
 <meta property="article:author" content="AugetyVolte">
 <meta property="article:tag" content="CPU_test">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://augetyvolta.github.io/2023/01/26/%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/image-20221102173043261.png"><title>基于iverilog的半自动测试和自动测试 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/01/26/%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="https://augetyvolta.github.io/2023/01/26/%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/image-20221102173043261.png"><title>基于iverilog的半自动测试和自动测试 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/01/26/%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -117,7 +117,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></he
         <h2 id="写在最后">
           <a href="#写在最后" class="heading-link"><i class="fas fa-link"></i></a><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2>
       <p><strong>2.0版本可能会存在数据测试范围不够广，出现死循环的情况的情况，还请大家多多包涵，同时也欢迎各位大佬对我的脚本提出改进意见，一起通力合作加以改进。</strong></p>
-</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/01/26/%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/">https://augetyvolta.github.io/2023/01/26/%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/CPU-test/">CPU_test</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2023/01/26/P7%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"><span class="paginator-prev__text">P7学习总结</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95"><span class="toc-number">1.</span> <span class="toc-text">
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/01/26/%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/">https://augetyvolta.github.io/2023/01/26/%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/CPU-test/">CPU_test</a></span></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2023/01/26/P7%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"><span class="paginator-prev__text">P7学习总结</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8Eiverilog%E7%9A%84%E5%8D%8A%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95%E5%92%8C%E8%87%AA%E5%8A%A8%E6%B5%8B%E8%AF%95"><span class="toc-number">1.</span> <span class="toc-text">
           基于iverilog的半自动测试和自动测试</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-0"><span class="toc-number">1.1.</span> <span class="toc-text">
           1.0</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#README"><span class="toc-number">1.1.1.</span> <span class="toc-text">
           README</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8A%9F%E8%83%BD%EF%BC%9A%E5%AE%9E%E7%8E%B0%E5%AF%B9%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%BC%96%E5%86%99%E7%9A%84%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E5%B5%8C%E5%85%A5CPU%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95%EF%BC%8C%E5%B9%B6%E4%B8%8EMARS%E7%9A%84%E6%A0%87%E5%87%86%E8%BE%93%E5%87%BA%E8%BF%9B%E8%A1%8C%E6%AF%94%E8%BE%83%E3%80%82"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">
@@ -405,26 +405,4 @@ if (Array.isArray(assistSearchList)) {
       extSearch(name);
     }, false);
   });
-}</script><script src="https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js"></script><script src="https://cdn.jsdelivr.net/npm/js-md5@latest/src/md5.min.js"></script><script>function loadGitalk () {
-  if (!document.getElementById('gitalk-container')) {
-    return;
-  }
-
-  var gitalk = new Gitalk({
-    id: md5(window.location.pathname.slice(1)),
-    clientID: '',
-    clientSecret: '',
-    repo: 'git@github.com:AugetyVolta/AugetyVolta.github.io',
-    owner: 'AugetyVolta',
-    admin: [''],
-    distractionFreeMode: 'true',
-    language: 'en'
-  });
-  gitalk.render('gitalk-container');
-}
-
-if (false) {
-  loadGitalk();
-} else {
-  window.addEventListener('DOMContentLoaded', loadGitalk, false);
 }</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script></body></html>
