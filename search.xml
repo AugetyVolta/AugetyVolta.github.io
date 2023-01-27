@@ -6976,4 +6976,40 @@ end
         <tag>CPU_test</tag>
       </tags>
   </entry>
+  <entry>
+    <title>HEXO博客解决图片无法显示问题</title>
+    <url>/2023/01/27/HEXO%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[
+        <h1 id="HEXO博客解决图片无法显示问题">
+          <a href="#HEXO博客解决图片无法显示问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#HEXO博客解决图片无法显示问题" class="headerlink" title="HEXO博客解决图片无法显示问题"></a>HEXO博客解决图片无法显示问题</h1>
+      
+        <h3 id="第一步：修改Typora设置">
+          <a href="#第一步：修改Typora设置" class="heading-link"><i class="fas fa-link"></i></a><a href="#第一步：修改Typora设置" class="headerlink" title="第一步：修改Typora设置"></a>第一步：修改Typora设置</h3>
+      <p>在Typora偏好设置中将插入图片路径修改为<strong>复制到指定路径</strong></p>
+<p><img src="/2023/01/27/HEXO%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/image-20230127102421096.png" alt="image-20230127102421096"></p>
+
+        <h3 id="第二步：插件下载">
+          <a href="#第二步：插件下载" class="heading-link"><i class="fas fa-link"></i></a><a href="#第二步：插件下载" class="headerlink" title="第二步：插件下载"></a>第二步：插件下载</h3>
+      <p><strong>在git bash终端中输入以下代码</strong> </p>
+<p><code>npm install https://github.com/CodeFalling/hexo-asset-image --save</code></p>
+
+        <h3 id="第三步：在Typore图片插入时改变插入路径">
+          <a href="#第三步：在Typore图片插入时改变插入路径" class="heading-link"><i class="fas fa-link"></i></a><a href="#第三步：在Typore图片插入时改变插入路径" class="headerlink" title="第三步：在Typore图片插入时改变插入路径"></a>第三步：在Typore图片插入时改变插入路径</h3>
+      <p>前提是将<strong>config.yml</strong>文件中的<strong>post_asset_folder</strong> 选项设为 <strong>true</strong>，这时我们使用</p>
+<p><code>hexo new &quot;xxx&quot;</code>命令</p>
+<p>可以发现在sourece文件夹的_posts中出现一个<code>xxx.md</code>和一个同名的文件夹<code>xxx</code>，将需要插入md文本的图片放在该同名文件夹中，插入图片时，修改图片路径，<strong>注意</strong>！！！</p>
+<p><strong>只保留文件名，其他一律删除！！！</strong></p>
+<p><strong>只保留文件名，其他一律删除！！！</strong></p>
+<p><strong>只保留文件名，其他一律删除！！！</strong></p>
+<p>如下图所示：</p>
+<p><img src="/2023/01/27/HEXO%E5%8D%9A%E5%AE%A2%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E9%97%AE%E9%A2%98/image-20230127103341170.png" alt="image-20230127103341170"></p>
+<p>虽然这样在Typora文本编辑时无法显示图片，但只有这样才能在Hexo博客中正确显示。</p>
+]]></content>
+      <categories>
+        <category>Blog_Build</category>
+      </categories>
+      <tags>
+        <tag>Picture_Problem</tag>
+      </tags>
+  </entry>
 </search>
