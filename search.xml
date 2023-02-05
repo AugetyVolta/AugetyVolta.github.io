@@ -7367,7 +7367,12 @@ end
           <a href="#Graph-Editor" class="heading-link"><i class="fas fa-link"></i></a><a href="#Graph-Editor" class="headerlink" title="Graph Editor"></a>Graph Editor</h3>
       <p><span class="exturl"><a class="exturl__link" href="https://csacademy.com/app/graph_editor/">Graph Editor (csacademy.com)</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> <strong>用于制作状态转移图</strong></p>
 <p><img src="/2023/02/02/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/image-20230202213204680.png" alt="image-20230202213204680"></p>
-<p><span class="exturl"><a class="exturl__link" href="https://www.naftaliharris.com/blog/visualizing%E2%80%90k%E2%80%90means%E2%80%90clustering/">Naftali Harris: Statistician, Hacker, and Climber</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> <strong>用于聚类算法的图解</strong></p>
+
+        <h3 id="Naftali-Harris-Statistician-Hacker-and-Climber">
+          <a href="#Naftali-Harris-Statistician-Hacker-and-Climber" class="heading-link"><i class="fas fa-link"></i></a><a href="#Naftali-Harris-Statistician-Hacker-and-Climber" class="headerlink" title="Naftali Harris: Statistician, Hacker, and Climber"></a>Naftali Harris: Statistician, Hacker, and Climber</h3>
+      <p><span class="exturl"><a class="exturl__link" href="https://www.naftaliharris.com/blog/visualizing%E2%80%90k%E2%80%90means%E2%80%90clustering/">Naftali Harris: Statistician, Hacker, and Climber</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> <strong>用于K-means聚类算法的图解</strong></p>
+<p><span class="exturl"><a class="exturl__link" href="https://www.naftaliharris.com/blog/visualizing%E2%80%90dbscan%E2%80%90clustering/">Naftali Harris: Statistician, Hacker, and Climber</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> <strong>用于DBSCAN聚类算法的图解</strong></p>
+<img src="/2023/02/02/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/image-20230205140941295.png" alt="image-20230205140941295" style="zoom:50%;">
 ]]></content>
       <categories>
         <category>tools</category>
