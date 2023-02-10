@@ -6,7 +6,7 @@
 <meta property="og:description" content="『夜夜流光相皎洁』">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="AugetyVolte">
-<meta name="twitter:card" content="summary"><title>AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/page/3/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+<meta name="twitter:card" content="summary"><title>AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/page/3/index.html"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -30,257 +30,21 @@ var CONFIG = {
   sourcePath: {"js":"js","css":"css","images":"images"},
 };
 
-window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/27/MIPS%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%9B%B8%E5%85%B3%E5%88%86%E4%BA%AB/">MIPS汇编指令相关分享</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-01-27</span></span></div></header><div class="post-body"><div class="post-excerpt">
-        <h1 id="MIPS汇编指令相关分享">
-          <a href="#MIPS汇编指令相关分享" class="heading-link"><i class="fas fa-link"></i></a><a href="#MIPS汇编指令相关分享" class="headerlink" title="MIPS汇编指令相关分享"></a>MIPS汇编指令相关分享</h1>
-      
-        <h2 id="寄存器的编号及其地址">
-          <a href="#寄存器的编号及其地址" class="heading-link"><i class="fas fa-link"></i></a><a href="#寄存器的编号及其地址" class="headerlink" title="寄存器的编号及其地址"></a>寄存器的编号及其地址</h2>
-      <p><strong>指令翻译为机器码，寄存器的编号十分重要，rs，rt，rd的序号都根据序号而定。</strong></p>
-<p>从 <code>$zero</code>寄存器，到<code>$ra</code>寄存器，它们的编号是0<del>31，机器码中相应位置的编号为5’b00000</del>5’b11111,从大到小的顺序，计算时依次相加即可。</p>
-<div class="table-container"><table>
-<thead>
-<tr>
-<th align="center">名字</th>
-<th align="center">编号</th>
-<th align="center">机器码编号</th>
-<th align="center">名字</th>
-<th align="center">编号</th>
-<th align="center">机器码编号</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">$s0</td>
-<td align="center">0</td>
-<td align="center">00000</td>
-<td align="center">$t8~$t9</td>
-<td align="center">24~25</td>
-<td align="center">11000~11001</td>
-</tr>
-<tr>
-<td align="center">$at</td>
-<td align="center">1</td>
-<td align="center">00001</td>
-<td align="center">$k0~$k1</td>
-<td align="center">26~27</td>
-<td align="center">11010~11011</td>
-</tr>
-<tr>
-<td align="center">$v0~$v1</td>
-<td align="center">2~3</td>
-<td align="center">00010~00011</td>
-<td align="center">$gp</td>
-<td align="center">28</td>
-<td align="center">11100</td>
-</tr>
-<tr>
-<td align="center">$a0~$a3</td>
-<td align="center">4~7</td>
-<td align="center">00100~00111</td>
-<td align="center">$sp</td>
-<td align="center">29</td>
-<td align="center">11101</td>
-</tr>
-<tr>
-<td align="center">$t0~$t7</td>
-<td align="center">8~15</td>
-<td align="center">01000~01111</td>
-<td align="center">$fp</td>
-<td align="center">30</td>
-<td align="center">11110</td>
-</tr>
-<tr>
-<td align="center">$s0~$s7</td>
-<td align="center">16~23</td>
-<td align="center">10000~10111</td>
-<td align="center">$ra</td>
-<td align="center">31</td>
-<td align="center">11111</td>
-</tr>
-</tbody></table></div>
-
-        <h2 id="机器码的格式">
-          <a href="#机器码的格式" class="heading-link"><i class="fas fa-link"></i></a><a href="#机器码的格式" class="headerlink" title="机器码的格式"></a>机器码的格式</h2>
-      <p><strong>以R型指令为例</strong></p>
-<p><code>add $s0,$s1,$s2</code> </p>
-<div class="table-container"><table>
-<thead>
-<tr>
-<th align="center">op</th>
-<th align="center">rs</th>
-<th align="center">rt</th>
-<th align="center">rd</th>
-<th align="center">shamt</th>
-<th align="center">funct</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">000000</td>
-<td align="center">01011</td>
-<td align="center">01101</td>
-<td align="center">01000</td>
-<td align="center">00000</td>
-<td align="center">100010</td>
-</tr>
-<tr>
-<td align="center">6bit</td>
-<td align="center">5bit</td>
-<td align="center">5bit</td>
-<td align="center">5bit</td>
-<td align="center">5bit</td>
-<td align="center">6bit</td>
-</tr>
-</tbody></table></div>
-<p><strong>对于add指令，op值为00000，进一步来说，所有的R型指令的op都为0，它的特殊功能都由funct来决定。</strong></p>
-<p><strong>rs,rt,rd的值都是从上一部分的表格中的来的</strong> ，<strong>rs,rt,rd是通用寄存器的代称，值要根据具体使用的寄存器而定，shamt表示移位数</strong></p>
-
-        <h2 id="机器码的翻译">
-          <a href="#机器码的翻译" class="heading-link"><i class="fas fa-link"></i></a><a href="#机器码的翻译" class="headerlink" title="机器码的翻译"></a>机器码的翻译</h2>
-      <p><strong>想把所有指令的要求都背下来有些不太现实，那么会使用指令集就是一种能力</strong>。</p>
-
-        <h3 id="求”bne-t0-t1-next“的机器码">
-          <a href="#求”bne-t0-t1-next“的机器码" class="heading-link"><i class="fas fa-link"></i></a><a href="#求”bne-t0-t1-next“的机器码" class="headerlink" title="求”bne $t0,t1,next“的机器码"></a>求”bne $t0,t1,next“的机器码</h3>
-      <p><strong>以一个程序中的标签为例，讲解我们如何根据程序以及指令集确定程序中某些lable的地址</strong></p>
-<p><img src="/2023/01/27/MIPS%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%9B%B8%E5%85%B3%E5%88%86%E4%BA%AB/fce90fe53307dcc4c02e5dd1a0a129f.png" alt="fce90fe53307dcc4c02e5dd1a0a129f"></p>
-<p><strong>要想知道机器码，我们首先要对应指令中的寄存器的位置，即哪一个是rs,rt,rd。从指令集中即可查得。</strong></p>
-<p><img src="/2023/01/27/MIPS%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%9B%B8%E5%85%B3%E5%88%86%E4%BA%AB/644a6df6c91e2ceeaf64c2e203e2baa.jpg" alt="644a6df6c91e2ceeaf64c2e203e2baa"></p>
-<p><strong>对照可得，$t0是rs，$t1是rt，对应的机器码分别是01000和01001，bne的op是000101</strong></p>
-<p><strong>但是要求得机器码，我们还要知道next的值</strong></p>
-<p>这里有一段伪代码</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if(GPR[rs]!=GPR[rt])</span><br><span class="line">	PC=PC+4+sign_entend(offset||0^2)</span><br><span class="line">else</span><br><span class="line">	PC=PC+4	</span><br></pre></td></tr></table></div></figure>
-
-<p><strong>我们首先要知道，MIPS中的指令大小是一个字，即4个字节，并且所有指令都以此存放在程序的<code>.text</code>部分，地址一般从0x00003000开始，要移动到下一条指令，就需要将指针向后移动一个字，即四个字节，如果要移动多个指令，就要移动相应的字节。</strong></p>
-<p><strong>知道了这个之后我们就能很好理解这条指令了，功能是如果rs和rt寄存器中的数据相同就执行下一条指令，我们需要做的就是寻址，next就起到这个作用。</strong></p>
-<p><strong>bne是不等时跳转，如果相等那么就是指令向后移动一条，就是PC&#x3D;PC+4。 但是这个程序中下一条指令到了next的位置，在这个程序中是相当于移动了两条，多移动了一条，因为程序中基础有一次向后移动（+4）。</strong></p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PC=PC+4+sign_entend(offset||0^2)</span><br></pre></td></tr></table></div></figure>
-
-<p><strong>对照指令表中的sign-extend（offset||0^2）就是给offset后面加上两个0，就是乘四，多移几位，就是多移几个字，就是移动4*n个字节。</strong></p>
-<p>所以这个程序中我们很好看出，<strong>next使得程序多移动了一条指令，所以next是1。</strong></p>
-<p><strong>最终我们可以根据指令集写出这个指令的机器码</strong>：</p>
-<figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">000101</span> <span class="number">01000</span> <span class="number">01001</span> <span class="number">0000000000000001</span></span><br><span class="line">#每四位对齐</span><br><span class="line"><span class="number">0001</span> <span class="number">0101</span> <span class="number">0000</span> <span class="number">1001</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0000</span> <span class="number">0001</span></span><br></pre></td></tr></table></div></figure>
-
-<p>化为16进制便是</p>
-<figure class="highlight verilog"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>x15090001</span><br></pre></td></tr></table></div></figure>
-
-<p>参考资料：《数字设计与计算机体系结构》</p>
-
-        <h2 id="寄存器储值计算">
-          <a href="#寄存器储值计算" class="heading-link"><i class="fas fa-link"></i></a><a href="#寄存器储值计算" class="headerlink" title="寄存器储值计算"></a>寄存器储值计算</h2>
-      
-        <h3 id="先导知识">
-          <a href="#先导知识" class="heading-link"><i class="fas fa-link"></i></a><a href="#先导知识" class="headerlink" title="先导知识"></a>先导知识</h3>
-      
-        <h3 id="asciiz">
-          <a href="#asciiz" class="heading-link"><i class="fas fa-link"></i></a><a href="#asciiz" class="headerlink" title=".asciiz"></a>.asciiz</h3>
-      <p>伪指令<code>.asciiz</code>以字节为单位存储字符串，<strong>其中每一个字符占一个字节</strong>。<strong>但需要注意的是此字符串的结尾有’\0’。</strong></p>
-<p>以<code>.ascizz &quot;Hello world&quot;</code>为例,字符串大小为12byte，中的可见字符有11个(有空格)，占11个字节，末尾’\0‘占一个字节，总共有12byte。</p>
-
-        <h3 id="byte">
-          <a href="#byte" class="heading-link"><i class="fas fa-link"></i></a><a href="#byte" class="headerlink" title=".byte"></a>.byte</h3>
-      <p>伪指令<code>.byte</code>以字节为单位申请空间，.byte后可以跟若干个以逗号隔开的数字，<strong>每一个数字表示在申请的连续空间中</strong>，每一个字节的空间所存储的值。</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.data 0x00000000</span><br><span class="line">num .byte 1,2,3,4,5,6,7,8</span><br></pre></td></tr></table></div></figure>
-
-<p>以上述代码为例，.data 指明了数据的开始地址，即0x0000000，.byte创建了8个byte的空间，每一个字节存储相应的数字，从地址0x00000000开始到0x00000007，每一个字节分别存储1到8。</p>
-<p><strong>这里要注意的是，每一个数字是以一个字节的大小存储的，在二进制是八位大小，换算到16进制下，占16进制的两位，所以上例，每一个字节所存储的数据分别为0x01到0x08。</strong></p>
-
-        <h3 id="li">
-          <a href="#li" class="heading-link"><i class="fas fa-link"></i></a><a href="#li" class="headerlink" title="li"></a>li</h3>
-      <p>加载立即数，可以将立即数形式的地址存入到寄存器中。</p>
-
-        <h3 id="lw-sw">
-          <a href="#lw-sw" class="heading-link"><i class="fas fa-link"></i></a><a href="#lw-sw" class="headerlink" title="lw sw"></a>lw sw</h3>
-      <p>lw rt，offset（base）</p>
-<p>加载字，<strong>从base的起始地址向后移动offest个字节后的位置</strong>开始向rt中<strong>加载</strong>一个字(4 byte)的数据。</p>
-<p>sw rt，offset（base）</p>
-<p>存储字，<strong>向base的起始地址向后移动offest个字节后的位置****存入</strong>rt中的数组数据，占一个字。</p>
-
-        <h3 id="lb-sb-拓展">
-          <a href="#lb-sb-拓展" class="heading-link"><i class="fas fa-link"></i></a><a href="#lb-sb-拓展" class="headerlink" title="lb sb(拓展)"></a>lb sb(拓展)</h3>
-      <p>分别为加载字节和存储字节，<strong>在之后的字符串的单个字符处理处理中会经常用到。</strong></p>
-
-        <h2 id="例题">
-          <a href="#例题" class="heading-link"><i class="fas fa-link"></i></a><a href="#例题" class="headerlink" title="例题"></a>例题</h2>
-      <p>以教程中的题为例，说明data中的数据是如何存储的以及寄存器中的值是如何获取的。</p>
-<p><img src="/2023/01/27/MIPS%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%9B%B8%E5%85%B3%E5%88%86%E4%BA%AB/image-20220902093049931.png" alt="image-20220902093049931"></p>
-<p>从先导知识可以明白我们的data部分从地址0x00001000开始，同时分配了总共(11+1)+8&#x3D;20字节的空间（至于加一是为什么，应该上面已经明白了）。</p>
-<p><strong>我们可以画一个内存中数据的排布</strong></p>
-<p><strong>data</strong></p>
-<div class="table-container"><table>
-<thead>
-<tr>
-<th align="center"><strong>0x00001000</strong></th>
-<th align="center"><strong>0x00001001</strong></th>
-<th align="center"><strong>0x00001002</strong></th>
-<th align="center"><strong>0x00001003</strong></th>
-<th align="center"><strong>0x00001004</strong></th>
-<th align="center"><strong>0x00001005</strong></th>
-<th align="center"><strong>0x00001006</strong></th>
-<th align="center"><strong>0x00001007</strong></th>
-<th align="center"><strong>0x00001008</strong></th>
-<th align="center"><strong>0x00001009</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">h</td>
-<td align="center">e</td>
-<td align="center">l</td>
-<td align="center">l</td>
-<td align="center">o</td>
-<td align="center">space</td>
-<td align="center">w</td>
-<td align="center">o</td>
-<td align="center">r</td>
-<td align="center">l</td>
-</tr>
-<tr>
-<td align="center">0x0000100a</td>
-<td align="center">0x0000100b</td>
-<td align="center">0x0000100c</td>
-<td align="center">0x0000100d</td>
-<td align="center">0x0000100e</td>
-<td align="center">0x0000100f</td>
-<td align="center">0x00001010</td>
-<td align="center">0x00001011</td>
-<td align="center">0x00001012</td>
-<td align="center">0x00001013</td>
-</tr>
-<tr>
-<td align="center">d</td>
-<td align="center">\0</td>
-<td align="center">0x01</td>
-<td align="center">0x02</td>
-<td align="center">0x03</td>
-<td align="center">0x04</td>
-<td align="center">0x05</td>
-<td align="center">0x06</td>
-<td align="center">0x07</td>
-<td align="center">0x08</td>
-</tr>
-</tbody></table></div>
-<p>li $a0 ,0x00001000 将地址0x00001000存入了$a0寄存器</p>
-<p>lw $t0,12($a0) 结合先导的解释，<strong>即从$a0存储的地址向后偏移12位，即从0x0000100c开始加载一个字的数据，即四个字节</strong>。</p>
-<p>那么是不是就是依次取0x01,0x02,0x03,0x04, 然后$t0的值就是0x01020304呢？<strong>答案是不是的</strong>，我们要知道数据存储的规律。<strong>数据是从低位向高位存储</strong>，可能这里大家还不太清楚，我们以一个可视化的例子为例：</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.data</span><br><span class="line">str: .asciiz &quot;Hello world&quot;</span><br></pre></td></tr></table></div></figure>
-
-<p>我们将这段代码放进MARs编译后,我们可以看见value0中竟然是 <strong>l l e H</strong></p>
-<p><img src="/2023/01/27/MIPS%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4%E7%9B%B8%E5%85%B3%E5%88%86%E4%BA%AB/image-20220902095028915.png" alt="image-20220902095028915"></p>
-<p><strong>数据是从低位到高位存储的，那么就是说是先将H放入最低位(H)，然后将e放入第二位(eH)，然后将l放入第三位(leH),最后将l放入第四位(lleH)。</strong></p>
-<p><strong>所以，我们以此类推，回到例题，我们要分别存入0x01到0x04，那么我们应该存储方式就是</strong> </p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x04 0x03 0x02 0x01</span><br></pre></td></tr></table></div></figure>
-
-<p><strong>最后加载到$t0中的一个字的数据为</strong></p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x04030201</span><br></pre></td></tr></table></div></figure>
-
-<p>补充说明字节存储顺序，具体细节可自行查找资料了解：</p>
-<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字节序`分为两种，和，其中`小端序（Little-endian）``大端序（Big-endian）</span><br></pre></td></tr></table></div></figure>
-
-<ul>
-<li>小端序：<strong>低位</strong>字节存入<strong>低地址</strong>，高位字节存入高地址</li>
-<li>大端序：<strong>高位</strong>字节存入<strong>低地址</strong>，低位字节存入高地址</li>
-</ul>
-<p><strong>不同</strong>的CPU、<strong>不同</strong>的数据传输过程会可能选用<strong>不同</strong>的字节序，部分MIPS处理器是大端序，部分MIPS处理器是小端序，还有些MIPS处理器同时支持两种字节序，可根据实际需要进行切换。</p>
-<p><strong>本课程所用的<code>MARS MIPS模拟器</code>使用的是小端字节序</strong>，即数据从低位字节开始到高位字节依次从低地址开始向高地址逐字节存入，取出时采用存储的逆操作。</p>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/"><i class="fas fa-angle-right"></i></a></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/AugetyVolta" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">15</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="Search for Posts (Support multiple keywords)"><div class="search-btns">Search by:<span class="search-btns-item search-btns-item--google"><i class="fab fa-google"></i>Google</span><span class="search-btns-item search-btns-item--bing"><i></i>Bing</span><span class="search-btns-item search-btns-item--baidu"><i></i>Baidu</span></div></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script>function initSearch() {
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content content-home" id="content"><section class="postlist"><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/05/Data_Structure%E6%80%BB%E7%BB%93/">Data_Structure总结</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-02-10</span></span></div></header><div class="post-body"><div class="post-excerpt"><blockquote>
+<p> 数据结构整理——<strong>数据结构基础</strong></p>
+<p> <strong>摘自数据结构PPT及作业  并且根据个人需要进行一些删改</strong></p>
+</blockquote></div><div class="post-readmore"><a class="post-readmore__link" href="/2023/01/05/Data_Structure%E6%80%BB%E7%BB%93/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/05/P2%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">P2学习总结</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-02-10</span></span></div></header><div class="post-body"><div class="post-excerpt"><blockquote>
+<p>P2学习的一些拓展</p>
+</blockquote></div><div class="post-readmore"><a class="post-readmore__link" href="/2023/01/05/P2%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/05/P1%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">P1学习总结</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-02-10</span></span></div></header><div class="post-body"><div class="post-excerpt"><blockquote>
+<p>P1学习的一些拓展</p>
+</blockquote></div><div class="post-readmore"><a class="post-readmore__link" href="/2023/01/05/P1%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/">vscode配置verilog环境</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-02-10</span></span></div></header><div class="post-body"><div class="post-excerpt"><p><strong>在win11的系统里，ise软件不能运行，而在虚拟机中ise的配置也很费劲，今天在这里教大家在VScode中玩转Verilog。</strong></p>
+<blockquote>
+<p>实现代码补全、代码高亮、错误检查</p>
+<p>实现生成Testbench</p>
+<p>实现波形仿真</p>
+</blockquote></div><div class="post-readmore"><a class="post-readmore__link" href="/2023/01/05/vscode%E9%85%8D%E7%BD%AEverilog%E7%8E%AF%E5%A2%83/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/">从D的触发机制到寄存器的同步清零</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-01-05</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-02-10</span></span></div></header><div class="post-body"><div class="post-excerpt"><blockquote>
+<p>之前助教向我们介绍了利用MUX进行同步清零的操作，但是对于寄存器的clk端没有进行使用。当我在看到D的触发器的触发冒险机制时，我在思考能否将这种机制应用到寄存器的同步复位上，最终结果证明是可行的。</p>
+</blockquote></div><div class="post-readmore"><a class="post-readmore__link" href="/2023/01/05/%E4%BB%8ED%E7%9A%84%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6%E5%88%B0%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E5%90%8C%E6%AD%A5%E6%B8%85%E9%9B%B6/"><span class="post-readmore__text">Read More</span><span class="post-readmore__icon"><i class="fas fa-long-arrow-alt-right"></i></span></a></div></div></article></section><nav class="paginator"><div class="paginator-inner"><a class="extend prev" rel="prev" href="/page/2/"><i class="fas fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/AugetyVolta" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">15</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">14</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">7</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="Search for Posts (Support multiple keywords)"><div class="search-btns">Search by:<span class="search-btns-item search-btns-item--google"><i class="fab fa-google"></i>Google</span><span class="search-btns-item search-btns-item--bing"><i></i>Bing</span><span class="search-btns-item search-btns-item--baidu"><i></i>Baidu</span></div></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
   var isXML = true;
   var search_path = 'search.xml';
 
@@ -553,4 +317,4 @@ if (Array.isArray(assistSearchList)) {
       extSearch(name);
     }, false);
   });
-}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script></body></html>
+}</script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script></body></html>
