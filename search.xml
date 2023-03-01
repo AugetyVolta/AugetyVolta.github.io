@@ -7457,4 +7457,158 @@ end
         <tag>Latex</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Lab0 实验报告</title>
+    <url>/2023/03/01/Lab0%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</url>
+    <content><![CDATA[
+        <h2 id="一-思考题">
+          <a href="#一-思考题" class="heading-link"><i class="fas fa-link"></i></a><a href="#一-思考题" class="headerlink" title="(一)思考题"></a>(一)思考题</h2>
+      
+        <h3 id="Thinking-0-1">
+          <a href="#Thinking-0-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-0-1" class="headerlink" title="Thinking 0.1"></a>Thinking 0.1</h3>
+      <p><strong>思考下列有关 Git 的问题：</strong> </p>
+<p><strong>• 在&#x2F;home&#x2F;21xxxxxx&#x2F;learnGit（已初始化）目录下创建一个名为 README.txt 的文件。执行命令 git status &gt; Untracked.txt。</strong></p>
+<p> <strong>• 在 README.txt 文件中添加任意文件内容，然后使用 add 命令，再执行命令 git status &gt; Stage.txt。</strong></p>
+<p> <strong>• 提交 README.txt，并在提交说明里写入自己的学号。</strong></p>
+<p> <strong>• 执行命令 cat Untracked.txt 和 cat Stage.txt，对比两次运行的结果，体会README.txt 两次所处位置的不同。</strong> </p>
+<p>​		Untracked.txt 里没有尚未暂存以便提交的文件，有Untracked.txt和README.txt两个未跟踪文件。Stage.txt里有尚未暂存以便提交的文件README.txt，有Stage.txt和Untracked.txt两个为跟踪的文件。</p>
+<p><strong>• 修改 README.txt 文件，再执行命令 git status &gt; Modified.txt。</strong> </p>
+<p><strong>• 执行命令 cat Modified.txt，观察其结果和第一次执行 add 命令之前的 status 是否一样，并思考原因。</strong></p>
+<p>​		与一开始相比，会在尚未暂存以便提交的文件地方显示<strong>“修改：README.txt”</strong>，是因为README.txt已经被跟踪，刚才被修改还尚未加入暂存区。</p>
+
+        <h3 id="Thinking-0-2">
+          <a href="#Thinking-0-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-0-2" class="headerlink" title="Thinking 0.2"></a>Thinking 0.2</h3>
+      
+        <h5 id="仔细看看0-10，思考一下箭头中的-add-the-file-、stage-the-file-和-commit-分别对应的是-Git-里的哪些命令呢？">
+          <a href="#仔细看看0-10，思考一下箭头中的-add-the-file-、stage-the-file-和-commit-分别对应的是-Git-里的哪些命令呢？" class="heading-link"><i class="fas fa-link"></i></a><a href="#仔细看看0-10，思考一下箭头中的-add-the-file-、stage-the-file-和-commit-分别对应的是-Git-里的哪些命令呢？" class="headerlink" title="仔细看看0.10，思考一下箭头中的 add the file 、stage the file 和 commit 分别对应的是 Git 里的哪些命令呢？"></a>仔细看看0.10，思考一下箭头中的 add the file 、stage the file 和 commit 分别对应的是 Git 里的哪些命令呢？</h5>
+      <p><img src="/2023/03/01/Lab0%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/image-20230301172204777.png" alt="image-20230301172204777"></p>
+<p><strong>add the file</strong>对应着**git add &lt;file&gt;**命令，将未追踪文件添加追踪并且添加到暂存区。</p>
+<p><strong>stage the file</strong>对应着**git add&lt;file&gt;**命令，将修改的文件添加到暂存区。</p>
+<p><strong>commit</strong>对应着<strong>git commit</strong>命令，将暂存区的文件提交到git仓库中。</p>
+
+        <h3 id="Thinking-0-3">
+          <a href="#Thinking-0-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-0-3" class="headerlink" title="Thinking 0.3"></a>Thinking 0.3</h3>
+      <ol>
+<li>
+        <h5 id="代码文件-print-c-被错误删除时，应当使用什么命令将其恢复？">
+          <a href="#代码文件-print-c-被错误删除时，应当使用什么命令将其恢复？" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码文件-print-c-被错误删除时，应当使用什么命令将其恢复？" class="headerlink" title="代码文件 print.c 被错误删除时，应当使用什么命令将其恢复？"></a>代码文件 print.c 被错误删除时，应当使用什么命令将其恢复？</h5>
+      <p>使用<code>git restore print.c</code></p>
+</li>
+<li>
+        <h5 id="代码文件-print-c-被错误删除后，执行了-git-rm-print-c-命令，此时应当使用什么命令将其恢复？">
+          <a href="#代码文件-print-c-被错误删除后，执行了-git-rm-print-c-命令，此时应当使用什么命令将其恢复？" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码文件-print-c-被错误删除后，执行了-git-rm-print-c-命令，此时应当使用什么命令将其恢复？" class="headerlink" title="代码文件 print.c 被错误删除后，执行了 git rm print.c 命令，此时应当使用什么命令将其恢复？"></a>代码文件 print.c 被错误删除后，执行了 git rm print.c 命令，此时应当使用什么命令将其恢复？</h5>
+      <p>使用<code>git reset HEAD print.c&amp;&amp;git checkout -- print.c </code></p>
+<p>或者<code>git restore --staged print.c&amp;&amp;git restore -- print.c</code></p>
+</li>
+<li>
+        <h5 id="无关文件-hello-txt-已经被添加到暂存区时，如何在不删除此文件的前提下将其移出暂存区？">
+          <a href="#无关文件-hello-txt-已经被添加到暂存区时，如何在不删除此文件的前提下将其移出暂存区？" class="heading-link"><i class="fas fa-link"></i></a><a href="#无关文件-hello-txt-已经被添加到暂存区时，如何在不删除此文件的前提下将其移出暂存区？" class="headerlink" title="无关文件 hello.txt 已经被添加到暂存区时，如何在不删除此文件的前提下将其移出暂存区？"></a>无关文件 hello.txt 已经被添加到暂存区时，如何在不删除此文件的前提下将其移出暂存区？</h5>
+      </li>
+</ol>
+<p>​		使用<code>git restore --staged hello.txt</code>或者<code>git rm --cached hello.txt</code></p>
+
+        <h3 id="Thinking-0-4">
+          <a href="#Thinking-0-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-0-4" class="headerlink" title="Thinking 0.4"></a>Thinking 0.4</h3>
+      <p><strong>思考下列有关 Git 的问题：</strong> </p>
+<p><strong>• 找到在&#x2F;home&#x2F;21xxxxxx&#x2F;learnGit 下刚刚创建的 README.txt 文件，若不存 在则新建该文件。</strong> </p>
+<p><strong>• 在文件里加入 Testing 1，git add，git commit，提交说明记为 1。</strong> </p>
+<p><strong>• 模仿上述做法，把 1 分别改为 2 和 3，再提交两次。</strong> </p>
+<p><strong>• 使用 git log 命令查看提交日志，看是否已经有三次提交，记下提交说明为 3 的哈希值a。</strong>      </p>
+<p><strong>• 进行版本回退。执行命令 git reset –hard HEAD^后，再执行 git log，观察其变化。</strong> </p>
+<p>​	此时对应的是commit2的hash值，使用git log后，commit 3的提交消失了。</p>
+<p><strong>• 找到提交说明为 1 的哈希值，执行命令 git reset –hard &lt;hash&gt;  后，再执 行 git log，观察其变化。</strong> </p>
+<p>​	此时2,3的提交消失了，此时对应的是commit1的状态</p>
+<p><strong>• 现在已经回到了旧版本，为了再次回到新版本，执行 git reset –hard &lt;hash&gt;  ，再执行 git log，观察其变化。</strong></p>
+<p>​	此时1,2,3次的提交记录都恢复了。</p>
+
+        <h3 id="Thinking-0-5">
+          <a href="#Thinking-0-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-0-5" class="headerlink" title="Thinking 0.5"></a>Thinking 0.5</h3>
+      
+        <h5 id="执行如下命令-并查看结果">
+          <a href="#执行如下命令-并查看结果" class="heading-link"><i class="fas fa-link"></i></a><a href="#执行如下命令-并查看结果" class="headerlink" title="执行如下命令, 并查看结果"></a>执行如下命令, 并查看结果</h5>
+      <p><strong>• echo first</strong> </p>
+<p><strong>• echo second &gt; output.txt</strong> </p>
+<p><strong>• echo third &gt; output.txt</strong> </p>
+<p><strong>• echo forth &gt;&gt; output.txt</strong></p>
+<p>执行结果依次为：</p>
+<ul>
+<li>在终端上输出字符串”first”</li>
+<li>终端上无输出，output.txt文件中有”secend”</li>
+<li>终端上无输出，output.txt文件被覆盖为”third”</li>
+<li>终端上无输出，output.txt文件被append字符串”forth”</li>
+</ul>
+
+        <h3 id="Thinking-0-6">
+          <a href="#Thinking-0-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-0-6" class="headerlink" title="Thinking 0.6"></a>Thinking 0.6</h3>
+      <p><strong>使用你知道的方法（包括重定向）创建下图内容的文件（文件命名为 test）， 将创建该文件的命令序列保存在 command 文件中，并将 test 文件作为批处理文件运行， 将运行结果输出至 result 文件中。给出 command 文件和 result 文件的内容，并对最后的结果进行解释说明（可以从 test 文件的内容入手）. 具体实现的过程中思考下列问 题: echo echo Shell Start 与 echo `echo Shell Start`效果是否有区别; echo echo $c&gt;file1 与 echo `echo $c&gt;file1`效果是否有区别.</strong></p>
+<img src="/2023/03/01/Lab0%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/image-20230301191900143.png" alt="image-20230301191900143" style="zoom:67%;">
+
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="comment">#command</span></span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">echo</span> Shell Start...&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;echo set a = 1&#x27;</span> &gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;a=1&#x27;</span> &gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;echo set b = 2&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;b=2&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">echo</span> <span class="built_in">set</span> c = a+b&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;c=$[$a+$b]&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;echo c=$c&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;echo save c to ./file1&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;echo $c&gt;file1&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;echo save b to ./file2&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;echo $b&gt;file2&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;echo save a to ./file3&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;echo $a&gt;file3&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">echo</span> save file1 file2 file3 to file4&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;cat file1&gt;file4&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;cat file2&gt;&gt;file4&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;cat file3&gt;&gt;file4&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">echo</span> save file4 to ./result&gt;&gt;<span class="built_in">test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;cat file4&gt;&gt;result&#x27;</span>&gt;&gt;<span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#result</span></span><br><span class="line">1</span><br></pre></td></tr></table></div></figure>
+
+<p>在实验过程过程中，<strong>echo echo Shell Start</strong>会输出<strong>echo Shell Start</strong>，然而<strong>echo `echo Shell Start&#96;<strong>会输出</strong>Shell Start</strong>，它们有输出上的不同。</p>
+<p><strong>echo echo $c&gt;file1</strong>会在file1文件中写入<strong>echo</strong>，**echo `echo $c&gt;file1&#96;**没有对文件进行写入。</p>
+<p><strong>在解决该问时发现了三个易错点</strong></p>
+<p><strong>1.echo的使用</strong></p>
+<p>​		<strong>echo和`使用容易引起可能的错误导致错误输出</strong>，因此如果想要在<strong>echo命令中输出字符串echo，最好使用单引号括起来</strong>，这样输出的就是一个整体。</p>
+<p><strong>2.$的使用</strong></p>
+<p>​		echo中$有着取变量值的作用，如果想要打印$符号，比如<code>echo $a</code>得到的就是空的输出，查阅资料可知，是由于没有提前定义变量a，因此要<strong>输出$也应使用单引号括起来</strong>。</p>
+<p><strong>3.重定向符号&gt;&gt;或&gt;的使用</strong></p>
+<p>​		我们可能会将数字重定向输入到文件当中，然而<strong>如果输出内容的最后一个字符是数字并且和重定向符号相连，那就会导致输出错误或者没有输出</strong>。</p>
+<p>​		<code>echo 122&gt;&gt;test</code>我们想要把122输入到test文件中，但是2&gt;&gt;表示的是将错误信息输出，因此test文件中将没有结果。<strong>修改方式为122加上单引号，或者在&gt;&gt;前加上空格</strong>。</p>
+
+        <h2 id="二-难点分析">
+          <a href="#二-难点分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#二-难点分析" class="headerlink" title="(二)难点分析"></a>(二)难点分析</h2>
+      
+        <h4 id="exercise-0-1">
+          <a href="#exercise-0-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#exercise-0-1" class="headerlink" title="exercise 0.1"></a>exercise 0.1</h4>
+      <p>第一个问题的难点在于其中第三小问<strong>对于文件内容的提取和处理</strong>。</p>
+<p>首先要解决的一个问题是参数的传递，需要传入AAA BBB两个字符串，我们可以使用变量<strong>var1&#x3D;$1</strong>，<strong>var2&#x3D;$2</strong>来接收。</p>
+<p>第二个问题是特定行数的内容提取。我们可以使用sed函数的-p选项，提取<strong>文件的某一行输出</strong>。</p>
+<p>其格式为</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">sed <span class="string">&#x27;Xp&#x27;</span> &lt;file&gt; <span class="comment">#X is the line number you need</span></span><br></pre></td></tr></table></div></figure>
+
+<p>接下来使用重定向，即可输出到目标文件中。</p>
+
+        <h4 id="exercise-0-2">
+          <a href="#exercise-0-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#exercise-0-2" class="headerlink" title="exercise 0.2"></a>exercise 0.2</h4>
+      <p>第二个问题的难点在于<strong>参数的引用</strong>，代码基本框架已经给出，我们要使用的只有rm和mv两个指令，对于数字的引用，需要用$表示值的引用。还有一个难点在于数字变量的自增，可以有以下两种方法：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="built_in">let</span> a=a+1 <span class="comment">#注意一定等号要紧挨</span></span><br><span class="line"><span class="comment">#or</span></span><br><span class="line">a=$((<span class="variable">$a</span>+<span class="number">1</span>))</span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="exercise-0-3">
+          <a href="#exercise-0-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#exercise-0-3" class="headerlink" title="exercise 0.3"></a>exercise 0.3</h4>
+      <p>第三个问题的难点在于<strong>目标的寻找，以及最终格式的提取</strong>。</p>
+<p>首先我们要解决找到含有int的行并且输出，我们可以使用grep指令，具体格式为：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">grep -n <span class="variable">$target</span> <span class="variable">$file</span> </span><br><span class="line"><span class="comment">#$target is the target you want to search</span></span><br><span class="line"><span class="comment">#$file is where you search in</span></span><br></pre></td></tr></table></div></figure>
+
+<p>接下来我们要提取输出中的数字，我们可以观察到每一行是由{num:str}组成的，但是我们只需要”:”之前的数字，可以使用<strong>awk -F的正则表达式提取</strong>，并且将最后结果输出到result文件中，具体格式为：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">awk -F <span class="string">&#x27;[:]&#x27;</span> <span class="string">&#x27;&#123;print $1&#125;&#x27;</span>&gt; <span class="variable">$result</span> </span><br><span class="line"><span class="comment"># &#x27;[:]&#x27; is the spilt symbol</span></span><br><span class="line"><span class="comment"># &quot;print&quot; means print in the  Terminal</span></span><br><span class="line"><span class="comment">#  $1 is the first item that &#x27;:&#x27; separated</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h4 id="exercise-0-4">
+          <a href="#exercise-0-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#exercise-0-4" class="headerlink" title="exercise 0.4"></a>exercise 0.4</h4>
+      <p>第四个问题的难点在于<strong>如何处理编译时需引用外部.h文件</strong>和<strong>如何在Makefile内部调用外部Makefile。</strong></p>
+<p>调用外部.h文件可以使用<strong>gcc中的-I选项</strong>，将后面跟的目录作为第一个寻找<strong>头文件的目录</strong>，格式如下：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="code"><pre><span class="line">gcc -I ../include -c  main.o main.c</span><br></pre></td></tr></table></div></figure>
+
+<p><strong>在Makefile内部调用外部Makefile</strong></p>
+<figure class="highlight makefile"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="variable">$(MAKE)</span> target -C <span class="variable">$(TARGET_PATH)</span> </span><br><span class="line"><span class="comment">#if target is the first make,it can be omitted</span></span><br><span class="line"><span class="comment">#TARGET_PATH is a str for the target make&#x27;s position				</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h2 id="三-实验体会">
+          <a href="#三-实验体会" class="heading-link"><i class="fas fa-link"></i></a><a href="#三-实验体会" class="headerlink" title="(三)实验体会"></a>(三)实验体会</h2>
+      <p>​		通过这次实验我有三个方面的体会：	</p>
+<ul>
+<li>各种指令操作的选项众多，我们不能仅仅拘泥于看教程和search on the Internet，更重要的是我们要学会使用man，去官方说明里寻找最official的说明。</li>
+<li>Linux使用博大精深，要学会按照自己的需求在网上寻求帮助，要善于学，乐于学，才能应对各种需求实现的多样性。</li>
+<li>对于常见指令要做到反复练习，才能更高效的处理需求。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>-[OS,Lab0]</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
 </search>
