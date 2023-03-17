@@ -1,0 +1,424 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="前言       第一单元的主题是表达式的展开及求导，主要的学习目标是训练我们面向对象的思维，让我们在实践中理解感受鲁棒性设计和层次化设计的设计方法，学会管理类以及相应的容器。本单元共有三次练习——不含括号嵌套的多项式展开，增加了自定义函数和三角函数的展开，增加了求导因子、括号嵌套以及函数嵌套定义的展开。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="unit1”">
+<meta property="og:url" content="https://augetyvolta.github.io/2023/03/17/BUAA_OO_Unit_1/index.html">
+<meta property="og:site_name" content="AugetyVolte&#39;s Blog">
+<meta property="og:description" content="前言       第一单元的主题是表达式的展开及求导，主要的学习目标是训练我们面向对象的思维，让我们在实践中理解感受鲁棒性设计和层次化设计的设计方法，学会管理类以及相应的容器。本单元共有三次练习——不含括号嵌套的多项式展开，增加了自定义函数和三角函数的展开，增加了求导因子、括号嵌套以及函数嵌套定义的展开。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-17T03:38:33.000Z">
+<meta property="article:modified_time" content="2023-03-17T03:45:27.545Z">
+<meta property="article:author" content="AugetyVolte">
+<meta property="article:tag" content="OO">
+<meta name="twitter:card" content="summary"><title>unit1” | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/03/17/BUAA_OO_Unit_1/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: ["google","bing","baidu"],
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">unit1”</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-03-17</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-03-17</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">Visited</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body">
+        <h2 id="前言">
+          <a href="#前言" class="heading-link"><i class="fas fa-link"></i></a><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
+      <p>第一单元的主题是表达式的展开及求导，主要的学习目标是训练我们面向对象的思维，让我们在实践中理解感受鲁棒性设计和层次化设计的设计方法，学会管理类以及相应的容器。本单元共有三次练习——<strong>不含括号嵌套的多项式展开</strong>，<strong>增加了自定义函数和三角函数的展开</strong>，<strong>增加了求导因子、括号嵌套以及函数嵌套定义的展开</strong>。</p>
+<hr>
+<span id="more"></span>
+
+
+        <h2 id="第一次作业分析">
+          <a href="#第一次作业分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#第一次作业分析" class="headerlink" title="第一次作业分析"></a>第一次作业分析</h2>
+      <p>第一次作业是对于只含有<strong>x,y,z三个变量</strong>的含有<strong>单层括号</strong>的多项式进行解析。其中多项式由项相加构成，项由因子相乘构成，本次作业有<strong>表达式因子</strong>，<strong>常量因子</strong>，<strong>幂函数</strong>三类因子。</p>
+
+        <h3 id="代码的UML类图">
+          <a href="#代码的UML类图" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码的UML类图" class="headerlink" title="代码的UML类图"></a>代码的UML类图</h3>
+      
+        <h3 id="代码架构分析">
+          <a href="#代码架构分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码架构分析" class="headerlink" title="代码架构分析"></a>代码架构分析</h3>
+      
+        <h3 id="代码的复杂度分析">
+          <a href="#代码的复杂度分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码的复杂度分析" class="headerlink" title="代码的复杂度分析"></a>代码的复杂度分析</h3>
+      
+        <h3 id="BUG分析">
+          <a href="#BUG分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#BUG分析" class="headerlink" title="BUG分析"></a>BUG分析</h3>
+      <p>在这一次的作业中，我的互测强测都没有出问题。</p>
+<p>在我hack别人的过程中，我发现有些同学的幂函数的乘方处理有问题，本该外层指数和幂函数指数相乘错误处理成了相加。除此以外，还有的同学在化简过程中虽然去除了0，但是没有考虑如果最终化简结果是0时也应该有一个0的输出导致最终出错。</p>
+<hr>
+
+        <h2 id="第二次作业分析">
+          <a href="#第二次作业分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#第二次作业分析" class="headerlink" title="第二次作业分析"></a>第二次作业分析</h2>
+      <p>第二次作业在第一次作业的基础上增加了<strong>三角函数因子</strong>，以及支持<strong>带有形参的自定义函数</strong>。</p>
+
+        <h3 id="代码的UML类图-1">
+          <a href="#代码的UML类图-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码的UML类图-1" class="headerlink" title="代码的UML类图"></a>代码的UML类图</h3>
+      
+        <h3 id="代码架构分析-1">
+          <a href="#代码架构分析-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码架构分析-1" class="headerlink" title="代码架构分析"></a>代码架构分析</h3>
+      
+        <h3 id="代码的复杂度分析-1">
+          <a href="#代码的复杂度分析-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码的复杂度分析-1" class="headerlink" title="代码的复杂度分析"></a>代码的复杂度分析</h3>
+      
+        <h3 id="BUG分析-1">
+          <a href="#BUG分析-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#BUG分析-1" class="headerlink" title="BUG分析"></a>BUG分析</h3>
+      <p>在这次的强测中，我没有出现问题，但在互测中，我因为一个错误狠狠中了6刀，令人唏嘘。问题如下：</p>
+<figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//input:</span><br><span class="line">0</span><br><span class="line">sin(0)**0</span><br><span class="line">//output:</span><br><span class="line">0</span><br></pre></td></tr></table></div></figure>
+
+<p>我在写TrigFactor类的toPoly方法时，对于sin内因子为零的情况直接输出了0，漏考虑了TrigFactor的0次幂，导致出错，这种问题应该通过仔细查看代码，即静态测试的方法去排除。</p>
+<hr>
+
+        <h2 id="第三次作业分析">
+          <a href="#第三次作业分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#第三次作业分析" class="headerlink" title="第三次作业分析"></a>第三次作业分析</h2>
+      <p>第三次作业在前两次作业的基础上增加了<strong>求导的运算方法</strong>，同时要求<strong>支持括号嵌套</strong>，和<strong>函数定义中可调用之前已经定义的函数</strong>。</p>
+
+        <h3 id="代码的UML类图-2">
+          <a href="#代码的UML类图-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码的UML类图-2" class="headerlink" title="代码的UML类图"></a>代码的UML类图</h3>
+      
+        <h3 id="代码架构分析-2">
+          <a href="#代码架构分析-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码架构分析-2" class="headerlink" title="代码架构分析"></a>代码架构分析</h3>
+      
+        <h3 id="代码的复杂度分析-2">
+          <a href="#代码的复杂度分析-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#代码的复杂度分析-2" class="headerlink" title="代码的复杂度分析"></a>代码的复杂度分析</h3>
+      
+        <h3 id="BUG分析-2">
+          <a href="#BUG分析-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#BUG分析-2" class="headerlink" title="BUG分析"></a>BUG分析</h3>
+      <p>在这一次的作业中，我的强测互测都没有出问题。</p>
+<p>在hack的过程中，我发现有些同学的函数递归调用出现了问题，经过分析，应该是函数调用策略上出现了问题。</p>
+
+        <h2 id="关于测试">
+          <a href="#关于测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#关于测试" class="headerlink" title="关于测试"></a>关于测试</h2>
+      
+        <h2 id="结构设计体验">
+          <a href="#结构设计体验" class="heading-link"><i class="fas fa-link"></i></a><a href="#结构设计体验" class="headerlink" title="结构设计体验"></a>结构设计体验</h2>
+      
+        <h2 id="心得体会">
+          <a href="#心得体会" class="heading-link"><i class="fas fa-link"></i></a><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h2>
+      </div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/03/17/BUAA_OO_Unit_1/">https://augetyvolta.github.io/2023/03/17/BUAA_OO_Unit_1/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/OO/">OO</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2023/03/10/Lab1%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"><span class="paginator-prev__text">Lab1 实验报告</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="minivaline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">
+          前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">
+          第一次作业分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%9A%84UML%E7%B1%BB%E5%9B%BE"><span class="toc-number">2.1.</span> <span class="toc-text">
+          代码的UML类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90"><span class="toc-number">2.2.</span> <span class="toc-text">
+          代码架构分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-number">2.3.</span> <span class="toc-text">
+          代码的复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BUG%E5%88%86%E6%9E%90"><span class="toc-number">2.4.</span> <span class="toc-text">
+          BUG分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text">
+          第二次作业分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%9A%84UML%E7%B1%BB%E5%9B%BE-1"><span class="toc-number">3.1.</span> <span class="toc-text">
+          代码的UML类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90-1"><span class="toc-number">3.2.</span> <span class="toc-text">
+          代码架构分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-1"><span class="toc-number">3.3.</span> <span class="toc-text">
+          代码的复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BUG%E5%88%86%E6%9E%90-1"><span class="toc-number">3.4.</span> <span class="toc-text">
+          BUG分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AC%A1%E4%BD%9C%E4%B8%9A%E5%88%86%E6%9E%90"><span class="toc-number">4.</span> <span class="toc-text">
+          第三次作业分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%9A%84UML%E7%B1%BB%E5%9B%BE-2"><span class="toc-number">4.1.</span> <span class="toc-text">
+          代码的UML类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90-2"><span class="toc-number">4.2.</span> <span class="toc-text">
+          代码架构分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%9A%84%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="toc-number">4.3.</span> <span class="toc-text">
+          代码的复杂度分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BUG%E5%88%86%E6%9E%90-2"><span class="toc-number">4.4.</span> <span class="toc-text">
+          BUG分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%B5%8B%E8%AF%95"><span class="toc-number">5.</span> <span class="toc-text">
+          关于测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%BD%93%E9%AA%8C"><span class="toc-number">6.</span> <span class="toc-text">
+          结构设计体验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">
+          心得体会</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/AugetyVolta" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">19</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">19</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="Search for Posts (Support multiple keywords)"><div class="search-btns">Search by:<span class="search-btns-item search-btns-item--google"><i class="fab fa-google"></i>Google</span><span class="search-btns-item search-btns-item--bing"><i></i>Bing</span><span class="search-btns-item search-btns-item--baidu"><i></i>Baidu</span></div></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.xml';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ Untitled ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', 'Please enter characters');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js"></script><script>function loadminivaline () {
+  new MiniValine({
+    el: '#minivaline-container',
+    appId: '',
+    appKey: '',
+    placeholder: 'Write a Comment',
+    lang: '',
+    adminEmailMd5: '',
+    math: true,
+    md: true
+  });
+
+}
+
+if (false) {
+  loadminivaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadminivaline, false);
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script></body></html>
