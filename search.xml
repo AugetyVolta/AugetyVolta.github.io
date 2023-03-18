@@ -10248,8 +10248,7 @@ end
 </ul>
 ]]></content>
       <categories>
-        <category>BUAA-OO</category>
-        <category>Unit1</category>
+        <category>-[BUAA-OO,Unit1]</category>
       </categories>
       <tags>
         <tag>OO</tag>
