@@ -1,0 +1,470 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="BUAA 2023 Operating System Lab2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lab2实验报告">
+<meta property="og:url" content="https://augetyvolta.github.io/2023/03/29/Lab2%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="AugetyVolte&#39;s Blog">
+<meta property="og:description" content="BUAA 2023 Operating System Lab2">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-29T10:37:24.000Z">
+<meta property="article:modified_time" content="2023-03-29T10:38:26.769Z">
+<meta property="article:author" content="AugetyVolte">
+<meta property="article:tag" content="OS">
+<meta name="twitter:card" content="summary"><title>Lab2实验报告 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/03/29/Lab2%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: ["google","bing","baidu"],
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Lab2实验报告</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-03-29</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-03-29</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">Visited</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><blockquote>
+<p>BUAA 2023 Operating System Lab2</p>
+</blockquote>
+<span id="more"></span>
+
+
+        <h2 id="一-思考题">
+          <a href="#一-思考题" class="heading-link"><i class="fas fa-link"></i></a><a href="#一-思考题" class="headerlink" title="(一)思考题"></a>(一)思考题</h2>
+      
+        <h3 id="Thinking-2-1">
+          <a href="#Thinking-2-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-2-1" class="headerlink" title="Thinking 2.1"></a><strong>Thinking 2.1</strong></h3>
+      <p> <strong>请根据上述说明，回答问题：在编写的 C 程序中，指针变量中存储的地址是虚拟地址，还是物理地址？MIPS 汇编程序中 lw 和 sw 使用的是虚拟地址，还是物理地址？</strong> </p>
+<p>编写的C程序中，指针变量中存储的地址是虚拟地址，MIPS汇编程序中的lw和sw使用的也是虚拟地址，因为这些都是对于某一个进程的逻辑地址，都是虚拟地址。</p>
+
+        <h3 id="Thinking-2-2">
+          <a href="#Thinking-2-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-2-2" class="headerlink" title="Thinking 2.2"></a><strong>Thinking 2.2</strong></h3>
+      <p><strong>请思考下述两个问题：</strong></p>
+<ul>
+<li><strong>从可重用性的角度，阐述用宏来实现链表的好处。</strong></li>
+<li><strong>查看实验环境中的 &#x2F;usr&#x2F;include&#x2F;sys&#x2F;queue.h，了解其中单向链表与循环链表的实现，比较它们与本实验中使用的双向链表，分析三者在插入与删除操作上的性能差异。</strong><ul>
+<li>通过宏实现链表，我们可以通过宏定义的传参传入相应的类型和命名随时改变链表项的类型，不需要再重新定义新的结构体，增加了可重用性。</li>
+<li>在实验环境中，循环链表在插入删除操作中和双向链表没有太大差异<ul>
+<li>插入操作：单向链表的插入的效率比双向链表要高，单向链表的插入只需要两行，双向链表需要四行，循环链表也是四行，需要额外判断next是不是指向了头指针。插入到头结点对三种链表性能相似，插入到尾结点对于单向链表和双向链表需要遍历完整整个链表。</li>
+<li>删除操作：删除操作对三种表的性能类似，都需要遍历找到相应的结点。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="Thinking-2-3">
+          <a href="#Thinking-2-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-2-3" class="headerlink" title="Thinking 2.3"></a><strong>Thinking 2.3</strong></h3>
+      <p><strong>请阅读 include&#x2F;queue.h 以及 include&#x2F;pmap.h, 将 Page_list 的结构梳理清楚，选择正确的展开结构。</strong></p>
+<p>Page_list的结构如C选项所示：</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Page_list</span>&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">		<span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">			<span class="class"><span class="keyword">struct</span> <span class="title">Page</span> *<span class="title">le_next</span>;</span></span><br><span class="line">			<span class="class"><span class="keyword">struct</span> <span class="title">Page</span> **<span class="title">le_prev</span>;</span></span><br><span class="line">		&#125; pp_link;</span><br><span class="line">		u_short pp_ref;</span><br><span class="line">	&#125;* lh_first;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="Thinking-2-4">
+          <a href="#Thinking-2-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-2-4" class="headerlink" title="Thinking 2.4"></a><strong>Thinking 2.4</strong></h3>
+      <p><strong>请思考下面两个问题：</strong></p>
+<ul>
+<li><p><strong>请阅读上面有关 R3000-TLB 的描述，从虚拟内存的实现角度，阐述 ASID 的必要性。</strong></p>
+</li>
+<li><p><strong>请阅读《IDT R30xx Family Software Reference Manual》的 Chapter 6，结合 ASID段的位数，说明 R3000 中可容纳不同的地址空间的最大数量。</strong></p>
+<ul>
+<li><p>对于每一个进程，它都有自己的虚拟空间，即他们所在的地址空间是不一样的，所以存在在不同的地址空间中，他们存在相同的VPN，但是它们对应的物理页号是不同的，因此我们需要用ASID区分不同的地址空间，保证不同地址空间VPN映射的物理地址是唯一的。并且在进程切换时，也可以根据ASID的不同选择将TLB中的非目标进程的表项清除。</p>
+</li>
+<li><p>可容纳不同地址空间的最大数目：64</p>
+<blockquote>
+<p>Since the ASID is only 6 bits long, OS software does have to lend a hand if there are ever more than 64 address spaces in concurrent use; but it probably won’t happen too often. In such a system, new tasks are assigned new ASIDs until all 64 are assigned; at that time, all tasks are flushed of their ASIDs “de-assigned” and the TLB flushed; as each task is re-entered, a new ASID is given. Thus, ASID flushing is relatively infrequent.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="Thinking-2-5">
+          <a href="#Thinking-2-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-2-5" class="headerlink" title="Thinking 2.5"></a><strong>Thinking 2.5</strong></h3>
+      <p><strong>请回答下述三个问题：</strong></p>
+<ul>
+<li><p><strong>tlb_invalidate 和 tlb_out 的调用关系？</strong></p>
+</li>
+<li><p><strong>请用一句话概括 tlb_invalidate 的作用。</strong></p>
+</li>
+<li><p><strong>逐行解释 tlb_out 中的汇编代码。</strong></p>
+<ul>
+<li><p>tlb_invalidate调用tlb_out</p>
+<ul>
+<li>&#96;&#96;&#96;c<br>&#x2F;&#x2F;pamp.c<br>void tlb_invalidate(u_int asid,u_long va){<br>tlb_out(PTE_ADDR(va)|(asid&lt;&lt;6));<br>}<figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 删除特定虚拟地址在TLB中的旧表项</span><br><span class="line"></span><br><span class="line">- ```c</span><br><span class="line">  LEAF(tlb_out)</span><br><span class="line">     .set noreorder</span><br><span class="line">            mfc0    t0, CP0_ENTRYHI</span><br><span class="line">            //将EntryHi Register的内容取出，放到暂存寄存器中</span><br><span class="line">            mtc0    a0, CP0_ENTRYHI</span><br><span class="line">      	  //将a0寄存器存放的旧表项的Key放入EntryHi Register中</span><br><span class="line">            nop</span><br><span class="line">             /* Step 1: Use &#x27;tlbp&#x27; to probe TLB entry */</span><br><span class="line">             /* Exercise 2.8: Your code here. (1/2) */</span><br><span class="line">        	  tlbp</span><br><span class="line">      	  //根据EntryHi中的Key查找对应的旧表项，将表项的索引存入Index</span><br><span class="line">            nop</span><br><span class="line">            /* Step 2: Fetch the probe result from CP0.Index */</span><br><span class="line">            mfc0    t1, CP0_INDEX</span><br><span class="line">      	  //取出表项的索引放到t1寄存器中</span><br><span class="line">    .set reorder</span><br><span class="line">            bltz    t1, NO_SUCH_ENTRY</span><br><span class="line">      	  //如果index小于0，说明不存在该表项，跳转到NO_SUCH_ENTRY</span><br><span class="line">    .set noreorder</span><br><span class="line">            mtc0    zero, CP0_ENTRYHI</span><br><span class="line">      	  //清空EntryHi Register寄存器</span><br><span class="line">            mtc0    zero, CP0_ENTRYLO0</span><br><span class="line">            //清空EntryLo Register寄存器</span><br><span class="line">      	  nop</span><br><span class="line">            /* Step 3: Use &#x27;tlbwi&#x27; to write CP0.EntryHi/Lo into TLB at CP0.Index  */</span><br><span class="line">           /* Exercise 2.8: Your code here. (2/2) */</span><br><span class="line">            tlbwi</span><br><span class="line">      	  //将EntryHi和EntryLo中的值写入索引指定的TLB表项，就是清空之后的				内容写进去，把原来内容覆盖掉</span><br><span class="line">    .set reorder</span><br><span class="line">   </span><br><span class="line">    NO_SUCH_ENTRY:</span><br><span class="line">            mtc0    t0, CP0_ENTRYHI</span><br><span class="line">            //将t0寄存器的内容重新放入EntryHi Register中</span><br><span class="line">            j       ra</span><br><span class="line">            //返回tlb_out被调用的地址</span><br><span class="line">    END(tlb_out)</span><br></pre></td></tr></table></div></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        <h3 id="Thinking-2-6">
+          <a href="#Thinking-2-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-2-6" class="headerlink" title="Thinking 2.6"></a><strong>Thinking 2.6</strong></h3>
+      <p><strong>任选下述二者之一回答：</strong></p>
+<p><strong>简单了解并叙述 X86 体系结构中的内存管理机制，比较 X86 和 MIPS 在内存管理上的区别。</strong></p>
+<p><strong>简单了解并叙述 RISC-V 中的内存管理机制，比较 RISC-V 与 MIPS 在内存管理上的区别。</strong></p>
+<p>​		X86架构使用分页机制来管理内存。MIPS架构也使用分页机制来管理内存。但是，与X86不同，MIPS使用TLB来缓存页面表项以实现更快的访问。</p>
+
+        <h3 id="Thinking-A-1">
+          <a href="#Thinking-A-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-A-1" class="headerlink" title="Thinking A.1"></a>Thinking A.1</h3>
+      <p><strong>在现代的 64 位系统中，提供了 64 位的字长，但实际上不是 64 位页式存储系统。假设在 64 位系统中采用三级页表机制，页面大小 4KB。由于 64 位系统中字长为8B，且页目录也占用一页，因此页目录中有 512 个页目录项，因此每级页表都需要 9 位。因此在 64 位系统下，总共需要 3 <em>×</em> 9 + 12 &#x3D; 39 位就可以实现三级页表机制，并不需要 64位。</strong></p>
+<p><strong>现考虑上述 39 位的三级页式存储系统，虚拟地址空间为 512 GB，若三级页表的基地址为 PTbase，请计算：</strong></p>
+<ul>
+<li><p><strong>三级页表页目录的基地址。</strong></p>
+</li>
+<li><p><strong>映射到页目录自身的页目录项（自映射）。</strong></p>
+</li>
+</ul>
+<p>页表基地址(page table) 为PT<del>base</del></p>
+<p><strong>页中间目录基地址(page middle directory) PMDbase：</strong></p>
+<p>(PT<del>base</del> &gt;&gt; 12) * 8 + PT<del>base</del></p>
+<p><strong>页全局目录(page global directory) PGDbase：</strong></p>
+<p>((PT<del>base</del> &gt;&gt; 12) * 8 + PT<del>base</del>)&gt;&gt;12*8+PT<del>base</del><strong>（三级页表页目录的基地址）</strong></p>
+<p>即PT<del>base</del>+PT<del>base</del>&gt;&gt;9+PT<del>base</del>&gt;&gt;18</p>
+<p><strong>页全局目录项（page global directory entry）PGDE：</strong></p>
+<p>(PT<del>base</del>+PT<del>base</del>&gt;&gt;9+PT<del>base</del>&gt;&gt;18)&gt;&gt;12 <em>8*<em>（映射到页目录自身的页目录项）</em></em></p>
+<p>即PT<del>base</del>+PT<del>base</del>&gt;&gt;9+PT<del>base</del>&gt;&gt;18+PTbase&gt;&gt;27</p>
+
+        <h2 id="二-难点分析">
+          <a href="#二-难点分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#二-难点分析" class="headerlink" title="(二)难点分析"></a>(二)难点分析</h2>
+      
+        <h3 id="exercise2-2">
+          <a href="#exercise2-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#exercise2-2" class="headerlink" title="exercise2.2"></a>exercise2.2</h3>
+      <p>难点在于对于这里面链表和我们平常所理解的链表不同，我们平常见到双向链表的pre指针是指向前一个表项，而这里的链表的pre指针指向的是前一个链表的next指针，这里需要注意。同时对于宏的应用也是一个难点。</p>
+
+        <h3 id="exercise2-4">
+          <a href="#exercise2-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#exercise2-4" class="headerlink" title="exercise2.4"></a>exercise2.4</h3>
+      <p>在程序中对于地址的处理一定要将物理地址转化为虚拟地址才能被操作，这是2.4的一个难点。</p>
+
+        <h3 id="exercise2-6">
+          <a href="#exercise2-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#exercise2-6" class="headerlink" title="exercise2.6"></a>exercise2.6</h3>
+      <p>根据教程的图例指导，我们应该能很快的明白要做什么，但是我们很容易忘记我们在页表总取出的物理地址要转化为虚拟地址才能加上偏移量进行操作，正如上面所说的，在程序中所见的地址都是虚拟地址，如果将物理地址直接用来操作，会导致错误，因为程序不会认为这是物理地址。</p>
+<p>除了具体的练习，整个实验要注意的是在进行alloc等操作的时候，我们一定要检查返回值，即是否还有足够的空间去申请，在不满足条件时及时退出，不对后面的步骤造成影响。</p>
+<p>另外，我们要对多级页表的映射形成一个清晰的映像，这样才能去指导实验的正确进行，要分清什么时候是虚拟地址，什么时候是物理地址。</p>
+
+        <h2 id="三-实验体会">
+          <a href="#三-实验体会" class="heading-link"><i class="fas fa-link"></i></a><a href="#三-实验体会" class="headerlink" title="(三)实验体会"></a>(三)实验体会</h2>
+      <ul>
+<li>只有在对理论有着较深体会之后才能对实验得心应手，在学习实验的过程中，由于一开始对于理论的掌握不是很牢靠，导致实验碰壁，在重新梳理思路后开始实验，在清晰的知识下指导下实验完成就很顺利，所以实验的基础是牢靠的理论。</li>
+<li>要学会使用Gxemul的debug功能，有时候bug单看代码是难以发现的，我们应该学习debug功能，运用单步调试，设置断点等方法进行bug的de。</li>
+<li>在实验中，我们要抛弃局部性的理念，不能只在实验需要完成代码附近寻找答案，我们应该查阅各种文件宏定义，这样才能去真正理解这一个空的目的。</li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/03/29/Lab2%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">https://augetyvolta.github.io/2023/03/29/Lab2%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/OS/">OS</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2023/03/17/BUAA_OO_Unit_1/"><span class="paginator-prev__text">2023面向对象设计与构造 Unit1</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="minivaline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">
+          (一)思考题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-2-1"><span class="toc-number">1.1.</span> <span class="toc-text">
+          Thinking 2.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-2-2"><span class="toc-number">1.2.</span> <span class="toc-text">
+          Thinking 2.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-2-3"><span class="toc-number">1.3.</span> <span class="toc-text">
+          Thinking 2.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-2-4"><span class="toc-number">1.4.</span> <span class="toc-text">
+          Thinking 2.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-2-5"><span class="toc-number">1.5.</span> <span class="toc-text">
+          Thinking 2.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-2-6"><span class="toc-number">1.6.</span> <span class="toc-text">
+          Thinking 2.6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-A-1"><span class="toc-number">1.7.</span> <span class="toc-text">
+          Thinking A.1</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E9%9A%BE%E7%82%B9%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">
+          (二)难点分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#exercise2-2"><span class="toc-number">2.1.</span> <span class="toc-text">
+          exercise2.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exercise2-4"><span class="toc-number">2.2.</span> <span class="toc-text">
+          exercise2.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exercise2-6"><span class="toc-number">2.3.</span> <span class="toc-text">
+          exercise2.6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%9E%E9%AA%8C%E4%BD%93%E4%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">
+          (三)实验体会</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/AugetyVolta" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">20</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">21</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="Search for Posts (Support multiple keywords)"><div class="search-btns">Search by:<span class="search-btns-item search-btns-item--google"><i class="fab fa-google"></i>Google</span><span class="search-btns-item search-btns-item--bing"><i></i>Bing</span><span class="search-btns-item search-btns-item--baidu"><i></i>Baidu</span></div></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.xml';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ Untitled ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', 'Please enter characters');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js"></script><script>function loadminivaline () {
+  new MiniValine({
+    el: '#minivaline-container',
+    appId: '',
+    appKey: '',
+    placeholder: 'Write a Comment',
+    lang: '',
+    adminEmailMd5: '',
+    math: true,
+    md: true
+  });
+
+}
+
+if (false) {
+  loadminivaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadminivaline, false);
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script></body></html>
