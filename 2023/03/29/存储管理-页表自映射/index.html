@@ -7,7 +7,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://augetyvolta.github.io/2023/03/29/%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86-%E9%A1%B5%E8%A1%A8%E8%87%AA%E6%98%A0%E5%B0%84/7f63aa499c124b4c27cd4e1ef319fbc.jpg">
 <meta property="article:published_time" content="2023-03-29T14:10:44.000Z">
-<meta property="article:modified_time" content="2023-03-29T14:13:09.743Z">
+<meta property="article:modified_time" content="2023-03-29T14:23:48.891Z">
 <meta property="article:author" content="AugetyVolte">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary">
@@ -75,7 +75,7 @@ window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
 <p>由上文可知，这个页号对应的页是由第PN个页表项映射得到的，<strong>即第一个页表项所在的页表由第PN个页表项映射得到</strong>，由页表的映射可知，<strong>第PN个页表项是页目录的第一个页表项</strong>，<strong>因此，这个页目录第一个页表项的地址就是页目录的基地址</strong>：</p>
 <p><strong>PD<sub>base </sub> &#x3D; PT<sub>base</sub>+PN*4 &#x3D; PT<sub>base</sub>+PT<sub>base</sub>&gt;&gt;10</strong></p>
 <p>那指向页目录的那一页表项的地址是什么呢？只需重复之前的动作，<strong>算出页目录所在的页号，得到映射到此页的页表项的项号，通过PT<sub>base</sub>加上偏移量，即可得到映射到页目录自身的页目录项的地址</strong>：</p>
-<p>**(PD<sub>base</sub>&gt;&gt;12)<em>4+PT<sub>base</sub>&#x3D;PT<sub>base</sub>+PT<sub>base</sub>&gt;&gt;10+PT<sub>base</sub>&gt;&gt;20</em>*</p>
+<p><strong>(PD<sub>base</sub>&gt;&gt;12)*4+PT<sub>base</sub>&#x3D;PT<sub>base</sub>+PT<sub>base</sub>&gt;&gt;10+PT<sub>base</sub>&gt;&gt;20</strong></p>
 
         <h4 id="三级页表">
           <a href="#三级页表" class="heading-link"><i class="fas fa-link"></i></a><a href="#三级页表" class="headerlink" title="三级页表"></a>三级页表</h4>
@@ -87,9 +87,9 @@ window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
 <p><strong>页中间目录基地址(page middle directory) 即二级页表的基地址PMD<sub>base</sub>：</strong></p>
 <p><strong>PMD<sub>base </sub> &#x3D; PT<sub>base </sub>+ PN*8 &#x3D;  PT<sub>base</sub> + PT<sub>base</sub>&gt;&gt;9</strong></p>
 <p>这个二级页表是由一级页表即<strong>页全局目录项（page global directory entry）PGDE</strong>的第一个页表项映射得到的，现在我们只需得到PMD所在的页表号，即可得到一级页表的第一页表项的项号，由此我们可以得到一级页表的基地址：</p>
-<p>*<em>PGDE<sub>base</sub> &#x3D; (PMD<sub>base</sub>&gt;&gt;12)<em>8 + PT<sub>base</sub> &#x3D; PT<sub>base</sub> + PT<sub>base</sub>&gt;&gt;18 + PT<sub>base</sub>&gt;&gt;9</em></em></p>
+<p><strong>PGDE<sub>base</sub> &#x3D; (PMD<sub>base</sub>&gt;&gt;12)*8 + PT<sub>base</sub> &#x3D; PT<sub>base</sub> + PT<sub>base</sub>&gt;&gt;18 + PT<sub>base</sub>&gt;&gt;9</strong></p>
 <p>重复上面的步骤，<strong>我们可以算出一级页表所处的页表号，由此得到映射到该页表的页表项项号，通过PT<sub>base</sub>加上偏移量，即可得到映射到页目录自身的页目录项的地址</strong>：</p>
-<p>**(PGDE<sub>base</sub> &gt;&gt;12)<em>9+PT<sub>base</sub> &#x3D; PT<sub>base</sub> + PT<sub>base</sub>&gt;&gt;27 + PT<sub>base</sub>&gt;&gt;18 + PT<sub>base</sub>&gt;&gt;9</em>*</p>
+<p><strong>(PGDE<sub>base</sub> &gt;&gt;12)*9+PT<sub>base</sub> &#x3D; PT<sub>base</sub> + PT<sub>base</sub>&gt;&gt;27 + PT<sub>base</sub>&gt;&gt;18 + PT<sub>base</sub>&gt;&gt;9</strong></p>
 
         <h4 id="多级页表">
           <a href="#多级页表" class="heading-link"><i class="fas fa-link"></i></a><a href="#多级页表" class="headerlink" title="多级页表"></a>多级页表</h4>
