@@ -10437,7 +10437,7 @@ end
 <p>这个二级页表是由一级页表即<strong>页全局目录项（page global directory entry）PGDE</strong>的第一个页表项映射得到的，现在我们只需得到PMD所在的页表号，即可得到一级页表的第一页表项的项号，由此我们可以得到一级页表的基地址：</p>
 <p><strong>PGDE<sub>base</sub> &#x3D; (PMD<sub>base</sub>&gt;&gt;12)*8 + PT<sub>base</sub> &#x3D; PT<sub>base</sub> + PT<sub>base</sub>&gt;&gt;18 + PT<sub>base</sub>&gt;&gt;9</strong></p>
 <p>重复上面的步骤，<strong>我们可以算出一级页表所处的页表号，由此得到映射到该页表的页表项项号，通过PT<sub>base</sub>加上偏移量，即可得到映射到页目录自身的页目录项的地址</strong>：</p>
-<p><strong>(PGDE<sub>base</sub> &gt;&gt;12)*9+PT<sub>base</sub> &#x3D; PT<sub>base</sub> + PT<sub>base</sub>&gt;&gt;27 + PT<sub>base</sub>&gt;&gt;18 + PT<sub>base</sub>&gt;&gt;9</strong></p>
+<p><strong>(PGDE<sub>base</sub> &gt;&gt;12)*8+PT<sub>base</sub> &#x3D; PT<sub>base</sub> + PT<sub>base</sub>&gt;&gt;27 + PT<sub>base</sub>&gt;&gt;18 + PT<sub>base</sub>&gt;&gt;9</strong></p>
 
         <h4 id="多级页表">
           <a href="#多级页表" class="heading-link"><i class="fas fa-link"></i></a><a href="#多级页表" class="headerlink" title="多级页表"></a>多级页表</h4>
