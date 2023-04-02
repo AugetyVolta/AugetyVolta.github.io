@@ -3838,15 +3838,15 @@
 <li><p><strong>映射到页目录自身的页目录项（自映射）。</strong></p>
 </li>
 </ul>
-<p>页表基地址(page table) 为PT<del>base</del></p>
+<p>页表基地址(page table) 为PT<sub>base</sub></p>
 <p><strong>页中间目录基地址(page middle directory) PMDbase：</strong></p>
-<p>(PT<del>base</del> &gt;&gt; 12) * 8 + PT<del>base</del></p>
+<p>(PT<sub>base</sub> &gt;&gt; 12) * 8 + PT<sub>base</sub></p>
 <p><strong>页全局目录(page global directory) PGDbase：</strong></p>
-<p>((PT<del>base</del> &gt;&gt; 12) * 8 + PT<del>base</del>)&gt;&gt;12*8+PT<del>base</del><strong>（三级页表页目录的基地址）</strong></p>
-<p>即PT<del>base</del>+PT<del>base</del>&gt;&gt;9+PT<del>base</del>&gt;&gt;18</p>
+<p>((PT<sub>base</sub> &gt;&gt; 12) * 8 + PT<sub>base</sub>)&gt;&gt;12*8+PT<sub>base</sub><strong>（三级页表页目录的基地址）</strong></p>
+<p>即PT<sub>base</sub>+PT<sub>base</sub>&gt;&gt;9+PT<sub>base</sub>&gt;&gt;18</p>
 <p><strong>页全局目录项（page global directory entry）PGDE：</strong></p>
-<p>(PT<del>base</del>+PT<del>base</del>&gt;&gt;9+PT<del>base</del>&gt;&gt;18)&gt;&gt;12 <em>8*<em>（映射到页目录自身的页目录项）</em></em></p>
-<p>即PT<del>base</del>+PT<del>base</del>&gt;&gt;9+PT<del>base</del>&gt;&gt;18+PTbase&gt;&gt;27</p>
+<p>(PT<sub>base</sub>+PT<sub>base</sub>&gt;&gt;9+PT<sub>base</sub>&gt;&gt;18)&gt;&gt;12 *8<strong>（映射到页目录自身的页目录项）</strong></p>
+<p>即PT<sub>base</sub>+PT<sub>base</sub>&gt;&gt;9+PT<sub>base</sub>&gt;&gt;18+PT<sub>base</sub>&gt;&gt;27</p>
 
         <h2 id="二-难点分析">
           <a href="#二-难点分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#二-难点分析" class="headerlink" title="(二)难点分析"></a>(二)难点分析</h2>
