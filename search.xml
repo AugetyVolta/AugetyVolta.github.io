@@ -10476,4 +10476,114 @@ end
         <category>tools</category>
       </categories>
   </entry>
+  <entry>
+    <title>Lab3实验报告</title>
+    <url>/2023/04/10/Lab3%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</url>
+    <content><![CDATA[<blockquote>
+<p>BUAA 2023 Operating System Lab3</p>
+</blockquote>
+<span id="more"></span>
+
+
+        <h2 id="一-思考题">
+          <a href="#一-思考题" class="heading-link"><i class="fas fa-link"></i></a><a href="#一-思考题" class="headerlink" title="(一)思考题"></a>(一)思考题</h2>
+      
+        <h3 id="Thinking-3-1">
+          <a href="#Thinking-3-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-3-1" class="headerlink" title="Thinking 3.1"></a><strong>Thinking 3.1</strong></h3>
+      <p><strong>请结合 MOS 中的页目录自映射应用解释代码中 e-&gt;env_pgdir[PDX(UVPT)]&#x3D; PADDR(e-&gt;env_pgdir) | PTE_V 的含义</strong></p>
+<p>PDX(UVPT)是得出UVPT所处的页目录号，即UVPT处于第PDX(UVPT)个页目录项所映射的4MB空间，因此页目录也被第PDX(UVPT)映射，然后将该页目录号所对应的的页目录项映射为页目录的物理基地址，并且加上权限位。</p>
+<p>页目录基地址：</p>
+<p>UVPT+UVPT&gt;&gt;10</p>
+<p>映射到页目录的页目录项的基地址：</p>
+<p>UVPT+UVPT&gt;&gt;10+UVPT&gt;&gt;20</p>
+<p>该页表项处于第几个页目录项：</p>
+<p>(UVPT&gt;&gt;20) &gt;&gt; 2 &#x3D; UVPT&gt;&gt;22 &#x3D; PDX(UVPT)</p>
+
+        <h3 id="Thinking-3-2">
+          <a href="#Thinking-3-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-3-2" class="headerlink" title="Thinking 3.2"></a><strong>Thinking 3.2</strong></h3>
+      <p><strong>elf_load_seg 以函数指针的形式，接受外部自定义的回调函数 map_page。请你找到与之相关的 data 这一参数在此处的来源，并思考它的作用。没有这个参数可不可以？为什么？</strong></p>
+<p>data是传入的进程控制块指针，在load_icode_mapper和load_icode函数中被调用，在load_icode函数中data被赋予进程控制块的指针e</p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">load_icode_mapper</span><span class="params">(<span class="type">void</span> *data, u_long va, <span class="type">size_t</span> offset, u_int perm,<span class="type">const</span> <span class="type">void</span> *src, <span class="type">size_t</span> len)</span>&#123;……&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">static</span> <span class="type">void</span> <span class="title function_">load_icode</span><span class="params">(<span class="keyword">struct</span> Env *e, <span class="type">const</span> <span class="type">void</span> *binary, <span class="type">size_t</span> size)</span> &#123;</span><br><span class="line"> 	……</span><br><span class="line">    panic_on(elf_load_seg(ph, binary + ph-&gt;p_offset, load_icode_mapper, e));</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></div></figure>
+
+<p>不能没有这个参数，因为需要根据这个进程去实现它的内存管理，为这个进程分配相应的物理页。</p>
+
+        <h3 id="Thinking-3-3">
+          <a href="#Thinking-3-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-3-3" class="headerlink" title="Thinking 3.3"></a><strong>Thinking 3.3</strong></h3>
+      <p><strong>结合 elf_load_seg 的参数和实现，考虑该函数需要处理哪些页面加载的情况。</strong></p>
+
+        <h3 id="Thinking-3-4">
+          <a href="#Thinking-3-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-3-4" class="headerlink" title="Thinking 3.4"></a><strong>Thinking 3.4</strong></h3>
+      <p><strong>思考上面这一段话，并根据自己在 Lab2 中的理解，回答：</strong></p>
+<p><strong>• 你认为这里的 env_tf.cp0_epc 存储的是物理地址还是虚拟地址?</strong></p>
+<p>我认为存储的虚拟地址，因为epc存储的是发生错误时CPU所处的指令地址，那么对于CPU来说，所见的都是虚拟地址，因此env_tf.cp0_epc存储的是虚拟地址。</p>
+
+        <h3 id="Thinking-3-5">
+          <a href="#Thinking-3-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-3-5" class="headerlink" title="Thinking 3.5"></a><strong>Thinking 3.5</strong></h3>
+      <p><strong>试找出上述 5 个异常处理函数的具体实现位置。</strong></p>
+<p><strong>handle_int</strong>在<strong>genex.S</strong>文件中</p>
+<p><strong>handle_mod</strong>和<strong>handle_tlb</strong>，<strong>handle_sys</strong>藏得比较深，三者都是通过<strong>genex.S</strong>文件中的宏函数<strong>BUILD_HANDLER</strong>实现的</p>
+
+        <h3 id="Thinking-3-6">
+          <a href="#Thinking-3-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-3-6" class="headerlink" title="Thinking 3.6"></a><strong>Thinking 3.6</strong></h3>
+      <p><strong>阅读 init.c、kclock.S、env_asm.S 和 genex.S 这几个文件，并尝试说出enable_irq 和 timer_irq 中每行汇编代码的作用。</strong> </p>
+<figure class="highlight c"><div class="table-container"><table><tr><td class="code"><pre><span class="line"><span class="comment">//enable_irq</span></span><br><span class="line">li      t0, (STATUS_CU0 | STATUS_IM4 | STATUS_IEc)</span><br><span class="line"><span class="comment">//将t0赋为打开时钟中断的值</span></span><br><span class="line">mtc0    t0, CP0_STATUS</span><br><span class="line"><span class="comment">//将t0的值赋给SR寄存器，使之可以相应时钟中断</span></span><br><span class="line">jr      ra</span><br><span class="line"><span class="comment">//返回</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">//timer_irq</span></span><br><span class="line">sw      zero, (KSEG1 | DEV_RTC_ADDRESS | DEV_RTC_INTERRUPT_ACK)</span><br><span class="line"><span class="comment">//写 KSEG1 | DEV_RTC_ADDRESS | DEV_RTC_INTERRUPT_ACK 地址响应时钟中断</span></span><br><span class="line">li      a0, <span class="number">0</span></span><br><span class="line">j       schedule</span><br><span class="line"><span class="comment">//走到调度函数，进行进程调度</span></span><br></pre></td></tr></table></div></figure>
+
+
+        <h3 id="Thinking-3-7">
+          <a href="#Thinking-3-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-3-7" class="headerlink" title="Thinking 3.7"></a><strong>Thinking 3.7</strong></h3>
+      <p><strong>阅读相关代码，思考操作系统是怎么根据时钟中断切换进程的。</strong></p>
+<p>当内核创建新进程时，将其插入调度链表的头部；在其不再就绪（被阻塞）或退出时，将其从调度链表中移除。当时间片使用完了，我们将当前的进程控制块插入到调度链表的尾部。接下来从调度链表的头部取出一个就绪的进程进行切换。</p>
+
+        <h2 id="二-难点分析">
+          <a href="#二-难点分析" class="heading-link"><i class="fas fa-link"></i></a><a href="#二-难点分析" class="headerlink" title="(二)难点分析"></a>(二)难点分析</h2>
+      
+        <h3 id="Exercise-3-1">
+          <a href="#Exercise-3-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-3-1" class="headerlink" title="Exercise 3.1"></a>Exercise 3.1</h3>
+      <p>要注意对于链表的插入顺序。</p>
+
+        <h3 id="Exercise-3-3">
+          <a href="#Exercise-3-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-3-3" class="headerlink" title="Exercise 3.3"></a>Exercise 3.3</h3>
+      <p>在env结构体中的env_pgdir的地址应该是虚拟地址，我们开辟新的一页时需要将虚拟地址传给env_pgdir。只要是程序处理的地址都应该是虚拟地址。</p>
+
+        <h3 id="Exercise-3-4">
+          <a href="#Exercise-3-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-3-4" class="headerlink" title="Exercise 3.4"></a>Exercise 3.4</h3>
+      <p>难点在于要对于其中调用的函数的异常返回值进行处理。</p>
+
+        <h3 id="Exercise-3-5">
+          <a href="#Exercise-3-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-3-5" class="headerlink" title="Exercise 3.5"></a>Exercise 3.5</h3>
+      <p>memcpy的两个参数地址都是虚拟地址。</p>
+
+        <h3 id="Exercise-3-8">
+          <a href="#Exercise-3-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-3-8" class="headerlink" title="Exercise 3.8"></a>Exercise 3.8</h3>
+      <p>难点在于我们要理解进程运行的过程，首先我们要把当前的页目录切换为待切换进程的页目录，接下来使用env_pop_tf恢复待切换进程的上下文，使之回到该进程中断前的状态，以便于切换后进程的正确运行。</p>
+
+        <h3 id="Exercise-3-11">
+          <a href="#Exercise-3-11" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-3-11" class="headerlink" title="Exercise 3.11"></a>Exercise 3.11</h3>
+      <p>要理解200写入的地址KSEG1 | DEV_RTC_ADDRESS | DEV_RTC_HZ，其中 KSEG1 | DEV_RTC_ADDRESS 是模拟器（GXemul）映射时时钟的位置。偏移量为 DEV_RTC_HZ 表示设置实时钟中断的频率。</p>
+
+        <h3 id="Exercise-3-12">
+          <a href="#Exercise-3-12" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-3-12" class="headerlink" title="Exercise 3.12"></a>Exercise 3.12</h3>
+      <p>难点在于对于scheule函数的编写。首先，我们要确定调度的逻辑，要设置好进入进程调度的条件，在进程调度时，我们还需要注意各种调用的异常返回值，对于这些特殊值要进行异常处理。接下来，在于我们要理解对于不同状态的进程调度的处理如何进行，如果切换时进程不再是就绪状态，就将进程控制块从调度链表中移除，如果仍旧是就绪状态，将该进程控制块插入到调度链表的尾部。</p>
+
+        <h2 id="三-实验体会">
+          <a href="#三-实验体会" class="heading-link"><i class="fas fa-link"></i></a><a href="#三-实验体会" class="headerlink" title="(三)实验体会"></a>(三)实验体会</h2>
+      <ul>
+<li><p>Lab3和Lab2相比，实验进行更容易，但是对于代码的理解难度有了一定程度的增加，也就是说做完实验容易，但是深入理解实验有着不小的困难。</p>
+</li>
+<li><p>理解实验的逻辑应该从功能逻辑开始理解，首先掌握宏观逻辑，接下来对于具体函数的理解就能容易些。</p>
+</li>
+<li><p>要学会使用Gxemul的debug功能，有时候bug单看代码是难以发现的，我们应该学习debug功能，运用单步调试，设置断点等方法进行bug的de。</p>
+</li>
+<li><p>在实验中，我们要抛弃局部性的理念，不能只在实验需要完成代码附近寻找答案，我们应该查阅各种文件宏定义，这样才能去真正理解这一个空的目的。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>BUAA-OS</category>
+        <category>Lab3</category>
+      </categories>
+      <tags>
+        <tag>OS</tag>
+      </tags>
+  </entry>
 </search>
