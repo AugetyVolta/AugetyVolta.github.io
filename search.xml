@@ -10510,6 +10510,7 @@ end
         <h3 id="Thinking-3-3">
           <a href="#Thinking-3-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-3-3" class="headerlink" title="Thinking 3.3"></a><strong>Thinking 3.3</strong></h3>
       <p><strong>结合 elf_load_seg 的参数和实现，考虑该函数需要处理哪些页面加载的情况。</strong></p>
+<p><img src="/2023/04/10/Lab3%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/image-20230416212810408.png" alt="image-20230416212810408"></p>
 
         <h3 id="Thinking-3-4">
           <a href="#Thinking-3-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-3-4" class="headerlink" title="Thinking 3.4"></a><strong>Thinking 3.4</strong></h3>
