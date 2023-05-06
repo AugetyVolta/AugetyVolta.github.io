@@ -10846,7 +10846,7 @@ end
           <a href="#Thinking-4-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-4-7" class="headerlink" title="Thinking 4.7"></a>Thinking 4.7</h3>
       <p><strong>在 do_tlb_mod 函数中，你可能注意到了一个向异常处理栈复制 Trapframe 运行现场的过程，请思考并回答这几个问题：<br>• 这里实现了一个支持类似于“异常重入”的机制，而在什么时候会出现这种“异常重入”？<br>• 内核为什么需要将异常的现场 Trapframe 复制到用户空间？</strong></p>
 <ul>
-<li>如果在缺页中断时再次触发了缺页中断，便会“异常重入”。</li>
+<li>在其他用户态异常处理函数中发生tlb_mod异常，就会出现异常重入。</li>
 <li>因为tlb_mod的异常处理函数在用户态执行，需要知道异常发生时的状态，最后需要通过tf保存好的现场，使用系统调用 syscall_set_trapframe 恢复事先保存好的现场，其中也包括 sp 和 PC 寄存器的值，使得用户程序恢复执行。</li>
 </ul>
 
