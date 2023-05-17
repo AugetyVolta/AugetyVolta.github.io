@@ -20,7 +20,7 @@ var CONFIG = {
   postWidget: {"endText":true},
   nightMode: {"enable":true},
   back2top: {"enable":true},
-  codeblock: {"style":"default","highlight":"dark","wordWrap":false},
+  codeblock: {"style":"carbon","highlight":"dark","wordWrap":false},
   reward: false,
   fancybox: false,
   zoomImage: {"gapAside":"20px"},
@@ -51,7 +51,21 @@ window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
           <a href="#函数调用传参和系统响应" class="heading-link"><i class="fas fa-link"></i></a><a href="#函数调用传参和系统响应" class="headerlink" title="函数调用传参和系统响应"></a>函数调用传参和系统响应</h3>
       <p>寄存器$a0-$a3用于函数值的传递，但是对于syscall的使用也常常需要对于$a0,$a1进行赋值操作，如果这两个情况在同一个函数中发生，如果对于原来的$a0-$a3不做保护，就会造成数据丢失导致错误。</p>
 <p><strong>在使用宏定义的时候更是如此，因为可能会忘了这个指令中包含对于系统的调用，没有对$a0进行保护</strong></p>
-<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">.macro <span class="title function_">printString</span><span class="params">(%src)</span></span><br><span class="line">	<span class="title function_">push</span><span class="params">($a0)</span></span><br><span class="line">	la $a0,%src</span><br><span class="line">	li $v0,4</span><br><span class="line">	syscall</span><br><span class="line">	<span class="title function_">pop</span><span class="params">($a0)</span></span><br><span class="line">.end_macro</span><br><span class="line"></span><br><span class="line">.macro <span class="title function_">printInt</span><span class="params">(%src)</span></span><br><span class="line">	<span class="title function_">push</span><span class="params">($a0)</span></span><br><span class="line">	move $a0,%src</span><br><span class="line">	li $v0,1</span><br><span class="line">	syscall</span><br><span class="line">	<span class="title function_">pop</span><span class="params">($a0)</span></span><br><span class="line">.end_macro</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token punctuation">.</span>macro <span class="token function">printString</span><span class="token punctuation">(</span><span class="token operator">%</span>src<span class="token punctuation">)</span>
+	<span class="token function">push</span><span class="token punctuation">(</span>$a0<span class="token punctuation">)</span>
+	la $a0<span class="token punctuation">,</span><span class="token operator">%</span>src
+	li $v0<span class="token punctuation">,</span><span class="token number">4</span>
+	syscall
+	<span class="token function">pop</span><span class="token punctuation">(</span>$a0<span class="token punctuation">)</span>
+<span class="token punctuation">.</span>end_macro
+
+<span class="token punctuation">.</span>macro <span class="token function">printInt</span><span class="token punctuation">(</span><span class="token operator">%</span>src<span class="token punctuation">)</span>
+	<span class="token function">push</span><span class="token punctuation">(</span>$a0<span class="token punctuation">)</span>
+	move $a0<span class="token punctuation">,</span><span class="token operator">%</span>src
+	li $v0<span class="token punctuation">,</span><span class="token number">1</span>
+	syscall
+	<span class="token function">pop</span><span class="token punctuation">(</span>$a0<span class="token punctuation">)</span>
+<span class="token punctuation">.</span>end_macro<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>以这两个为例，要注意对于$a0的保护！！！</p>
 <p><strong>在循环里面如果进行了跳转，那就一定要注意对i的push</strong></p>
@@ -66,29 +80,67 @@ window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
 
         <h4 id="1-使用-v0-x3D-12一行读入">
           <a href="#1-使用-v0-x3D-12一行读入" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-使用-v0-x3D-12一行读入" class="headerlink" title="1.使用$v0&#x3D;12一行读入"></a>1.使用$v0&#x3D;12一行读入</h4>
-      <figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">li $v0,<span class="number">5</span></span><br><span class="line">syscall		# 读入数字</span><br><span class="line">li $v0,<span class="number">12</span></span><br><span class="line">syscall		# 读入单个字符</span><br><span class="line">   ……</span><br></pre></td></tr></table></div></figure>
+      <pre class="line-numbers language-c" data-language="c"><code class="language-c">li $v0<span class="token punctuation">,</span><span class="token number">5</span>
+syscall		# 读入数字
+li $v0<span class="token punctuation">,</span><span class="token number">12</span>
+syscall		# 读入单个字符
+   ……<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在这里不用考虑回车的影响，直接读入即可</p>
 <p>在mars<strong>的输入里要注意在一行里输入字符</strong></p>
-<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>		# 有回车</span><br><span class="line">abcde	# 一行读入</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token number">5</span>		# 有回车
+abcde	# 一行读入<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
         <h4 id="2-使用-v0-x3D-12读入，但是分行读">
           <a href="#2-使用-v0-x3D-12读入，但是分行读" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-使用-v0-x3D-12读入，但是分行读" class="headerlink" title="2.使用$v0&#x3D;12读入，但是分行读"></a>2.使用$v0&#x3D;12读入，但是分行读</h4>
-      <figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">li $v0,<span class="number">5</span></span><br><span class="line">syscall		# 读入数字</span><br><span class="line">li $v0,<span class="number">12</span></span><br><span class="line">syscall		# 读字符</span><br><span class="line">li $v0,<span class="number">12</span></span><br><span class="line">syscall		# 吃掉回车</span><br></pre></td></tr></table></div></figure>
+      <pre class="line-numbers language-c" data-language="c"><code class="language-c">li $v0<span class="token punctuation">,</span><span class="token number">5</span>
+syscall		# 读入数字
+li $v0<span class="token punctuation">,</span><span class="token number">12</span>
+syscall		# 读字符
+li $v0<span class="token punctuation">,</span><span class="token number">12</span>
+syscall		# 吃掉回车<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>在mars中输入</p>
-<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>		# 有回车</span><br><span class="line">a		# 分行读入</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">d</span><br><span class="line">e</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token number">5</span>		# 有回车
+a		# 分行读入
+b
+c
+d
+e<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
         <h4 id="3-使用-v0-x3D-8读-容易出bug">
           <a href="#3-使用-v0-x3D-8读-容易出bug" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-使用-v0-x3D-8读-容易出bug" class="headerlink" title="3.使用$v0&#x3D;8读(容易出bug)"></a>3.使用$v0&#x3D;8读(容易出bug)</h4>
-      <figure class="highlight plaintext"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">.macro getapl(%src)   # 读入字母，返回相对于a的距离</span><br><span class="line">	la $a0,str</span><br><span class="line">	li $a1,3		# 重要的地方，$a1只能为3，否则就会读不进去</span><br><span class="line">	li $v0,8</span><br><span class="line">	syscall</span><br><span class="line">	lb %src,str</span><br><span class="line">	addi %src,%src,-97</span><br><span class="line">.end_macro</span><br><span class="line"></span><br><span class="line">.data</span><br><span class="line">	str: .space 3		# 用于每次存放读的那一串</span><br><span class="line">.text</span><br><span class="line">	li $v0,5</span><br><span class="line">	syscall		# 读入数字</span><br><span class="line">for:</span><br><span class="line">	……</span><br><span class="line">	getapl($t1)	# 读入字母</span><br><span class="line">	……</span><br><span class="line">end_for:</span><br></pre></td></tr></table></div></figure>
+      <pre class="line-numbers language-none"><code class="language-none">.macro getapl(%src)   # 读入字母，返回相对于a的距离
+	la $a0,str
+	li $a1,3		# 重要的地方，$a1只能为3，否则就会读不进去
+	li $v0,8
+	syscall
+	lb %src,str
+	addi %src,%src,-97
+.end_macro
+
+.data
+	str: .space 3		# 用于每次存放读的那一串
+.text
+	li $v0,5
+	syscall		# 读入数字
+for:
+	……
+	getapl($t1)	# 读入字母
+	……
+end_for:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>对于字符串str的长度没有限制，但是对于输入的时候的$a1，必须设置为3，否则就会读着读着报错</strong></p>
 <p><strong>其实这也就是程设中的CRLF坑</strong>(助教告诉我的)</p>
 <p>在mars中输入</p>
-<figure class="highlight c"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>		# 有回车</span><br><span class="line">a		# 分行读入</span><br><span class="line">b</span><br><span class="line">c</span><br><span class="line">d</span><br><span class="line">e</span><br></pre></td></tr></table></div></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token number">5</span>		# 有回车
+a		# 分行读入
+b
+c
+d
+e<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
         <h3 id="if-else">
@@ -107,7 +159,7 @@ window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
           2.使用$v0&#x3D;12读入，但是分行读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8-v0-x3D-8%E8%AF%BB-%E5%AE%B9%E6%98%93%E5%87%BAbug"><span class="toc-number">4.3.</span> <span class="toc-text">
           3.使用$v0&#x3D;8读(容易出bug)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#if-else"><span class="toc-number">5.</span> <span class="toc-text">
           if else</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E7%9B%B8%E5%85%B3"><span class="toc-number">6.</span> <span class="toc-text">
-          矩阵相关</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/AugetyVolta" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">25</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="Search for Posts (Support multiple keywords)"><div class="search-btns">Search by:<span class="search-btns-item search-btns-item--google"><i class="fab fa-google"></i>Google</span><span class="search-btns-item search-btns-item--bing"><i></i>Bing</span><span class="search-btns-item search-btns-item--baidu"><i></i>Baidu</span></div></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+          矩阵相关</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/AugetyVolta" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">25</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">25</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="Search for Posts (Support multiple keywords)"><div class="search-btns">Search by:<span class="search-btns-item search-btns-item--google"><i class="fab fa-google"></i>Google</span><span class="search-btns-item search-btns-item--bing"><i></i>Bing</span><span class="search-btns-item search-btns-item--baidu"><i></i>Baidu</span></div></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
   var isXML = true;
   var search_path = 'search.xml';
 
