@@ -1,0 +1,539 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="[BUAA 2023 OO Unit 3] 规格化设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2023面向对象设计与构造-Unit3">
+<meta property="og:url" content="https://augetyvolta.github.io/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/index.html">
+<meta property="og:site_name" content="AugetyVolte&#39;s Blog">
+<meta property="og:description" content="[BUAA 2023 OO Unit 3] 规格化设计">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/v2-6362d8b13705d5ba17b19cdeee453022_720w.jpg">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/%E5%9B%BE%E7%89%871.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/%E5%9B%BE%E7%89%873.png">
+<meta property="article:published_time" content="2023-05-17T12:17:46.000Z">
+<meta property="article:modified_time" content="2023-05-17T12:18:57.960Z">
+<meta property="article:author" content="AugetyVolte">
+<meta property="article:tag" content="OO">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://augetyvolta.github.io/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/v2-6362d8b13705d5ba17b19cdeee453022_720w.jpg"><title>2023面向对象设计与构造-Unit3 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: ["google","bing","baidu"],
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"dark","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">2023面向对象设计与构造-Unit3</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-05-17</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-05-17</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">Visited</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><blockquote>
+<p>[BUAA 2023 OO Unit 3] 规格化设计 </p>
+</blockquote>
+<span id="more"></span>
+
+
+        <h3 id="对于黑箱测试、白箱测试的理解">
+          <a href="#对于黑箱测试、白箱测试的理解" class="heading-link"><i class="fas fa-link"></i></a><a href="#对于黑箱测试、白箱测试的理解" class="headerlink" title="对于黑箱测试、白箱测试的理解"></a>对于黑箱测试、白箱测试的理解</h3>
+      
+        <h4 id="黑箱测试">
+          <a href="#黑箱测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#黑箱测试" class="headerlink" title="黑箱测试"></a>黑箱测试</h4>
+      <p>黑箱测试指的是在不考虑程序内部逻辑和结构的情况下，通过输入一组合理的测试用例来验证程序输出是否符合预期。测试者只知道测试程序的输入输出，而不需要管内部的实现逻辑，也就是功能对了就ok。课程的中测和强测就体现了黑箱测试，通过编写测试数据进行正确性判断，只要输出和标准输出一致，说明程序就是正确的。但这里的正确是功能上的正确。</p>
+
+        <h4 id="白箱测试">
+          <a href="#白箱测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#白箱测试" class="headerlink" title="白箱测试"></a>白箱测试</h4>
+      <p>白箱测试指的是在考虑程序内部逻辑和结构的情况下，通过测试数据的输入来判断程序在执行过程中的各个部分是怎么运行的，验证数据在程序中的流动路径是怎么样的，并确定适当的输出确定程序的某一个模块的正确性。就好比一个程序处理需要经过多级函数的调用，白箱测试就是要检测每一个函数的处理结果是正确的，因为虽然可能程序通过了黑箱测试，但是实际上是由于一个函数出现了bug，在之后的函数中又出现了另外的bug，两个bug相互作用，导致最终结果却正确了，虽然总体的功能是正确的，但是给整个程序埋下了隐患，在新增功能的情况下，可能会出现比较大的bug，并且难以定位。</p>
+<p>总的来说，我认为黑箱测试就是输入输出的正确性检测，白箱测试是输入输出加数据流动路径的正确性检测。相比之下，我认为白箱测试的覆盖度更高。</p>
+
+        <h3 id="对单元测试、功能测试、集成测试、压力测试、回归测试的理解">
+          <a href="#对单元测试、功能测试、集成测试、压力测试、回归测试的理解" class="heading-link"><i class="fas fa-link"></i></a><a href="#对单元测试、功能测试、集成测试、压力测试、回归测试的理解" class="headerlink" title="对单元测试、功能测试、集成测试、压力测试、回归测试的理解"></a>对单元测试、功能测试、集成测试、压力测试、回归测试的理解</h3>
+      
+        <h4 id="单元测试">
+          <a href="#单元测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h4>
+      <p><strong>单元测试</strong>指的是对于程序的<strong>最小单元</strong>进行测试，在本课程中，单元测试可以认为是对于一个方法的测试，或者对于一个类的测试，但是事实上，如果一个类的方法是相互独立的话，对于只需要对于每一个方法进行充分测试即可。</p>
+
+        <h4 id="功能测试">
+          <a href="#功能测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h4>
+      <p><strong>功能测试</strong>指的是对于<strong>程序实现功能正确性以及是否满足用户需求</strong>的一个检测，咱们的强测中测就体现的是功能测试。</p>
+
+        <h4 id="集成测试">
+          <a href="#集成测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h4>
+      <p><strong>集成测试</strong>是指将<strong>多个模块结合起来，交互地进行测试</strong>。因为局部正确不代表全局正确，对于函数的调用，还有接口的使用还要遵守事先的约定，在作业中多次体现了集成化的设计，通过函数的相互调用实现顶层函数的功能。</p>
+
+        <h4 id="压力测试">
+          <a href="#压力测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#压力测试" class="headerlink" title="压力测试"></a>压力测试</h4>
+      <p><strong>压力测试</strong>是指通过模拟实际应用的软硬件环境及用户使用过程的系统负荷，长时间或超大负荷地运行测试软件，来测试被测系统的性能、可靠性、稳定性等。在这一单元的作业中，课下测试所构造的极端数据，可能会导致超时的数据都是对于整个程序的压力测试，压力测试在作业中也是对于程序性能的测试。</p>
+
+        <h4 id="回归测试">
+          <a href="#回归测试" class="heading-link"><i class="fas fa-link"></i></a><a href="#回归测试" class="headerlink" title="回归测试"></a>回归测试</h4>
+      <p><strong>回归测试</strong>是指在迭代开发之后，<strong>使用原来已经通过测试的数据再次进行测试</strong>，以免因为新功能的加入导致原有功能的bug，同时也是对于新增功能的正确性检测。就像每次作业迭代时，我们会用上一次强测的数据对于此次作业做一个初步的测试。</p>
+
+        <h3 id="是否使用了测试工具">
+          <a href="#是否使用了测试工具" class="heading-link"><i class="fas fa-link"></i></a><a href="#是否使用了测试工具" class="headerlink" title="是否使用了测试工具"></a>是否使用了测试工具</h3>
+      <p>在这一单元的课下测试中，我使用python实现了一个数据生成与构造的对拍器。主要使用逻辑是使用两个人的jar包进行对拍，通过测试数据生成和对拍一体化流程进行正确性的判定，如果如果两方对于数据的结果都不确定，通过寻找其他人进行对拍求证正确答案。以下是测评机的大致框架：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># --------------------config-----------------------</span>
+n <span class="token operator">=</span> <span class="token number">100</span>  <span class="token comment"># 设置测试点总数</span>
+generator <span class="token operator">=</span> <span class="token string">'code.jar'</span>  <span class="token comment"># 用于数据生成的jar包</span>
+tester <span class="token operator">=</span> <span class="token string">'mine.jar'</span>  <span class="token comment"># 用于对拍的jar包</span>
+file_add <span class="token operator">=</span> <span class="token string">"data"</span>
+echo_on <span class="token operator">=</span> <span class="token boolean">True</span>  <span class="token comment"># 是否显示输出信息</span>
+<span class="token comment"># -------------------------------------------------</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"======DATA GENERATING======"</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'Expected waiting time </span><span class="token interpolation"><span class="token punctuation">&#123;</span><span class="token number">2</span> <span class="token operator">*</span> n<span class="token punctuation">&#125;</span></span><span class="token string">s.'</span></span><span class="token punctuation">)</span>
+os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'python generator.py </span><span class="token interpolation"><span class="token punctuation">&#123;</span>n<span class="token punctuation">&#125;</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">&#123;</span>generator<span class="token punctuation">&#125;</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"=========COMPLETE=========="</span><span class="token punctuation">)</span>
+folder <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token string">'out'</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> <span class="token keyword">not</span> folder<span class="token punctuation">:</span>
+    os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span><span class="token string">'out'</span><span class="token punctuation">)</span>
+folder <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token string">'diff'</span><span class="token punctuation">)</span>
+<span class="token keyword">if</span> <span class="token keyword">not</span> folder<span class="token punctuation">:</span>
+    os<span class="token punctuation">.</span>makedirs<span class="token punctuation">(</span><span class="token string">'diff'</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> home<span class="token punctuation">,</span> dirs<span class="token punctuation">,</span> files <span class="token keyword">in</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span>file_add<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>files<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'java -jar </span><span class="token interpolation"><span class="token punctuation">&#123;</span>tester<span class="token punctuation">&#125;</span></span><span class="token string">&lt;data/random</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">.txt >out/out</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">.txt'</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'testId:</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">'</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> echo_on<span class="token punctuation">:</span>
+            os<span class="token punctuation">.</span>system<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'fc ans/ans</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">.txt out/out</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">.txt >diff/diff</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">.txt'</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            ok <span class="token operator">=</span> cmp_file<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'ans/ans</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">.txt'</span></span><span class="token punctuation">,</span> <span class="token string-interpolation"><span class="token string">f'out/out</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">.txt'</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> ok<span class="token punctuation">:</span>
+                pass_cnt <span class="token operator">=</span> pass_cnt <span class="token operator">+</span> <span class="token number">1</span>
+<span class="token keyword">if</span> pass_cnt <span class="token operator">==</span> n<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"You have passed all the tests."</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"You have </span><span class="token interpolation"><span class="token punctuation">&#123;</span>n <span class="token operator">-</span> pass_cnt<span class="token punctuation">&#125;</span></span><span class="token string"> errors."</span></span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"========TEST FINISH========"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+        <h3 id="数据构造有何策略">
+          <a href="#数据构造有何策略" class="heading-link"><i class="fas fa-link"></i></a><a href="#数据构造有何策略" class="headerlink" title="数据构造有何策略"></a>数据构造有何策略</h3>
+      <p>在三次作业的数据构造方面，不仅要注重数据的全面性，但同时也要注重压力测试，以应对极端数据的情况。在三次作业中，大部分简单方法都可以通过直接翻译jml的描述实现，其算法复杂度大多是在o(n)，对于10000条数据所构成的图性能影响不是特别大，这时，就需要着重关注功能实现的正确性而降低复杂度的关注度，这些方法的测试就可以通过评测机构造的大量随机数据来测试。</p>
+<p>但是，对于jml描述中本就是o(n<sub>2</sub>)或者o(n<sub>3</sub>)复杂度的方法，正确性是一个要求，但是在要求限时的情况下的就要求对于时间性能的考量，在每一次作业中，这些方法的正确性测试也可以通过评测机构造的随机数据进行测试。除此以外，我对于每次作业中出现的高复杂度的数据都进行了压力测试：</p>
+<p>在第九次作业中，<code>queryTripleSum</code>和<code>queryBlockSum</code>方法的复杂度较高，因此我构造了加一个人或加一个关系就调用一次<code>queryTripleSum</code>和<code>queryBlockSum</code>方法，用于测试复杂度。</p>
+<p>在第十次作业中，<code>queryCoupleSum</code>和<code>qgvs</code>方法的复杂度较高，并且实际上维护起来的代价也不低，我构造了一个三千人的大关系网，在添加关系的过程中，反复调用<code>queryCoupleSum</code>，完成关系构建之后，连续调用多次<code>qgvs</code>，来测试<code>qgvs</code>动态维护的效果，经过测试，每次计算<code>qgvs</code>的策略会导致运行时间超长可能最终导致强测TLE。</p>
+<p>在第十一次作业中，<code>queryLeastMoments</code>方法的复杂度很高，于是我构造了一些完全图，通过将所有的关系都进行构建，并且在增加关系时也调用<code>queryLeastMoments</code>方法，最终测试结果发现，只有使用了复杂度较低，即只需要跑一次迪杰斯特拉算法的实现方法才能有效通过测试，否则会导致很长时间结果还不能算出来。</p>
+
+        <h2 id="架构设计与图模型构建和维护策略">
+          <a href="#架构设计与图模型构建和维护策略" class="heading-link"><i class="fas fa-link"></i></a><a href="#架构设计与图模型构建和维护策略" class="headerlink" title="架构设计与图模型构建和维护策略"></a>架构设计与图模型构建和维护策略</h2>
+      
+        <h3 id="第九次作业">
+          <a href="#第九次作业" class="heading-link"><i class="fas fa-link"></i></a><a href="#第九次作业" class="headerlink" title="第九次作业"></a>第九次作业</h3>
+      
+        <h4 id="并查集">
+          <a href="#并查集" class="heading-link"><i class="fas fa-link"></i></a><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h4>
+      <img src="/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/v2-6362d8b13705d5ba17b19cdeee453022_720w.jpg" alt="算法学习笔记(1) : 并查集" style="zoom:67%;">
+
+<p>在这一次的关系网构建中，我使用了并查集的方法，对于若干组可以相互联系到的人构建出相应的并查集网络，这样在查询两个人的关系时，只需要查询他们是否有公共的根节点就可判断他们是否可以联系到。</p>
+
+        <h5 id="构建并查集">
+          <a href="#构建并查集" class="heading-link"><i class="fas fa-link"></i></a><a href="#构建并查集" class="headerlink" title="构建并查集"></a>构建并查集</h5>
+      <p>那么如何构建并查集呢，我们需要对于每一个人维护一个父亲结点，在初始化时，需要把父节点指向自己，之后如果添加两人的关系，需要使用find方法先找到两人所在的并查集的根节点，之后，选择一个根节点作为另一组并查集根节点的父节点，这样，就完成了并查集的合并，之后我们判断两人是否同初一个并查集时，只需调用find函数查找他们的根节点是否相同，即可实现相应判断。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">int</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>fa<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token operator">==</span> x<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x<span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        <span class="token keyword">return</span> <span class="token function">find</span><span class="token punctuation">(</span>fa<span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+        <h4 id="动态维护">
+          <a href="#动态维护" class="heading-link"><i class="fas fa-link"></i></a><a href="#动态维护" class="headerlink" title="动态维护"></a>动态维护</h4>
+      <p>在第九次的作业中，有两个jml是高复杂度方法，<code>queryBlockSum()</code>，<code>queryTripleSum()</code>，分别是用来求整个关系网中的分支数量，以及整个关系网中三个人互相认识的关系数量，如果使用jml直接翻译过来的方法，在反复调用方法的情况下会导致时间的极大性能损失，因此我们需要引入动态维护机制。</p>
+<p>对于BlockSum方法，当我们新增一个人时，blockSum的数量就加一，因为单独的人就是一个分支，接下来，如果我们要添加两个人的关系，那么他们对应的两个并查集就需要合并，在并查集合并时，如果原本两个人处于不同的并查集，那么合并后总的分支数量会减一，如果两个人就处于同一个并查集，那么blockSum的数量就不变。</p>
+<p>对于queryTripleSum方法，当我们两人关系时，如果两人拥有相同的熟人，那么就会增加一个三角形，因此，我们在增加关系时，只需遍历一个人的熟人，如果这个熟人和增加关系的另一方有联系，那么tripleSum就可以加一。</p>
+<img src="/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/%E5%9B%BE%E7%89%871.png" alt="图片1" style="zoom:50%;">
+
+<p>那么最终，调用方法时，我们只需返回动态维护的值即可，方法的复杂度为O(1)。</p>
+<pre class="line-numbers language-none"><code class="language-none">public int queryBlockSum() &#123;
+    return blockSum;
+&#125;
+
+public int queryTripleSum() &#123;
+    return tripleSum;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+        <h3 id="第十次作业">
+          <a href="#第十次作业" class="heading-link"><i class="fas fa-link"></i></a><a href="#第十次作业" class="headerlink" title="第十次作业"></a>第十次作业</h3>
+      <p>第十次作业在上一次作业的基础上出现图中两人关系的删除，但是对于并查集来说，增加关系简单，删除关系有些困难，因此如果删关系，如果删除后两人还处在一个并查集，不用做任何处理，但是如果两个的关系删除导致两个人分别出于两个并查集，就需要分别更新两个并查集中人的根节点，简单起见，可以将两个拆开的并查集的根节点分别设置为删除关系的两个人，这样既维护了并查集，也保证了之后并查集使用的正确性。</p>
+<p>由于删除关系后原先的并查集被破坏，我们只能使用bfs检查被删除关系的两个结点是否仍然可达，如果可达就不需要做任何操作，如果不可达就重新构建两个新的并查集，相应的此时blockSum会加一。</p>
+<img src="/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/%E5%9B%BE%E7%89%873.png" alt="图片3" style="zoom: 50%;">
+
+
+        <h4 id="动态维护-1">
+          <a href="#动态维护-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#动态维护-1" class="headerlink" title="动态维护"></a>动态维护</h4>
+      <p>在这一次作业中，由于删边的存在，需要动态维护blockSum还有tripleSum，前面已经说了blocksum的维护方法，tripleSum的维护方法也很简单，和动态添加tripleSum的操作相反，当两个人的关系删除时，遍历他们的相同熟人，每遇到一个相同熟人，tripleSum就会减一。</p>
+
+        <h4 id="动态维护——用时计算机制">
+          <a href="#动态维护——用时计算机制" class="heading-link"><i class="fas fa-link"></i></a><a href="#动态维护——用时计算机制" class="headerlink" title="动态维护——用时计算机制"></a>动态维护——用时计算机制</h4>
+      <p>在这一次的作业中，有一个<code>qgvs</code>的方法，按照jml的写法有o(n<sub>3</sub>)的复杂度，如果每调用一次计算一次会导致性能大量损失，但是这个地方动态维护的代价也不小，因此我就想仿照OS中<strong>写时复制</strong>的机制，使用一个变量存储qgvs的结果，如果结果没有被修改，调用方法时可以直接被返回，如果结果可能被修改时，我设置了一个dirty位用于标记结果被修改，直到下一次调用方法时才会被重新计算并把脏位恢复，这样就减少了计算的代价。</p>
+<p>当往一个组中加人，删人，对于两个人之间的value修改时都会修改脏位，因为此时qgvs的结果应该发生变化，在其他场景下不会改变组内的qgvs值。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//MyGroup.java</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addPerson</span><span class="token punctuation">(</span><span class="token class-name">Person</span> person<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        people<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        modifiedValue <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">deletePerson</span><span class="token punctuation">(</span><span class="token class-name">Person</span> person<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        people<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> person<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        modifiedValue <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+        <h3 id="第十一次作业">
+          <a href="#第十一次作业" class="heading-link"><i class="fas fa-link"></i></a><a href="#第十一次作业" class="headerlink" title="第十一次作业"></a>第十一次作业</h3>
+      <p>在最后一次作业中，对于之前需要动态维护的方法都没有改动，对于图的构建也没有变化，只是增加了<code>qlm</code>的方法，要求找到经过一个人的权值最小的环的权重。我曾思考过对于这个进行动态维护，但是由于整个图中的人很多，加人和加关系可能会导致多个人的环需要重新构建，动态维护可能被单次计算的代价还大，违背了降低复杂度的初衷，因此，我使用了讨论区中的优先队列+魔改dijkstra的方法，通过调用一次dijkstra的方法实现最小权值的计算。</p>
+
+        <h2 id="规格与实现分离及性能问题">
+          <a href="#规格与实现分离及性能问题" class="heading-link"><i class="fas fa-link"></i></a><a href="#规格与实现分离及性能问题" class="headerlink" title="规格与实现分离及性能问题"></a>规格与实现分离及性能问题</h2>
+      
+        <h3 id="规格和实现分离">
+          <a href="#规格和实现分离" class="heading-link"><i class="fas fa-link"></i></a><a href="#规格和实现分离" class="headerlink" title="规格和实现分离"></a>规格和实现分离</h3>
+      <p>通过三次作业的练习，我意识到规格是对于我们的功能实现给了一个最基本baseline，即简单机械翻译jml能保证我们代码和功能的正确性，但是仅仅是正确性，对于实现的优雅性是不太保证的，即我们只能得到一个正确性的标程，但是代码的效率方面可能就会”惨不忍睹“。因此在这三次的作业中，我们需要从jml中知道我们需要做什么，然后以这个需求为驱动去实现较高效率的代码的开发，对于我们来说，对于需求的实现是自由的，满足规范即可。</p>
+
+        <h3 id="实现中的性能问题和修改方式">
+          <a href="#实现中的性能问题和修改方式" class="heading-link"><i class="fas fa-link"></i></a><a href="#实现中的性能问题和修改方式" class="headerlink" title="实现中的性能问题和修改方式"></a>实现中的性能问题和修改方式</h3>
+      <p>在这一单元的作业中，我没有出现性能问题，主要得益于同学们之间的相互讨论以及大佬们对于高效方法的慷慨分享。除此以外，课下的测试数据构造也是发现性能问题的好方法，在某次作业中，我使用自己构造的数据让程序跑不动了，我就知道需要换一种性能更高的方法进行功能的实现。</p>
+<p>简单总结，三次作业对于性能问题的修改方法有三个方面：</p>
+<p>第一个方面是动态维护，调用查询方法的时只需返回已经计算好并且已事先储存的元素，复杂度极地，相应的复杂度被分散在动态维护时，但大多数是o(n)的复杂度。</p>
+<p>第二个方面是引入一个类似于写时复制的机制，引入一个dirty位，当修改值时，先不着急计算，等到下一次要查询值再进行计算，虽然一次算法的复杂度可能较高，但是在不修改的情况下，可以直接返回原来存储的值，算法的复杂度还是大大降低了。</p>
+<p>第三个方面是真正降低算法的复杂度，寻求更高效的算法。前面两个方面是间接减少复杂度，而这个就是在算法上下功夫，对于算法还是提出了很高的要求，需要对于算法有着很深的理解，但是一旦想到就是可以称作神一样的实现。</p>
+
+        <h2 id="OkTest">
+          <a href="#OkTest" class="heading-link"><i class="fas fa-link"></i></a><a href="#OkTest" class="headerlink" title="OkTest"></a>OkTest</h2>
+      <p>本单元的oktest在我看来就是对于就是对于方法的白盒测试，在测试的过程中，我们对于方法的前置条件，后置条件，以及调用方法所得到的结果都进行了检测，以保证方法的完整意义上的正确性，同时oktest的每一个检测点也相应检查了方法是否满足对应的规格。对于这个的建议是可以将oktest放在一个静态类中，这样感觉更符合面向对象的思想，因为测试应该要和实现功能分离。</p>
+
+        <h2 id="学习体会">
+          <a href="#学习体会" class="heading-link"><i class="fas fa-link"></i></a><a href="#学习体会" class="headerlink" title="学习体会"></a>学习体会</h2>
+      <p>通过本单元的学习，我学习到了规格化设计的精妙之处，学到了竟然还有规范化的描述语言来指导需求的实现，学习到了规格与设计相分离的思想，感受到了从顶层到底层的设计延伸。但同时我也体会到了编写jml语言的困难，在实验中，感觉对于实现jml语言的简洁性和正确性都存在一定的困难。在之后的学习中，我会以这种规格化设计的思想指导设计，通过本单元学到的测试方法，对于未来的项目开发做到全面且高效的测试。</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/">https://augetyvolta.github.io/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/OO/">OO</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2023/04/23/Lab4%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"><span class="paginator-prev__text">Lab4实验报告</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="minivaline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E9%BB%91%E7%AE%B1%E6%B5%8B%E8%AF%95%E3%80%81%E7%99%BD%E7%AE%B1%E6%B5%8B%E8%AF%95%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">
+          对于黑箱测试、白箱测试的理解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%91%E7%AE%B1%E6%B5%8B%E8%AF%95"><span class="toc-number">1.1.</span> <span class="toc-text">
+          黑箱测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BD%E7%AE%B1%E6%B5%8B%E8%AF%95"><span class="toc-number">1.2.</span> <span class="toc-text">
+          白箱测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E3%80%81%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%E3%80%81%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95%E3%80%81%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95%E3%80%81%E5%9B%9E%E5%BD%92%E6%B5%8B%E8%AF%95%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">2.</span> <span class="toc-text">
+          对单元测试、功能测试、集成测试、压力测试、回归测试的理解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-number">2.1.</span> <span class="toc-text">
+          单元测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">2.2.</span> <span class="toc-text">
+          功能测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%86%E6%88%90%E6%B5%8B%E8%AF%95"><span class="toc-number">2.3.</span> <span class="toc-text">
+          集成测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8E%8B%E5%8A%9B%E6%B5%8B%E8%AF%95"><span class="toc-number">2.4.</span> <span class="toc-text">
+          压力测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9E%E5%BD%92%E6%B5%8B%E8%AF%95"><span class="toc-number">2.5.</span> <span class="toc-text">
+          回归测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E4%BA%86%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-number">3.</span> <span class="toc-text">
+          是否使用了测试工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%9E%84%E9%80%A0%E6%9C%89%E4%BD%95%E7%AD%96%E7%95%A5"><span class="toc-number">4.</span> <span class="toc-text">
+          数据构造有何策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%9B%BE%E6%A8%A1%E5%9E%8B%E6%9E%84%E5%BB%BA%E5%92%8C%E7%BB%B4%E6%8A%A4%E7%AD%96%E7%95%A5"><span class="toc-number"></span> <span class="toc-text">
+          架构设计与图模型构建和维护策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-number">1.</span> <span class="toc-text">
+          第九次作业</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-number">1.1.</span> <span class="toc-text">
+          并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-number">1.1.1.</span> <span class="toc-text">
+          构建并查集</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%BB%B4%E6%8A%A4"><span class="toc-number">1.2.</span> <span class="toc-text">
+          动态维护</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-number">2.</span> <span class="toc-text">
+          第十次作业</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%BB%B4%E6%8A%A4-1"><span class="toc-number">2.1.</span> <span class="toc-text">
+          动态维护</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E7%BB%B4%E6%8A%A4%E2%80%94%E2%80%94%E7%94%A8%E6%97%B6%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%88%B6"><span class="toc-number">2.2.</span> <span class="toc-text">
+          动态维护——用时计算机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%8D%81%E4%B8%80%E6%AC%A1%E4%BD%9C%E4%B8%9A"><span class="toc-number">3.</span> <span class="toc-text">
+          第十一次作业</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%84%E6%A0%BC%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%88%86%E7%A6%BB%E5%8F%8A%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98"><span class="toc-number"></span> <span class="toc-text">
+          规格与实现分离及性能问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%84%E6%A0%BC%E5%92%8C%E5%AE%9E%E7%8E%B0%E5%88%86%E7%A6%BB"><span class="toc-number">1.</span> <span class="toc-text">
+          规格和实现分离</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%AD%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98%E5%92%8C%E4%BF%AE%E6%94%B9%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">
+          实现中的性能问题和修改方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OkTest"><span class="toc-number"></span> <span class="toc-text">
+          OkTest</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E4%BD%93%E4%BC%9A"><span class="toc-number"></span> <span class="toc-text">
+          学习体会</span></a></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/AugetyVolta" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">25</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="Search for Posts (Support multiple keywords)"><div class="search-btns">Search by:<span class="search-btns-item search-btns-item--google"><i class="fab fa-google"></i>Google</span><span class="search-btns-item search-btns-item--bing"><i></i>Bing</span><span class="search-btns-item search-btns-item--baidu"><i></i>Baidu</span></div></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.xml';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ Untitled ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', 'Please enter characters');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js"></script><script>function loadminivaline () {
+  new MiniValine({
+    el: '#minivaline-container',
+    appId: '',
+    appKey: '',
+    placeholder: 'Write a Comment',
+    lang: '',
+    adminEmailMd5: '',
+    math: true,
+    md: true
+  });
+
+}
+
+if (false) {
+  loadminivaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadminivaline, false);
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script></body></html>
