@@ -1,0 +1,513 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.8.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.8.0" type="image/png" sizes="32x32"><meta name="description" content="BUAA 2023 Operating System Lab5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lab5实验报告">
+<meta property="og:url" content="https://augetyvolta.github.io/2023/05/20/Lab5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/index.html">
+<meta property="og:site_name" content="AugetyVolte&#39;s Blog">
+<meta property="og:description" content="BUAA 2023 Operating System Lab5">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/05/20/Lab5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/image-20230520163614153.png">
+<meta property="og:image" content="https://augetyvolta.github.io/2023/05/20/Lab5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/image-20230520172802051.png">
+<meta property="article:published_time" content="2023-05-20T10:07:27.000Z">
+<meta property="article:modified_time" content="2023-05-20T10:08:05.403Z">
+<meta property="article:author" content="AugetyVolte">
+<meta property="article:tag" content="OS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://augetyvolta.github.io/2023/05/20/Lab5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/image-20230520163614153.png"><title>Lab5实验报告 | AugetyVolte's Blog</title><link ref="canonical" href="https://augetyvolta.github.io/2023/05/20/Lab5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.8.0"><link rel="stylesheet" href="css/custom.css"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  assistSearch: ["google","bing","baidu"],
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":true},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"Copy","copySuccess":"Copy Success","copyError":"Copy Error"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">Home</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">Archives</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">Categories</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">Tags</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/link/"><span class="header-nav-menu-item__icon"><i class="fas fa-link"></i></span><span class="header-nav-menu-item__text">menu.Links</span></a></div></div><div class="header-nav-search"><span class="header-nav-search__icon"><i class="fas fa-search"></i></span><span class="header-nav-search__text">Search</span></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">AugetyVolta's Blog</div><div class="header-banner-info__subtitle">In case I don't see you, good morning, good afternoon and good night.</div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">Lab5实验报告</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">Created</span><span class="post-meta-item__value">2023-05-20</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">Updated</span><span class="post-meta-item__value">2023-05-20</span></span><span class="post-meta-item post-meta-item--visitors"><span class="post-meta-item__icon"><i class="fas fa-eye"></i></span><span class="post-meta-item__info">Visited</span><span class="post-meta-item__value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body"><blockquote>
+<p>BUAA 2023 Operating System Lab5</p>
+</blockquote>
+<span id="more"></span>
+
+
+        <h2 id="一-思考题">
+          <a href="#一-思考题" class="heading-link"><i class="fas fa-link"></i></a><a href="#一-思考题" class="headerlink" title="(一)思考题"></a>(一)思考题</h2>
+      
+        <h3 id="Thinking-5-1">
+          <a href="#Thinking-5-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-5-1" class="headerlink" title="Thinking 5.1"></a>Thinking 5.1</h3>
+      <p><strong>如果通过 kseg0 读写设备，那么对于设备的写入会缓存到 Cache 中。这是 一种错误的行为，在实际编写代码的时候这么做会引发不可预知的问题。请思考：这么做这会引发什么问题？对于不同种类的设备（如我们提到的串口设备和 IDE 磁盘）的操作会有差异吗？可以从缓存的性质和缓存更新的策略来考虑。</strong></p>
+<p>缓存内存中映射的外部设备的内容时，如果外设对于内存进行更新，但是此时的cache没有更新，会造成数据旧的问题。这是由于cache的更新机制导致的，cache的更新只在CPU写那个地址或者没有相应地址的缓存的时才会进行。</p>
+<p>IDE磁盘发生的可能性小一些，因为磁盘不会去主动修改内存的内容，但是外部设备可能会修改内存的内容导致错误。</p>
+
+        <h3 id="Thinking-5-2">
+          <a href="#Thinking-5-2" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-5-2" class="headerlink" title="Thinking 5.2"></a>Thinking 5.2</h3>
+      <p><strong>查找代码中的相关定义，试回答一个磁盘块中最多能存储多少个文件控制块？一个目录下最多能有多少个文件？我们的文件系统支持的单个文件最大为多大？</strong> </p>
+<p>一个磁盘块的大小为4KB，一个文件控制块的大小为256Byte，一个磁盘块中最多有2^12^&#x2F;2^8^&#x3D;2^4^&#x3D;16个文件控制块。</p>
+<p>一个目录下最多指向10+1024-10&#x3D;1024个磁盘块，每一个磁盘块有最多有16个文件控制块，所以一个目录最多有1024*16&#x3D;16K个文件。</p>
+<p>单个文件系统支持的最大文件为4096*4096&#x2F;4&#x3D;2^22^B&#x3D;4KB。</p>
+
+        <h3 id="Thinking-5-3">
+          <a href="#Thinking-5-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-5-3" class="headerlink" title="Thinking 5.3"></a>Thinking 5.3</h3>
+      <p><strong>请思考，在满足磁盘块缓存的设计的前提下，我们实验使用的内核支持的最大磁盘大小是多少？</strong> </p>
+<p>1GB。因为磁盘的缓存范围是0x10000000到0x50000000。</p>
+<img src="/2023/05/20/Lab5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/image-20230520163614153.png" alt="image-20230520163614153" style="zoom: 67%;">
+
+
+        <h3 id="Thinking-5-4">
+          <a href="#Thinking-5-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-5-4" class="headerlink" title="Thinking 5.4"></a>Thinking 5.4</h3>
+      <p><strong>在本实验中，fs&#x2F;serv.h、user&#x2F;include&#x2F;fs.h 等文件中出现了许多宏定义， 试列举你认为较为重要的宏定义，同时进行解释，并描述其主要应用之处。</strong></p>
+
+        <h5 id="serv-h">
+          <a href="#serv-h" class="heading-link"><i class="fas fa-link"></i></a><a href="#serv-h" class="headerlink" title="serv.h"></a>serv.h</h5>
+      <p>在该文件中比较重要的宏定义有<code>PTE_DIRTY</code>，<code>DISKMAP</code>，<code>DISKMAX</code>。</p>
+<p><code>PTE_DIRTY</code>，用于标注页面是否被修改，主要用于最终对于修改的磁盘镜像的写回。</p>
+<p><code>DISKMAP</code>表示磁盘镜像缓存的起始地址，<code>DISKMAX</code>表示磁盘缓存的最大大小，在fs.c中的disaddr()中有使用。</p>
+
+        <h5 id="fs-h">
+          <a href="#fs-h" class="heading-link"><i class="fas fa-link"></i></a><a href="#fs-h" class="headerlink" title="fs.h"></a>fs.h</h5>
+      <p><code>BY2BLK</code>和<code>BIT2BLK</code>分别以字节和位为单位描述了⼀个磁盘块的大小， <code>BIT2BLK</code>用于位图相关操作。</p>
+<p><code>MAXPATHLEN</code>是路径的最长长度。<code>MAXNAMELEN</code>是f_name的<strong>最长长度加一</strong>，因为最后一位要用来存’\0’。</p>
+
+        <h3 id="Thinking-5-5">
+          <a href="#Thinking-5-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-5-5" class="headerlink" title="Thinking 5.5"></a>Thinking 5.5</h3>
+      <p><strong>在 Lab4“系统调用与 fork”的实验中我们实现了极为重要的 fork 函数。那么 fork 前后的父子进程是否会共享文件描述符和定位指针呢？请在完成上述练习的基础上编写一个程序进行验证。</strong> </p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;lib.h></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> fd<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> envid<span class="token operator">=</span><span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    fd<span class="token operator">=</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"/test"</span><span class="token punctuation">,</span>O_RDWR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">debugf</span><span class="token punctuation">(</span><span class="token string">"envid=%d,fd=%d\n"</span><span class="token punctuation">,</span>envid<span class="token punctuation">,</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="/2023/05/20/Lab5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/image-20230520172802051.png" alt="image-20230520172802051"></p>
+<p>从结果可以看出<strong>父子进程拥有相同的fdnum</strong>，并且由 INDEX2FD 宏可看出，⽂件描述符和 fdnum 是⼀⼀对应的，所以 fork 前后的父子进程确实会共享文件描述符。对于同⼀⽂件描述符结构体，其成员变量 fd_offset 即定位指针也当然是相同的。</p>
+
+        <h3 id="Thinking-5-6">
+          <a href="#Thinking-5-6" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-5-6" class="headerlink" title="Thinking 5.6"></a>Thinking 5.6</h3>
+      <p><strong>请解释 File, Fd, Filefd 结构体及其各个域的作用。比如各个结构体会在哪些过程中被使用，是否对应磁盘上的物理实体还是单纯的内存数据等。说明形式自定，要求简洁明了，可大致勾勒出文件系统数据结构与物理实体的对应关系与设计框架。</strong> </p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">File</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">char</span> f_name<span class="token punctuation">[</span>MAXNAMELEN<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// filename</span>
+	<span class="token class-name">uint32_t</span> f_size<span class="token punctuation">;</span>	 <span class="token comment">// file size in bytes</span>
+	<span class="token class-name">uint32_t</span> f_type<span class="token punctuation">;</span>	 <span class="token comment">// file type</span>
+	<span class="token class-name">uint32_t</span> f_direct<span class="token punctuation">[</span>NDIRECT<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token class-name">uint32_t</span> f_indirect<span class="token punctuation">;</span>
+
+	<span class="token keyword">struct</span> <span class="token class-name">File</span> <span class="token operator">*</span>f_dir<span class="token punctuation">;</span> <span class="token comment">// the pointer to the dir where this file is in, valid only in memory.</span>
+	<span class="token keyword">char</span> f_pad<span class="token punctuation">[</span>BY2FILE <span class="token operator">-</span> MAXNAMELEN <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token number">3</span> <span class="token operator">+</span> NDIRECT<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">4</span> <span class="token operator">-</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">__attribute__</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">aligned</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">,</span> packed<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>File对应的是文件控制块，储存了文件的名字，大小，是否是目录，以及文件所处的目录和文件内容所处的磁盘块，应该对应的是磁盘中的内容，因为内存会断电丢失数据，文件应该保存在磁盘中。在fs.c中file_*的函数中都会使用到File结构体。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">Fd</span> <span class="token punctuation">&#123;</span>
+	u_int fd_dev_id<span class="token punctuation">;</span>
+	u_int fd_offset<span class="token punctuation">;</span>
+	u_int fd_omode<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> <span class="token class-name">Filefd</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">Fd</span> f_fd<span class="token punctuation">;</span>
+	u_int f_fileid<span class="token punctuation">;</span>
+	<span class="token keyword">struct</span> <span class="token class-name">File</span> f_file<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Fd对应的是文件描述符，是用来存储文件的基本信息和用户进程中关于文件的状态，因此Fd和FileFd都处于内存中，从结构体内容可看出 Fd结构体存储映射到⽂件控制符的磁盘⽂件的基本信息，包括⽂件所在设备的 id ，在文件中定位的指针，以及文件的打开方式openmode，Filefd结构体除此以外还存储了文件的id和文件控制块。这两个结构体主要在serv.c，file.c中出现，在打开文件的open过程中，首先调用fsipc_open，传入fd结构体指针，接下来使用调用fsipc将打开文件的信息存入到fd中，之后就以fd结构体中得到的数据，对于文件内容进行映射，进行接下来的操作。</p>
+
+        <h3 id="Thinking-5-7">
+          <a href="#Thinking-5-7" class="heading-link"><i class="fas fa-link"></i></a><a href="#Thinking-5-7" class="headerlink" title="Thinking 5.7"></a>Thinking 5.7</h3>
+      <p><strong>图5.7中有多种不同形式的箭头，请解释这些不同箭头的差别，并思考我们的操作系统是如何实现对应类型的进程间通信的。</strong></p>
+<p>红色进程是操作系统进程，黄色进程是文件服务进程，绿色进程是用户进程。红色进程指向文件服务进程和用户进程的两个箭头表示的是创建相应的进程。</p>
+<p>接下来，从用户进程指向文件服务进程的箭头表示请求服务，该图以open为例，首先调用open方法，在open方法下首先会调用fd_alloc，接下里会调用fdipc_open，并且传入刚才新分配的fd，在fsipc_open函数中调用的fsipc在设置好请求服务类型时会调用ipc_send方法，将请求传输给文件服务进程。</p>
+<p>而文件服务进程指向用户进程的箭头就表示文件服务进程把用户进程请求的服务信息传回，在open方法中就是将要打开文件的相关信息都传入fd结构体中。</p>
+
+        <h2 id="二-实验难点">
+          <a href="#二-实验难点" class="heading-link"><i class="fas fa-link"></i></a><a href="#二-实验难点" class="headerlink" title="(二)实验难点"></a>(二)实验难点</h2>
+      
+        <h3 id="Exercise-5-1">
+          <a href="#Exercise-5-1" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-5-1" class="headerlink" title="Exercise 5.1"></a>Exercise 5.1</h3>
+      <p>这里的难点在于要注意可写地址的上限，起始地址加上最大偏移的地方也是可以读或者写的，所以在判断地址是否有效时要用小于等于号，第二个点在于，我们对于物理地址在512MB~1GB范围内的地址操作时，要给物理地址加上KSEG1转换为内核的虚拟地址进行操作。</p>
+
+        <h3 id="Exercise-5-3">
+          <a href="#Exercise-5-3" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-5-3" class="headerlink" title="Exercise 5.3"></a>Exercise 5.3</h3>
+      <p>在做这个练习时，代码没有太多的解释，这时我们就需要根据上面给的一段读写磁盘的汇编代码进行转化，我们要使用syscall_read_dev()和syscall_write_dev()进行对于特定设备IO地址的写和读，这就是比较简单的翻译，但是需要注意的是，我们在向磁盘的偏移的位置写入时，要写入绝对偏移，即：</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token class-name">uint32_t</span> curoff<span class="token operator">=</span>begin<span class="token operator">+</span>off<span class="token punctuation">;</span>
+<span class="token function">syscall_write_dev</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>curoff<span class="token punctuation">,</span> DEV_DISK_ADDRESS <span class="token operator">+</span> DEV_DISK_OFFSET<span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>off<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+        <h3 id="Exercise-5-4">
+          <a href="#Exercise-5-4" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-5-4" class="headerlink" title="Exercise 5.4"></a>Exercise 5.4</h3>
+      <p>难点在于对于<code>bitmap[blockno / 32] |= (1 &lt;&lt; (blockno % 32))</code> 的理解，</p>
+<p>blockno&#x2F;32用于表示blockno的磁盘块的表示位在第几个字中，4B也就是32位，然后1 &lt;&lt; (blockno % 32)用于获取blockno磁盘块在该字中的表示位，然后将之设置为1表示空闲。</p>
+
+        <h3 id="Exercise-5-5">
+          <a href="#Exercise-5-5" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-5-5" class="headerlink" title="Exercise 5.5"></a>Exercise 5.5</h3>
+      <p>难点在于要理解目录文件控制块的索引形式，对于直接索引，只有10个，每一个存着所对应的磁盘块的块号，当文件的大小大于10个磁盘块的大小时，需要使用间接索引，将磁盘号为f_indirect的磁盘作为一个大的”数组“，用来存储间接的磁盘号，由于我们规定了对于间接索引的前十个位置不使用，那就很好的拓展了文件控制块，给我们的感觉就是一个文件控制块里拥有连续的1024个磁盘块的索引，所以下面的代码就很好解释了。</p>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span>NDIRECT<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	bno<span class="token operator">=</span>dirf<span class="token operator">-></span>f_direct<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+	bno<span class="token operator">=</span><span class="token punctuation">(</span>disk<span class="token punctuation">[</span>dirf<span class="token operator">-></span>f_indirect<span class="token punctuation">]</span><span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+        <h3 id="Exercise-5-8">
+          <a href="#Exercise-5-8" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-5-8" class="headerlink" title="Exercise 5.8"></a>Exercise 5.8</h3>
+      <p>难点在于理解这个函数的运行逻辑，我们得到了目录的文件指针，首先我们算出这个目录所存的文件占用磁盘块的数量，然后通过遍历磁盘块（使用file_get_block()实现）在每一个磁盘块里寻找文件名，最终得到目标文件名的文件控制块。</p>
+<p>该函数的功能是在 dir 指向的文件控制块所代表的目录下寻找名为 name 的文件。 对每一个 dir 指向的文件控制块所管理的磁盘块： 使用 file_get_block 函数获取该磁盘块 遍历该磁盘块上存储的所有文件控制块，如果存在某个文件控制块的 f_name 属性与 name 相同，就将 *file 设为该文件控制块，并返回 0。</p>
+
+        <h3 id="Exercise-5-9">
+          <a href="#Exercise-5-9" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-5-9" class="headerlink" title="Exercise 5.9"></a>Exercise 5.9</h3>
+      <p>函数接受文件路径 path 和模式 mode 作为输入参数，并返回文件描述符的编号。 首先使用 fd_alloc 和 fsipc_open 函数分配一个文件描述符。 之后使用 fd2data 函数获取文件描述符对应的数据缓存页地址，并从 Filefd 结构体中获取文件的 size 和 fileid 属性。 之后遍历文件内容，使用 fsipc_map 函数为文件内容分配页面并映射。 最后使用 fd2num 函数返回文件描述符的编号。</p>
+
+        <h3 id="Exercise-5-10">
+          <a href="#Exercise-5-10" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-5-10" class="headerlink" title="Exercise 5.10"></a>Exercise 5.10</h3>
+      <p>难点在于理解整个过程。函数接收一个文件描述符编号 fdnum ，一个缓冲区指针 buf 和一个最大读取字节数 n 作为输入参数，返回成功读取的字节数并更新文件描述符的偏移量。 首先使用 fd_lookup 和 dev_lookup 函数获取文件描述符和设备结构体。如果查找失败，则返回错误码。 接下来，函数检查文件描述符的打开模式是否允许读取操作。 然后，函数调用设备的读取函数 dev_read 从文件当前的偏移位置读取数据到缓冲区中。 最后，如果读取操作成功，则函数更新文件描述符的偏移量并返回成功读取的字节数。</p>
+
+        <h3 id="Exercise-5-11">
+          <a href="#Exercise-5-11" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-5-11" class="headerlink" title="Exercise 5.11"></a>Exercise 5.11</h3>
+      <p>难点在于理解这是文件服务进程的函数，serve_remove首先调用file_remove删除path中的文件，并且存储返回值，最后将返回值通过ipc传回请求文件系统服务的原进程去，即ipc_send。</p>
+
+        <h3 id="Exercise-5-12">
+          <a href="#Exercise-5-12" class="heading-link"><i class="fas fa-link"></i></a><a href="#Exercise-5-12" class="headerlink" title="Exercise 5.12"></a>Exercise 5.12</h3>
+      <p>难点在于理解用户进程调用文件系统服务的整个过程，对于请求remove来说，首先将所需要的数据准备好即要删除文件的path，接下来通过fsipc将请求传输到文件服务进程进行相应的操作。</p>
+
+        <h3 id="文件服务进程的调用流程">
+          <a href="#文件服务进程的调用流程" class="heading-link"><i class="fas fa-link"></i></a><a href="#文件服务进程的调用流程" class="headerlink" title="文件服务进程的调用流程"></a>文件服务进程的调用流程</h3>
+      <p>文件系统服务通过IPC的形式供其他进程调用，进行文件读写操作。 用户程序在发出文件系统操作请求时，将请求的内容放在对应的结构体中进行消息的传递， fs_serv 进程收到其他进行的 IPC 请求后，根据请求的类型执行对应文件操作，将结果重新通过 IPC 反馈给用户程序。</p>
+
+        <h2 id="三-实验体会">
+          <a href="#三-实验体会" class="heading-link"><i class="fas fa-link"></i></a><a href="#三-实验体会" class="headerlink" title="(三)实验体会"></a>(三)实验体会</h2>
+      <p>在这次的实验中，代码的量以及理解难度又有了一定程度的上升，在这一阶段的学习中，我有两点学习收获：</p>
+<ul>
+<li><p>通过ide部分的学习，我学习到了和外界设备进行交互的方法，即通过编写驱动程序，向特定的地址写入控制信号，以此来实现磁盘的读写。</p>
+</li>
+<li><p>除此以外，我学习到了微内核下文件系统的实现。在这个过程中，我们需要理解许多函数的作用，但是我们还要再全局上想明白，这次的实验分为两个部分，第一个部分是文件系统如何操作文件，第二个部分是用户进程如何调用文件系统服务，其中的交互关系也是需要我们思考清楚的。这种功能分开的机制体现了我们设计时常说的”模块化设计”，还有所谓的高内聚，低耦合的特征。</p>
+</li>
+</ul>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ END ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">Author: </span><span class="copyright-author__value"><a href="https://AugetyVolta.github.io">AugetyVolte</a></span></div><div class="copyright-link"><span class="copyright-link__name">Link: </span><span class="copyright-link__value"><a href="https://augetyvolta.github.io/2023/05/20/Lab5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/">https://augetyvolta.github.io/2023/05/20/Lab5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">Copyright: </span><span class="copyright-notice__value">All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> unless stating additionally</span></div></div><div class="post-tags"><span class="post-tags-item"><span class="post-tags-item__icon"><i class="fas fa-tag"></i></span><a class="post-tags-item__link" href="https://augetyvolta.github.io/tags/OS/">OS</a></span></div><div class="post-share"><div class="social-share" data-sites="qzone, qq, weibo, wechat, douban, linkedin, facebook, twitter, google">Share to: </div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2023/05/17/2023%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%9E%84%E9%80%A0-Unit3/"><span class="paginator-prev__text">2023面向对象设计与构造-Unit3</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div><div class="comments" id="comments"><div id="minivaline-container"></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-ov">Overview</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E6%80%9D%E8%80%83%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">
+          (一)思考题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-5-1"><span class="toc-number">1.1.</span> <span class="toc-text">
+          Thinking 5.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-5-2"><span class="toc-number">1.2.</span> <span class="toc-text">
+          Thinking 5.2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-5-3"><span class="toc-number">1.3.</span> <span class="toc-text">
+          Thinking 5.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-5-4"><span class="toc-number">1.4.</span> <span class="toc-text">
+          Thinking 5.4</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#serv-h"><span class="toc-number">1.4.0.1.</span> <span class="toc-text">
+          serv.h</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#fs-h"><span class="toc-number">1.4.0.2.</span> <span class="toc-text">
+          fs.h</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-5-5"><span class="toc-number">1.5.</span> <span class="toc-text">
+          Thinking 5.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-5-6"><span class="toc-number">1.6.</span> <span class="toc-text">
+          Thinking 5.6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-5-7"><span class="toc-number">1.7.</span> <span class="toc-text">
+          Thinking 5.7</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E5%AE%9E%E9%AA%8C%E9%9A%BE%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">
+          (二)实验难点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Exercise-5-1"><span class="toc-number">2.1.</span> <span class="toc-text">
+          Exercise 5.1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exercise-5-3"><span class="toc-number">2.2.</span> <span class="toc-text">
+          Exercise 5.3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exercise-5-4"><span class="toc-number">2.3.</span> <span class="toc-text">
+          Exercise 5.4</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exercise-5-5"><span class="toc-number">2.4.</span> <span class="toc-text">
+          Exercise 5.5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exercise-5-8"><span class="toc-number">2.5.</span> <span class="toc-text">
+          Exercise 5.8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exercise-5-9"><span class="toc-number">2.6.</span> <span class="toc-text">
+          Exercise 5.9</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exercise-5-10"><span class="toc-number">2.7.</span> <span class="toc-text">
+          Exercise 5.10</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exercise-5-11"><span class="toc-number">2.8.</span> <span class="toc-text">
+          Exercise 5.11</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Exercise-5-12"><span class="toc-number">2.9.</span> <span class="toc-text">
+          Exercise 5.12</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1%E8%BF%9B%E7%A8%8B%E7%9A%84%E8%B0%83%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-number">2.10.</span> <span class="toc-text">
+          文件服务进程的调用流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E5%AE%9E%E9%AA%8C%E4%BD%93%E4%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">
+          (三)实验体会</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/logo.png" alt="avatar"></div><p class="sidebar-ov-author__text">Never veer</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/AugetyVolta" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">27</div><div class="sidebar-ov-state-item__name">Archives</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">26</div><div class="sidebar-ov-state-item__name">Categories</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">10</div><div class="sidebar-ov-state-item__name">Tags</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="Creative Commons" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">You have read </span><span class="sidebar-reading-info__num">0</span><span class="sidebar-reading-info__perc">%</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2023</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>AugetyVolte</span></div><div><span>Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a></span><span> v6.3.0</span><span class="footer__devider">|</span><span>Theme - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.8.0</span></div><div class="busuanzi"><span class="busuanzi-siteuv"><span class="busuanzi-siteuv__icon"><i class="fas fa-user"></i></span><span class="busuanzi-siteuv__info">Visitors</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_uv"></span></span><span class="busuanzi-sitepv"><span class="busuanzi-siteuv__icon"><i class="fas fa-eye"></i></span><span class="busuanzi-siteuv__info">Views</span><span class="busuanzi-siteuv__value" id="busuanzi_value_site_pv"></span></span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><div class="search-mask"></div><div class="search-popup"><span class="search-close"></span><div class="search-input"><input placeholder="Search for Posts (Support multiple keywords)"><div class="search-btns">Search by:<span class="search-btns-item search-btns-item--google"><i class="fab fa-google"></i>Google</span><span class="search-btns-item search-btns-item--bing"><i></i>Bing</span><span class="search-btns-item search-btns-item--baidu"><i></i>Baidu</span></div></div><div class="search-results"></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script><script>function initSearch() {
+  var isXML = true;
+  var search_path = 'search.xml';
+
+  if (!search_path) {
+    search_path = 'search.xml';
+  } else if (/json$/i.test(search_path)) {
+    isXML = false;
+  }
+
+  var path = '/' + search_path;
+  $.ajax({
+    url: path,
+    dataType: isXML ? 'xml' : 'json',
+    async: true,
+    success: function (res) {
+      var datas = isXML ? $('entry', res).map(function () {
+        // 将 XML 转为 JSON
+        return {
+          title: $('title', this).text(),
+          content: $('content', this).text(),
+          url: $('url', this).text()
+        };
+      }).get() : res;
+      var $input = $('.search-input input');
+      var $result = $('.search-results');
+      // 搜索对象（标题、内容）的权重，影响显示顺序
+      var WEIGHT = { title: 100, content: 1 };
+      var searchPost = function () {
+        var searchText = $input.val().toLowerCase().trim();
+        // 根据空白字符分隔关键字
+        var keywords = searchText.split(/[\s]+/);
+        // 搜索结果
+        var matchPosts = [];
+
+        // 有多个关键字时，将原文字整个保存下来
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        // 防止未输入字符时搜索
+        if (searchText.length > 0) {
+          datas.forEach(function (data) {
+            var isMatch  = false;
+            // 没有标题的文章使用预设的 i18n 变量代替
+            var title = (data.title && data.title.trim()) || '[ Untitled ]';
+            var titleLower = title && title.toLowerCase();
+            // 删除 HTML 标签 和 所有空白字符
+            var content = data.content && data.content.replace(/<[^>]+>/g, '');
+            var contentLower = content && content.toLowerCase();
+            // 删除重复的 /
+            var postURL = data.url && decodeURI(data.url).replace(/\/{2,}/g, '/');
+            // 标题中匹配到的关键词
+            var titleHitSlice = [];
+            // 内容中匹配到的关键词
+            var contentHitSlice = [];
+
+            keywords.forEach(function (keyword) {
+              /**
+              * 获取匹配的关键词的索引
+              * @param {String} keyword 要匹配的关键字
+              * @param {String} text 原文字
+              * @param {Boolean} caseSensitive 是否区分大小写
+              * @param {Number} weight 匹配对象的权重。权重大的优先显示
+              * @return {Array}
+              */
+              function getIndexByword (word, text, caseSensitive, weight) {
+                if (!word || !text) {
+                  return [];
+                };
+
+                var startIndex = 0; // 每次匹配的开始索引
+                var index = -1;     // 匹配到的索引值
+                var result = [];    // 匹配结果
+
+                if (!caseSensitive) {
+                  word = word.toLowerCase();
+                  text = text.toLowerCase();
+                }
+
+                while((index = text.indexOf(word, startIndex)) !== -1) {
+                  var hasMatch = false;
+                  // 索引位置相同的关键词，保留长度较长的
+                  titleHitSlice.forEach(function (hit) {
+                    if (hit.index === index && hit.word.length < word.length) {
+                      hit.word = word;
+                      hasMatch = true;
+                    }
+                  });
+                  startIndex = index + word.length;
+                  !hasMatch && result.push({ index: index, word: word, weight: weight });
+                }
+                return result;
+              }
+              titleHitSlice = titleHitSlice.concat(getIndexByword(keyword, titleLower, false, WEIGHT.title));
+              contentHitSlice = contentHitSlice.concat(getIndexByword(keyword, contentLower, false, WEIGHT.content));
+            });
+
+            var hitTitle = titleHitSlice.length;
+            var hitContent = contentHitSlice.length;
+
+            if (hitTitle > 0 || hitContent > 0) {
+              isMatch = true;
+            }
+            if (isMatch) {
+              ;[titleHitSlice, contentHitSlice].forEach(function (hit) {
+                // 按照匹配文字的索引的递增顺序排序
+                hit.sort(function (left, right) {
+                  return left.index - right.index;
+                });
+              });
+              /**
+              * 给文本中匹配到的关键词添加标记，从而进行高亮显示
+              * @param {String} text 原文本
+              * @param {Array} hitSlice 匹配项的索引信息
+              * @param {Number} start 开始索引
+              * @param {Number} end 结束索引
+              * @return {String}
+              */
+              function highlightKeyword (text, hitSlice, start, end) {
+                if (!text || !hitSlice || !hitSlice.length) {
+                  return;
+                }
+
+                var result = '';
+                var startIndex = start;
+                var endIndex = end;
+                hitSlice.forEach(function (hit) {
+                  if (hit.index < startIndex) {
+                    return;
+                  }
+
+                  var hitWordEnd = hit.index + hit.word.length;
+                  result += text.slice(startIndex, hit.index);
+                  result += '<b>' + text.slice(hit.index, hitWordEnd) + '</b>';
+                  startIndex = hitWordEnd;
+                });
+                result += text.slice(startIndex, endIndex);
+                return result;
+              }
+
+              var postData = {};
+              // 文章总的搜索权重
+              var postWeight = titleHitSlice.length * WEIGHT.title + contentHitSlice.length * WEIGHT.content;
+              // 标记匹配关键词后的标题
+              var postTitle = highlightKeyword(title, titleHitSlice, 0, title.length) || title;
+              // 标记匹配关键词后的内容
+              var postContent;
+              // 显示内容的长度
+              var SHOW_WORD_LENGTH = 200;
+              // 命中关键词前的字符显示长度
+              var SHOW_WORD_FRONT_LENGTH = 20;
+              var SHOW_WORD_END_LENGTH = SHOW_WORD_LENGTH - SHOW_WORD_FRONT_LENGTH;
+
+              // 截取匹配的第一个字符，前后共 200 个字符来显示
+              if (contentHitSlice.length > 0) {
+                var firstIndex = contentHitSlice[0].index;
+                var start = firstIndex > SHOW_WORD_FRONT_LENGTH ? firstIndex - SHOW_WORD_FRONT_LENGTH : 0;
+                var end = firstIndex + SHOW_WORD_END_LENGTH;
+                postContent = highlightKeyword(content, contentHitSlice, start, end);
+              } else { // 未匹配到内容，直接截取前 200 个字符来显示
+                postContent = content.slice(0, SHOW_WORD_LENGTH);
+              }
+              postData.title = postTitle;
+              postData.content = postContent;
+              postData.url = postURL;
+              postData.weight = postWeight;
+              matchPosts.push(postData);
+            }
+          });
+        }
+
+        var resultInnerHtml = '';
+        if (matchPosts.length) {
+          // 按权重递增的顺序排序，使权重大的优先显示
+          matchPosts.sort(function (left, right) {
+            return right.weight - left.weight;
+          });
+          resultInnerHtml += '<ul>';
+          matchPosts.forEach(function (post) {
+            resultInnerHtml += '<li><a class="search-results-title" href="' + post.url + '">';
+            resultInnerHtml += post.title;
+            resultInnerHtml += '</a><div class="search-results-content">';
+            resultInnerHtml += post.content;
+            resultInnerHtml += '</div></li>';
+          });
+          resultInnerHtml += '</ul>';
+        } else {
+          resultInnerHtml += '<div class="search-results-none"><i class="far fa-meh"></i></div>';
+        }
+        $result.html(resultInnerHtml);
+      };
+      $input.on('input', searchPost);
+      $input.on('keyup', function (e) {
+        if (e.keyCode === Stun.utils.codeToKeyCode('Enter')) {
+          searchPost();
+        }
+      });
+    }
+  });
+}
+
+function closeSearch () {
+  $('body').css({ overflow: 'auto' });
+  $('.search-popup').css({ display: 'none' });
+  $('.search-mask').css({ display: 'none' });
+}
+
+window.addEventListener('DOMContentLoaded', function () {
+  Stun.utils.pjaxReloadLocalSearch = function () {
+    $('.header-nav-search').on('click', function (e) {
+      e.stopPropagation();
+      $('body').css('overflow', 'hidden');
+      $('.search-popup')
+        .velocity('stop')
+        .velocity('transition.expandIn', {
+          duration: 300,
+          complete: function () {
+            $('.search-popup input').focus();
+          }
+        });
+      $('.search-mask')
+        .velocity('stop')
+        .velocity('transition.fadeIn', {
+          duration: 300
+        });
+
+      initSearch();
+    });
+    $('.search-mask, .search-close').on('click', function () {
+      closeSearch();
+    });
+    $(document).on('keydown', function (e) {
+      // Escape <=> 27
+      if (e.keyCode === Stun.utils.codeToKeyCode('Escape')) {
+        closeSearch();
+      }
+    });
+  };
+
+  Stun.utils.pjaxReloadLocalSearch();
+}, false);
+
+function safeOpenUrl(url) {
+  var newTab = window.open();
+  newTab.opener = null;
+  newTab.location = url;
+}
+
+function extSearch(engine) {
+  var engines = {
+    google: 'https://www.google.com/search?q=',
+    bing: 'https://cn.bing.com/search?q=',
+    baidu: 'https://www.baidu.com/s?ie=UTF-8&wd=',
+  };
+  var host = window.location.host;
+  var query = $('.search-input input').val().toLowerCase().trim();
+  var uri = engines[engine] + query + ' site:' + host;
+
+  if (query) {
+    safeOpenUrl(uri);
+  } else {
+    Stun.utils.popAlert('warning', 'Please enter characters');
+  }
+}
+
+var assistSearchList = window.CONFIG.assistSearch;
+
+if (Array.isArray(assistSearchList)) {
+  assistSearchList.forEach(function (name) {
+    document.querySelector('.search-btns-item--' + name).addEventListener('click', function () {
+      extSearch(name);
+    }, false);
+  });
+}</script><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" rel="stylesheet" type="text/css"><link href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.css" rel="stylesheet" type="text/css"><script src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/copy-tex.min.js"></script><script src="https://cdn.jsdelivr.net/gh/sukkaw/busuanzi@latest/bsz.pure.mini.js" async></script><script src="https://cdn.jsdelivr.net/npm/minivaline/dist/MiniValine.min.js"></script><script>function loadminivaline () {
+  new MiniValine({
+    el: '#minivaline-container',
+    appId: '',
+    appKey: '',
+    placeholder: 'Write a Comment',
+    lang: '',
+    adminEmailMd5: '',
+    math: true,
+    md: true
+  });
+
+}
+
+if (false) {
+  loadminivaline();
+} else {
+  window.addEventListener('DOMContentLoaded', loadminivaline, false);
+}</script><script src="/js/utils.js?v=2.8.0"></script><script src="/js/stun-boot.js?v=2.8.0"></script><script src="/js/scroll.js?v=2.8.0"></script><script src="/js/header.js?v=2.8.0"></script><script src="/js/sidebar.js?v=2.8.0"></script><script type="application/json" src="/search.xml"></script></body></html>

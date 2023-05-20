@@ -1860,7 +1860,7 @@ body::before {
 }
 .highlight figcaption span:first-child::before {
   margin: 0 0.6rem 0 0;
-  color: #5e687b;
+  color: var(--color-gray-550);
 }
 .highlight.markdown figcaption span:first-child::before {
   content: 'markdown';
@@ -1999,8 +1999,8 @@ body::before {
   border-radius: 0.25rem;
   width: 100%;
   line-height: 1.7;
-  color: #abb2bf;
-  background-color: #282c34;
+  color: var(--color-gray-850);
+  background-color: var(--color-gray-200);
 }
 .highlight pre,
 .highlight code {
@@ -2008,6 +2008,8 @@ body::before {
 }
 .highlight pre {
   margin: 0;
+  white-space: pre-wrap;
+  counter-reset: line;
 }
 .highlight td {
   border-width: 0;
@@ -2015,11 +2017,10 @@ body::before {
 .highlight figcaption {
   position: relative;
   width: 100%;
-  color: #abb2bf;
-  background-color: #282c34;
+  color: var(--color-gray-850);
+  background-color: var(--color-gray-200);
   zoom: 1;
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
+  padding: 0.1rem 0;
 }
 .highlight figcaption:before,
 .highlight figcaption:after {
@@ -2032,7 +2033,7 @@ body::before {
 .highlight figcaption span:first-child {
   float: left;
   margin-left: 0.5rem;
-  color: #abb2bf;
+  color: var(--color-gray-850);
 }
 .highlight figcaption span.external-link {
   float: right;
@@ -2040,75 +2041,46 @@ body::before {
 }
 .highlight figcaption.custom {
   min-height: 1.5rem;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
+  border-radius: 0.25rem;
 }
 .highlight figcaption.custom .custom-lang {
   float: left;
   margin: 0 0.6rem;
-  color: #5e687b;
-}
-.highlight figcaption.custom .custom-carbon {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: box;
-  display: flex;
-  margin: 0.2rem 0 0 0.5rem;
-  font-size: 0;
-  -webkit-box-align: center;
-  -moz-box-align: center;
-  -o-box-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-.highlight figcaption.custom .custom-carbon-dot {
-  display: inline-block;
-  margin: 0 4px;
-  border-radius: 50%;
-  width: 10px;
-  height: 10px;
-}
-.highlight figcaption.custom .custom-carbon-dot--red {
-  background-color: #ff5f56;
-}
-.highlight figcaption.custom .custom-carbon-dot--yellow {
-  background-color: #ffbd2e;
-}
-.highlight figcaption.custom .custom-carbon-dot--green {
-  background-color: #27c93f;
-}
-.highlight figcaption:not(.custom) {
-  background-color: #282c34;
-}
-.highlight figcaption:not(.custom) + .table-container td.gutter,
-.highlight figcaption:not(.custom) + table td.gutter {
-  display: table-cell;
+  color: var(--color-gray-550);
 }
 .highlight td.gutter {
-  border-right: 1px solid #3a404c;
+  border-right: 1px solid var(--color-gray-300);
   padding: 0.4rem 0.6rem;
   width: 2rem;
-  background-color: #282c34;
+  background-color: var(--color-gray-200);
+  border-radius: 0.25rem;
   display: none;
 }
 .highlight td.gutter pre {
   text-align: right;
   white-space: nowrap;
-  color: #5e687b;
+  color: var(--color-gray-550);
   background-color: inherit;
 }
 .highlight td.code {
-  padding: 0.5rem 0.75rem;
+  padding: 0;
+}
+.highlight .line::before {
+  content: counter(line);
+  display: inline-block;
+  margin-right: 0.5rem;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 0 0.8rem 0 0.4rem;
+  min-width: 1rem;
+  text-align: right;
+  color: var(--color-gray-550);
+  background-color: var(--color-gray-200);
+  counter-increment: line;
 }
 .highlight .marked {
-  background-color: #333842;
+  background-color: var(--color-gray-260);
 }
 .highlight .emphasis {
   font-style: italic;
@@ -2117,11 +2089,11 @@ body::before {
   font-weight: bold;
 }
 .highlight .comment {
-  color: #5c6370;
+  color: #969896;
 }
 .highlight .quote,
 .highlight .params {
-  color: #abb2bf;
+  color: var(--color-gray-850);
 }
 .highlight .selector-tag,
 .highlight .template-variable,
@@ -2130,7 +2102,7 @@ body::before {
 .highlight .regexp,
 .highlight .name,
 .highlight .tag {
-  color: #f45a5a;
+  color: #c82829;
 }
 .highlight .builtin-name,
 .highlight .literal,
@@ -2138,12 +2110,12 @@ body::before {
 .highlight .type,
 .highlight .meta,
 .highlight .link {
-  color: #de812c;
+  color: #ee8019;
 }
 .highlight .class .keyword:first-child + .title,
 .highlight .built_in,
 .highlight .attribute {
-  color: #eedc6e;
+  color: #eab700;
 }
 .highlight .class .keyword ~ .title,
 .highlight .string .template-variable,
@@ -2152,17 +2124,17 @@ body::before {
 .highlight .class,
 .highlight .subst,
 .highlight .regexp {
-  color: #56b6c2;
+  color: #4eb4b4;
 }
 .highlight .string,
 .highlight .symbol,
 .highlight .bullet,
 .highlight .addition {
-  color: #98c379;
+  color: #4dc14c;
 }
 .highlight .title,
 .highlight .section {
-  color: #4a98d8;
+  color: #2a75c8;
 }
 .highlight .meta-keyword,
 .highlight .doctag,
@@ -2173,11 +2145,11 @@ body::before {
 .highlight .function,
 .highlight .tag .attr,
 .highlight .keyword {
-  color: #be74d5;
+  color: #be4dbc;
 }
 .bash .meta,
 .rust .meta {
-  color: #5c6370;
+  color: #969896;
 }
 .c\+\+ .built_in,
 .cpp .built_in,
@@ -2188,21 +2160,21 @@ body::before {
 .scss .variable,
 .styl .variable,
 .stylus .variable {
-  color: #abb2bf;
+  color: var(--color-gray-850);
 }
 .html .meta,
 .xml .meta,
 .yaml .attr,
 .yml .attr {
-  color: #f45a5a;
+  color: #c82829;
 }
 .js .params,
 .javascript .params {
-  color: #de812c;
+  color: #ee8019;
 }
 .json .attr,
 .swift .type {
-  color: #eedc6e;
+  color: #eab700;
 }
 .variable .variable,
 .bash .variable,
@@ -2211,13 +2183,13 @@ body::before {
 .c\# .meta,
 .css .number,
 .diff .meta {
-  color: #56b6c2;
+  color: #4eb4b4;
 }
 .md .section,
 .markdown .section,
 .py .string .meta,
 .python .string .meta {
-  color: #98c379;
+  color: #4dc14c;
 }
 .bash .built_in,
 .css .built_in,
@@ -2227,20 +2199,26 @@ body::before {
 .shell .meta,
 .shell .keyword,
 .shell .built_in {
-  color: #4a98d8;
+  color: #2a75c8;
 }
 .ini .attr,
 .objectivec .meta,
 .yaml .type,
 .yml .type {
-  color: #be74d5;
+  color: #be4dbc;
 }
 .diff .addition {
   color: #292;
-  background-color: transparent;
+  background-color: #f0fff4;
 }
 .diff .deletion {
   color: #d44;
+  background-color: #ffeef0;
+}
+.nightmode .diff .addition {
+  background-color: transparent;
+}
+.nightmode .diff .deletion {
   background-color: transparent;
 }
 .ending {
@@ -2521,7 +2499,7 @@ body::before {
   cursor: pointer;
 }
 .copy-button i {
-  color: #5e687b;
+  color: var(--color-gray-550);
 }
 .sticky-top {
   position: absolute;
