@@ -26,15 +26,15 @@
 <meta property="og:site_name" content="AugetyVolta&#39;s Blog">
 <meta property="og:description" content="近期由于需要使用特定版本的cuda，在window上配置不便，有重开的风险，遂在WSL上进行配置  WSL安装与对应linux发行版下载WSL实际是WSL2，按照Microsoft官方教程操作即可 linux发行版如Ubuntu在Microsoft Store中下载即可 常用操作查看 WSL 的运行状态 1wsl -l -v  关闭wsl 1wsl --shutdown  导出当前的 Linux">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://augetyvolta.github.io/images/image-20241022232449298.png">
+<meta property="og:image" content="http://augetyvolta.github.io/2024/10/22/WSL%E9%85%8D%E7%BD%AE/image-20241022232449298.png">
 <meta property="article:published_time" content="2024-10-22T15:31:15.000Z">
-<meta property="article:modified_time" content="2024-10-22T16:16:34.831Z">
+<meta property="article:modified_time" content="2024-10-22T16:20:10.636Z">
 <meta property="article:author" content="AugetyVolta">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="wsl">
 <meta property="article:tag" content="cuda">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://augetyvolta.github.io/images/image-20241022232449298.png">
+<meta name="twitter:image" content="http://augetyvolta.github.io/2024/10/22/WSL%E9%85%8D%E7%BD%AE/image-20241022232449298.png">
 
 
 <link rel="canonical" href="http://augetyvolta.github.io/2024/10/22/WSL%E9%85%8D%E7%BD%AE/">
@@ -207,7 +207,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-10-23 00:16:34" itemprop="dateModified" datetime="2024-10-23T00:16:34+08:00">2024-10-23</time>
+      <time title="Modified: 2024-10-23 00:20:10" itemprop="dateModified" datetime="2024-10-23T00:20:10+08:00">2024-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -273,7 +273,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-key del 7fa2af80</span><br></pre></td></tr></table></figure>
 
 <p>接下来，在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA Toolkit Archive | NVIDIA Developer</a>中选择需要的Cuda版本进行下载，有WSL-Ubuntu的官方支持</p>
-<p><img src="/images/image-20241022232449298.png"></p>
+<p><img src="/2024/10/22/WSL%E9%85%8D%E7%BD%AE/image-20241022232449298.png"></p>
 <p>按照提供的Base Installer的指导安装即可</p>
 <p>最后在<code>~/.bashrc</code> 中添加环境变量，以安装的cuda版本为11.3为例，需要添加如下的变量，终端执行 <code>source ~/.bashrc</code>即可生效</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CUDA_HOME=<span class="string">&quot;/usr/local/cuda-11.3&quot;</span></span><br><span class="line"><span class="built_in">export</span> CUDA_INSTALL_PATH=<span class="string">&quot;/usr/local/cuda-11.3&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$CUDA_INSTALL_PATH</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/usr/local/cuda-11.3/lib64</span><br></pre></td></tr></table></figure>
