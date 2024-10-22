@@ -190,9 +190,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-10-22 23:31:15 / Modified: 23:43:37" itemprop="dateCreated datePublished" datetime="2024-10-22T23:31:15+08:00">2024-10-22</time>
+      <time title="Created: 2024-10-22 23:31:15" itemprop="dateCreated datePublished" datetime="2024-10-22T23:31:15+08:00">2024-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-10-23 00:11:03" itemprop="dateModified" datetime="2024-10-23T00:11:03+08:00">2024-10-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -259,7 +265,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-key del 7fa2af80</span><br></pre></td></tr></table></figure>
 
 <p>接下来，在<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">CUDA Toolkit Archive | NVIDIA Developer</a>中选择需要的Cuda版本进行下载，有WSL-Ubuntu的官方支持</p>
-<p><img src="/image-20241022232449298.png" alt="image-20241022232449298"></p>
+<p><img src="/2024/10/22/WSL%E9%85%8D%E7%BD%AE/image-20241022232449298.png"></p>
 <p>按照提供的Base Installer的指导安装即可</p>
 <p>最后在<code>~/.bashrc</code> 中添加环境变量，以安装的cuda版本为11.3为例，需要添加如下的变量，终端执行 <code>source ~/.bashrc</code>即可生效</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CUDA_HOME=<span class="string">&quot;/usr/local/cuda-11.3&quot;</span></span><br><span class="line"><span class="built_in">export</span> CUDA_INSTALL_PATH=<span class="string">&quot;/usr/local/cuda-11.3&quot;</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$CUDA_INSTALL_PATH</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:/usr/local/cuda-11.3/lib64</span><br></pre></td></tr></table></figure>
