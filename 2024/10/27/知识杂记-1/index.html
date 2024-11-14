@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/profile.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/profile.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/profile.jpg">
+  <link rel="mask-icon" href="/images/profile.jpg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"augetyvolta.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null,"activeClass":"disqus"},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="近期读了一些MP（Motion Planning）方向的论文，其用到了一些图形学，数学方面的知识，遂小记，以便于日后复习。  NTFields: Neural Time Fields for Physics-Informed Robot Motion Planning Progressive Learning for Physics-informed Neural Motion Planning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="知识杂记-1">
+<meta property="og:url" content="http://augetyvolta.github.io/2024/10/27/%E7%9F%A5%E8%AF%86%E6%9D%82%E8%AE%B0-1/index.html">
+<meta property="og:site_name" content="晓山青">
+<meta property="og:description" content="近期读了一些MP（Motion Planning）方向的论文，其用到了一些图形学，数学方面的知识，遂小记，以便于日后复习。  NTFields: Neural Time Fields for Physics-Informed Robot Motion Planning Progressive Learning for Physics-informed Neural Motion Planning">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-74ebd18260a5c74687a7834dae7ccef6_b.jpg">
+<meta property="og:image" content="https://picx.zhimg.com/v2-c4ad0a3f354ff401e7e7494f4cf5a17f_b.jpg">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-2f4d17b1d94ed6fb951d80f987d8465b_b.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-ab72fd27141e6b1296c72a2d76456f76_b.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/v2-98dd2da44c014d9dbd3a88c453729166_b.jpg">
+<meta property="article:published_time" content="2024-10-27T15:22:51.000Z">
+<meta property="article:modified_time" content="2024-10-28T09:18:34.131Z">
+<meta property="article:author" content="晓山青">
+<meta property="article:tag" content="Linear interpolation">
+<meta property="article:tag" content="Laplace">
+<meta property="article:tag" content="Grid_sample">
+<meta property="article:tag" content="SDF">
+<meta property="article:tag" content="SE(2、3)">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-74ebd18260a5c74687a7834dae7ccef6_b.jpg">
+
+
+<link rel="canonical" href="http://augetyvolta.github.io/2024/10/27/%E7%9F%A5%E8%AF%86%E6%9D%82%E8%AE%B0-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://augetyvolta.github.io/2024/10/27/%E7%9F%A5%E8%AF%86%E6%9D%82%E8%AE%B0-1/","path":"2024/10/27/知识杂记-1/","title":"知识杂记-1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>知识杂记-1 | 晓山青</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">晓山青</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">但远山长，云山乱，晓山青</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC"><span class="nav-number">1.</span> <span class="nav-text">线性插值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC-linear-interpolation"><span class="nav-number">1.1.</span> <span class="nav-text">线性插值 linear interpolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC-bilinear-interpolation"><span class="nav-number">1.2.</span> <span class="nav-text">双线性插值 bilinear interpolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC-Trilinear-interpolation"><span class="nav-number">1.3.</span> <span class="nav-text">三线性插值 Trilinear interpolation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E7%AE%97%E5%AD%90"><span class="nav-number">2.</span> <span class="nav-text">拉普拉斯算子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Grid-sample"><span class="nav-number">3.</span> <span class="nav-text">Grid_sample</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDF-Signed-Distance-Field"><span class="nav-number">4.</span> <span class="nav-text">SDF(Signed Distance Field)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SE-2-SE-3"><span class="nav-number">5.</span> <span class="nav-text">SE(2) SE(3)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="晓山青"
+      src="/images/profile.jpg">
+  <p class="site-author-name" itemprop="name">晓山青</p>
+  <div class="site-description" itemprop="description">buaa->zju cs student</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/AugetyVolta" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;AugetyVolta" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:1193040110@qq.com" title="E-Mail → mailto:1193040110@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://augetyvolta.github.io/2024/10/27/%E7%9F%A5%E8%AF%86%E6%9D%82%E8%AE%B0-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile.jpg">
+      <meta itemprop="name" content="晓山青">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="晓山青">
+      <meta itemprop="description" content="buaa->zju cs student">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="知识杂记-1 | 晓山青">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          知识杂记-1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-10-27 23:22:51" itemprop="dateCreated datePublished" datetime="2024-10-27T23:22:51+08:00">2024-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-10-28 17:18:34" itemprop="dateModified" datetime="2024-10-28T17:18:34+08:00">2024-10-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%9F%A5%E8%AF%86%E6%9D%82%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">知识杂记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2024/10/27/%E7%9F%A5%E8%AF%86%E6%9D%82%E8%AE%B0-1/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2024/10/27/知识杂记-1/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>近期读了一些MP（Motion Planning）方向的论文，其用到了一些图形学，数学方面的知识，遂小记，以便于日后复习。</p>
+<blockquote>
+<p>NTFields: Neural Time Fields for Physics-Informed Robot Motion Planning</p>
+<p>Progressive Learning for Physics-informed Neural Motion Planning</p>
+<p>PC-Planner: Physics-Constrained Self-Supervised Learning for Robust Neural Motion Planning with Shape-Aware Distance Function</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="线性插值"><a href="#线性插值" class="headerlink" title="线性插值"></a>线性插值</h2><ul>
+<li>线性插值</li>
+<li>二线性插值</li>
+<li>三线性插值</li>
+</ul>
+<p>转载自<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/77496615">线性插值与双&#x2F;三线性插值 - 知乎 (zhihu.com)</a></p>
+<h3 id="线性插值-linear-interpolation"><a href="#线性插值-linear-interpolation" class="headerlink" title="线性插值 linear interpolation"></a>线性插值 linear interpolation</h3><p>无需多言，公式：</p>
+<img src="https://pic3.zhimg.com/v2-74ebd18260a5c74687a7834dae7ccef6_b.jpg" alt="img" style="zoom:50%;" />
+
+
+
+<p>P(t) &#x3D; A + (B -A)t</p>
+<p>P(t) &#x3D; A(1-t) + Bt</p>
+<p>这个函数一般我们叫做lerp.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> T <span class="title">lerp</span><span class="params">(<span class="type">const</span> T &amp;lo, <span class="type">const</span> T &amp;hi, <span class="type">float</span> t)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">return</span> lo * (<span class="number">1</span> - t) + hi * t; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果门把t变成某个函数g(t)，那么线性可以变得平滑，可以变成多项式等等…</p>
+<h3 id="双线性插值-bilinear-interpolation"><a href="#双线性插值-bilinear-interpolation" class="headerlink" title="双线性插值 bilinear interpolation"></a>双线性插值 bilinear interpolation</h3><img src="https://picx.zhimg.com/v2-c4ad0a3f354ff401e7e7494f4cf5a17f_b.jpg" alt="img" style="zoom:50%;" />
+
+
+
+<p>思路是类似的，我们首先用插值算出 nx0 和 nx1，然后再用插值算出P处的值：</p>
+<p>nx0 &#x3D; lerp(c00,c10,tx)</p>
+<p>nx1 &#x3D; lerp(c01,c11,tx)</p>
+<p>p &#x3D; lerp(nx0,nx1,ty)</p>
+<p>如果我们展开的话长这样：</p>
+<p>p&#x3D;c00(1−tx)(1−ty)+c10tx(1−ty)+c01(1−tx)ty+c11txty</p>
+<h3 id="三线性插值-Trilinear-interpolation"><a href="#三线性插值-Trilinear-interpolation" class="headerlink" title="三线性插值 Trilinear interpolation"></a>三线性插值 Trilinear interpolation</h3><p>同样的思路，只是我们推到3d空间：</p>
+<img src="https://pic2.zhimg.com/v2-2f4d17b1d94ed6fb951d80f987d8465b_b.jpg" alt="img" style="zoom:50%;" />
+
+
+
+<p>a &#x3D; lerp(c000,c100,tx)</p>
+<p>b &#x3D; lerp(c010,c110,tx)</p>
+<p>c &#x3D; lerp(c001,c101,tx)</p>
+<p>d &#x3D; lerp(c011,c111,tx)</p>
+<p>得到了这四个点，再把它代入回双线性插值既可：</p>
+<img src="https://pic1.zhimg.com/v2-ab72fd27141e6b1296c72a2d76456f76_b.jpg" alt="img" style="zoom:50%;" />
+
+<p>e &#x3D; lerp(a, b, ty)</p>
+<p>f &#x3D; lerp(c, d, ty)</p>
+<p>最终e, f之间构成了<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=105351280&content_type=Article&match_order=6&q=%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC&zhida_source=entity">线性插值</a>：</p>
+<img src="https://pic1.zhimg.com/v2-98dd2da44c014d9dbd3a88c453729166_b.jpg" alt="img" style="zoom:50%;" />
+
+<h2 id="拉普拉斯算子"><a href="#拉普拉斯算子" class="headerlink" title="拉普拉斯算子"></a>拉普拉斯算子</h2><p>在知乎看到了一个很好的回答，引用在此<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/26822364/answer/1168914135">为什么 空间二阶导（拉普拉斯算子）这么重要？ - 链巨人的回答</a></p>
+<p><strong>“我们进一步概括，在一连串的事件中，拉普拉斯算子能够计算找到那些变化很突然的那些事件。这便是拉普拉斯得到很多应用，很重要的原因。”</strong></p>
+<h2 id="Grid-sample"><a href="#Grid-sample" class="headerlink" title="Grid_sample"></a>Grid_sample</h2><p>torch.nn中的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.nn.functional.grid_sample(<span class="built_in">input</span>, grid, mode=<span class="string">&#x27;bilinear&#x27;</span>, padding_mode=<span class="string">&#x27;zeros&#x27;</span>, align_corners=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+
+<p>简单来说，grid_sample提供一个input以及一个网格，然后根据grid中每个位置提供的坐标信息(input中pixel的坐标)，将input中对应位置的像素值填充到grid指定的位置，得到最终的输出。</p>
+<p>具体介绍引用一个知乎回答<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/495758460">TORCH.NN.FUNCTIONAL.GRID_SAMPLE - 知乎 (zhihu.com)</a></p>
+<h2 id="SDF-Signed-Distance-Field"><a href="#SDF-Signed-Distance-Field" class="headerlink" title="SDF(Signed Distance Field)"></a>SDF(Signed Distance Field)</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/536530019">SDF(signed distance field)基础理论和计算 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43117620/article/details/131980822">浅谈3D隐式表示（SDF，Occupancy field，NeRF）-CSDN博客</a></p>
+<h2 id="SE-2-SE-3"><a href="#SE-2-SE-3" class="headerlink" title="SE(2) SE(3)"></a>SE(2) SE(3)</h2><p>SE(2) 和 SE(3) 是描述刚体运动的李群（Lie group），常用于机器人学、计算机视觉和图形学等领域。</p>
+<ol>
+<li><p>**SE(2)**：</p>
+<ul>
+<li>表示二维空间中的刚体运动，包括平移和旋转。</li>
+<li>具体来说，SE(2) 是由所有的平移（x, y）和旋转（θ）组成的组合。</li>
+<li>数学上，可以表示为：<br>$SE(2) &#x3D; { (x, y, \theta) | x, y \in \mathbb{R}, \theta \in [0, 2\pi) }$</li>
+</ul>
+</li>
+<li><p>**SE(3)**：</p>
+<ul>
+<li>表示三维空间中的刚体运动，包括平移和旋转。</li>
+<li>SE(3) 包含一个三维平移向量（x, y, z）和一个旋转矩阵（通常表示为四元数或欧拉角）。</li>
+<li>数学上，可以表示为：<br>$SE(3) &#x3D; { (x, y, z, R) | (x, y, z) \in \mathbb{R}^3, R \in SO(3) }$</li>
+<li>其中，SO(3) 是表示三维空间中所有旋转的特殊正交群。</li>
+</ul>
+</li>
+</ol>
+<p>这两个空间提供了描述物体在平面和空间中运动的数学框架，广泛应用于运动学分析和路径规划等问题。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linear-interpolation/" rel="tag"># Linear interpolation</a>
+              <a href="/tags/Laplace/" rel="tag"># Laplace</a>
+              <a href="/tags/Grid-sample/" rel="tag"># Grid_sample</a>
+              <a href="/tags/SDF/" rel="tag"># SDF</a>
+              <a href="/tags/SE-2%E3%80%813/" rel="tag"># SE(2、3)</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/23/%E8%AE%BA%E6%96%87%E4%B8%AD%E7%9A%84%E5%B8%B8%E8%A7%81%E7%BC%A9%E5%86%99/" rel="prev" title="论文中的常见缩写">
+                  <i class="fa fa-angle-left"></i> 论文中的常见缩写
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/10/28/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BBTip/" rel="next" title="论文阅读Tip">
+                  论文阅读Tip <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">晓山青</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","cdn":"//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"zby","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
